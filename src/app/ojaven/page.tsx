@@ -2,19 +2,33 @@ import Link from 'next/link'
 import { Reveal } from '@/components/motion/Reveal'
 import { OjavenShowcase } from '@/components/sections/OjavenShowcase'
 import { siteConfig } from '@/lib/data/site'
-import { generatePageMetadata } from '@/lib/seo'
+import { generatePageMetadata, generateOjavenPageJsonLd } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Ojaven — A Platform for Modern Agencies',
+  title: 'Ojaven — A Platform for Modern Agencies by Ajaypal Singh',
   description:
-    'The founder build journal and blueprint for Ojaven. A platform currently in development by Ajaypal Singh, launching 10 July 2027.',
+    'Ojaven is a B2B SaaS platform for modern digital agencies, founded by Ajaypal Singh (Ajaypal Singh Solanki). Currently in development, launching 10 July 2027. Follow the founder build journal.',
   path: '/ojaven',
+  keywords: [
+    'Ojaven platform',
+    'Ojaven SaaS',
+    'Ajaypal Singh Ojaven',
+    'digital agency platform',
+    'agency management tool',
+    'Ojaven founder Ajaypal Singh',
+  ],
 })
 
 export default function OjavenPage() {
+  const jsonLd = generateOjavenPageJsonLd()
+
   return (
     <div className="pt-32 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container-site">
         <div className="max-w-4xl mx-auto space-y-24">
           {/* Header */}

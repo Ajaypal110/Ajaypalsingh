@@ -1,19 +1,32 @@
 import { Reveal } from '@/components/motion/Reveal'
 import { Timeline } from '@/components/sections/Timeline'
 import { nowData } from '@/lib/data/now'
-import { generatePageMetadata } from '@/lib/seo'
+import { generatePageMetadata, generateAboutJsonLd } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'About — Journey, Philosophy & Focus',
+  title: 'About Ajaypal Singh — Journey, Philosophy & Focus',
   description:
-    'Learn about Ajaypal Singh — personal background, philosophy on building software, entrepreneurial journey, and current focus.',
+    'About Ajaypal Singh (Ajaypal Singh Solanki, Ajaypalsingh) — founder, builder, and entrepreneur based in India. Learn about his philosophy on building software, entrepreneurial journey, and current focus on Ojaven.',
   path: '/about',
+  keywords: [
+    'about Ajaypal Singh',
+    'Ajaypal Singh Solanki about',
+    'Ajaypalsingh biography',
+    'who is Ajaypal Singh',
+    'Ajaypal Singh entrepreneur',
+  ],
 })
 
 export default function AboutPage() {
+  const jsonLd = generateAboutJsonLd()
+
   return (
     <div className="pt-32 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container-site">
         <div className="max-w-4xl mx-auto space-y-24">
           {/* Header */}

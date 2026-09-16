@@ -1,19 +1,31 @@
 import { Reveal } from '@/components/motion/Reveal'
 import { ContactForm } from '@/components/ui/ContactForm'
 import { siteConfig } from '@/lib/data/site'
-import { generatePageMetadata } from '@/lib/seo'
+import { generatePageMetadata, generateContactPageJsonLd } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Contact — Connect & Inquire',
+  title: 'Contact Ajaypal Singh — Connect & Inquire',
   description:
-    'Get in touch with Ajaypal Singh regarding software, founder collaborations, Ojaven, or high-conviction ideas.',
+    'Get in touch with Ajaypal Singh (Ajaypal Singh Solanki) regarding software, founder collaborations, Ojaven, or business inquiries. Based in India, open to global conversations.',
   path: '/contact',
+  keywords: [
+    'contact Ajaypal Singh',
+    'Ajaypalsingh contact',
+    'Ajaypal Singh email',
+    'reach Ajaypal Singh Solanki',
+  ],
 })
 
 export default function ContactPage() {
+  const jsonLd = generateContactPageJsonLd()
+
   return (
     <div className="pt-32 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container-site">
         <div className="max-w-4xl mx-auto space-y-16">
           {/* Header */}

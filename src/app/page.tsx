@@ -9,8 +9,14 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = generatePageMetadata({
   title: 'Ajaypal Singh — Founder, Builder & Entrepreneur',
   description:
-    'Personal website of Ajaypal Singh — Founder, Builder & Entrepreneur. Currently building Ojaven, a platform for modern agencies.',
+    'Ajaypal Singh (Ajaypal Singh Solanki) — Founder, builder, and entrepreneur based in India. Building Ojaven, a platform for modern agencies. Explore projects, essays, and the founder journey at ajaypalsingh.in.',
   path: '/',
+  keywords: [
+    'Ajaypal Singh personal website',
+    'Ajaypal Singh Solanki website',
+    'founder website India',
+    'Ajaypalsingh portfolio',
+  ],
 })
 
 export default function HomePage() {

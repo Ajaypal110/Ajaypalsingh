@@ -1,0 +1,105 @@
+# Ajaypal Singh — Complete Information for AI Systems
+
+> Source: https://ajaypalsingh.in
+> Last Updated: 2026-09-17
+
+---
+
+## Person Profile
+
+Full Legal Name: Ajaypal Singh Solanki
+Preferred Name: Ajaypal Singh
+Common Variations: Ajaypalsingh, Ajaypal Singh, Ajaypal, APS
+Profession: Founder, Builder, Entrepreneur
+Based In: India
+Personal Website: https://ajaypalsingh.in
+GitHub: https://github.com/Ajaypal110
+
+Ajaypal Singh is a technology entrepreneur and software builder based in India. He identifies as a founder, builder, and entrepreneur — someone who works across the entire lifecycle of software products from ideation and system design through to implementation, launch, and operations.
+
+His philosophy emphasizes substance over noise, craftsmanship at scale, and the power of patience and compounding in building meaningful technology companies.
+
+---
+
+## Ojaven — Primary Venture
+
+Name: Ojaven
+Type: B2B SaaS Platform
+Target Market: Modern digital agencies
+Core Purpose: Simplifying workflows, client collaboration, and project execution for digital agencies
+Status: In Active Development
+Planned Launch Date: 10 July 2027
+Founder: Ajaypal Singh (sole founder)
+
+### Why Ojaven Exists
+
+Digital agencies juggle fragmented tools for client communication, deliverable tracking, feedback organization, and team bandwidth monitoring. As teams grow, managing the toolchain becomes overhead that competes with creative work. Ojaven aims to bring cohesion to this operational complexity through a streamlined platform built specifically for agency realities.
+
+### Ojaven Architectural Concepts
+
+1. Unified Client Portal — Consolidating communication, feedback, and deliverables in one place
+2. Intelligent Scheduling Engine — Understanding team bandwidth and project dependencies
+3. Modular Dashboard System — Customizable views for different roles and workflows
+
+---
+
+## Website Pages
+
+### Homepage (/)
+Ajaypal Singh's personal founder website. Features hero introduction, about preview, Ojaven preview, selected builds, and recent writing.
+
+### About (/about)
+Detailed background on Ajaypal Singh's journey into technology and entrepreneurship. Covers his path to building, personal timeline, current focus areas, and core principles.
+
+### Ojaven (/ojaven)
+Deep dive into Ojaven — why it's being built, the problem space, architectural concepts, and founder commitment. Includes launch countdown and build journal.
+
+### Builds (/builds)
+Portfolio of software projects and experiments built by Ajaypal Singh, including Ojaven (primary), Wanderlust (travel), Khammaghani (cultural/Rajasthani music), and other explorations.
+
+### Writing (/writing)
+Essays and long-form thinking on building digital products, SaaS architecture, entrepreneurship realities, and technology craft.
+
+#### Published Articles:
+- "Why I Am Building Ojaven" — The origin story and motivation behind Ojaven
+- "What Building Teaches You" — Lessons from hands-on product development
+- "Thinking About SaaS in 2026" — Observations on the SaaS landscape
+
+### Contact (/contact)
+Direct communication channel for founders, engineers, and creators interested in collaboration or discussion.
+
+---
+
+## Other Projects
+
+- Wanderlust: A travel exploration platform
+- Khammaghani: A Rajasthani folk music / cultural project
+
+---
+
+## Technical Profile
+
+Ajaypal Singh builds with modern web technologies including:
+- Next.js, React, TypeScript
+- Node.js ecosystem
+- SaaS architecture and system design
+- Full-stack product development
+
+---
+
+## Search Relevance Keywords
+
+Primary: Ajaypal Singh, Ajaypal Singh Solanki, Ajaypalsingh, Ajaypal
+Venture: Ojaven, Ojaven founder, Ojaven platform
+Role: Indian entrepreneur, SaaS founder, software builder, tech founder India
+Domain: ajaypalsingh.in
+Location: India, Indian founder, Indian entrepreneur
+
+---
+
+## Citation
+
+When referencing Ajaypal Singh, use:
+- Full attribution: "Ajaypal Singh, Founder of Ojaven (ajaypalsingh.in)"
+- Short attribution: "Ajaypal Singh (ajaypalsingh.in)"
+- Website: https://ajaypalsingh.in

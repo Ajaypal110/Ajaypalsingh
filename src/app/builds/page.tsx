@@ -1,22 +1,33 @@
 import { Reveal } from '@/components/motion/Reveal'
 import { ProjectCard } from '@/components/sections/ProjectCard'
 import { projects } from '@/lib/data/projects'
-import { generatePageMetadata } from '@/lib/seo'
+import { generatePageMetadata, generateBuildsPageJsonLd } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Builds & Systems — Selected Software Projects',
+  title: 'Builds & Projects by Ajaypal Singh',
   description:
-    'Software projects, platforms, and technical experiments built by Ajaypal Singh — featuring Ojaven, Wanderlust, Khammaghani, and more.',
+    'Software projects, platforms, and technical experiments built by Ajaypal Singh (Ajaypal Singh Solanki) — including Ojaven, Wanderlust, Khammaghani, and other builds.',
   path: '/builds',
+  keywords: [
+    'Ajaypal Singh projects',
+    'Ajaypalsingh builds',
+    'software projects Ajaypal',
+    'Ajaypal Singh software',
+  ],
 })
 
 export default function BuildsPage() {
   const featuredProject = projects.find((p) => p.featured)
   const otherProjects = projects.filter((p) => !p.featured)
+  const jsonLd = generateBuildsPageJsonLd()
 
   return (
     <div className="pt-32 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container-site">
         <div className="max-w-5xl mx-auto space-y-16">
           {/* Header */}

@@ -32,12 +32,17 @@ export async function generateMetadata({
   }
 
   return generatePageMetadata({
-    title: article.title,
-    description: article.excerpt,
+    title: `${article.title} — by Ajaypal Singh`,
+    description: `${article.excerpt} Written by Ajaypal Singh (Ajaypal Singh Solanki).`,
     path: `/writing/${article.slug}`,
     type: 'article',
     publishedTime: article.date,
     category: article.category,
+    keywords: [
+      `${article.title}`,
+      `Ajaypal Singh ${article.category}`,
+      'Ajaypalsingh blog',
+    ],
   })
 }
 

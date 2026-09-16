@@ -1,0 +1,17 @@
+/* TEAM */
+Name: Ajaypal Singh
+Role: Founder, Builder, Entrepreneur
+Location: India
+Website: https://ajaypalsingh.in
+
+/* SITE */
+Standards: HTML5, CSS3, ES2024
+Framework: Next.js 16
+Styling: Tailwind CSS v4
+Animation: Motion (motion/react)
+Fonts: Inter, Instrument Serif
+Hosting: Vercel
+Last Updated: 2026-09-17
+
+/* THANKS */
+Built with passion and patience.
