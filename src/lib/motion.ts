@@ -121,7 +121,7 @@ export const heroTitle: Variants = {
 }
 
 // Reduced motion variant — opacity only, fast
-export function getReducedVariant(variant: Variants): Variants {
+export function getReducedVariant(): Variants {
   return {
     hidden: { opacity: 0 },
     visible: {

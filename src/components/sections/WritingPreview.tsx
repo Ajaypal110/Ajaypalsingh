@@ -4,62 +4,66 @@ import { articles } from '@/lib/data/articles'
 import { formatDate } from '@/lib/utils'
 
 export function WritingPreview() {
-  const latestArticles = articles.slice(0, 2)
+  const latestArticles = articles.slice(0, 3)
 
   return (
-    <section className="py-20 md:py-28 border-t border-[#151515]">
+    <section className="section-padding border-t border-[#1e2230] relative">
       <div className="container-site">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-            <Reveal>
-              <div>
-                <span className="text-xs uppercase tracking-widest text-[#c8a97e] font-mono block mb-2">
-                  04 — Notes & Thoughts
+        <div className="space-y-12">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <Reveal>
+                <span className="text-xs uppercase tracking-[0.2em] text-[#e07a5f] font-mono block mb-2">
+                  04 // Notebook & Thinking
                 </span>
-                <h2 className="font-display text-3xl sm:text-4xl text-[#f0f0f0] font-normal">
-                  Recent Writing
+                <h2 className="text-headline-section text-[#f5f6f9]">
+                  Ideas & Writing
                 </h2>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
 
             <Reveal delay={0.1}>
               <Link
                 href="/writing"
-                className="text-sm text-[#888888] hover:text-[#c8a97e] transition-colors inline-flex items-center gap-1.5 font-medium group"
+                className="text-sm font-medium text-[#8e92a4] hover:text-[#e07a5f] transition-colors inline-flex items-center gap-1.5 group"
               >
-                <span>Read all essays</span>
+                <span>Browse all notes</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </Reveal>
           </div>
 
-          <div className="space-y-6">
+          {/* Articles List / Notebook Style */}
+          <div className="space-y-4">
             {latestArticles.map((article, idx) => (
-              <Reveal key={article.slug} delay={0.15 * (idx + 1)}>
+              <Reveal key={article.slug} delay={0.1 * (idx + 1)}>
                 <Link
                   href={`/writing/${article.slug}`}
-                  className="block p-6 sm:p-8 rounded-xl border border-[#1f1f1f] bg-[#0c0c0c] hover:border-[#333333] transition-all duration-300 group"
+                  className="block rounded-xl border border-[#1e2230] bg-[#11131a] p-6 sm:p-8 hover:border-[#2e3448] hover:bg-[#141721] transition-all group"
                 >
                   <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
                     <div className="space-y-2 max-w-2xl">
-                      <div className="flex items-center gap-3 text-xs font-mono text-[#555555]">
-                        <span className="text-[#c8a97e]">{article.category}</span>
+                      <div className="flex items-center gap-3 text-xs font-mono text-[#54586d]">
+                        <span className="text-[#e07a5f] font-medium">{article.category}</span>
                         <span>•</span>
                         <span>{article.readingTime}</span>
+                        <span>•</span>
+                        <span>{formatDate(article.date)}</span>
                       </div>
-                      <h3 className="font-display text-2xl sm:text-3xl text-[#f0f0f0] group-hover:text-[#c8a97e] transition-colors font-normal">
+
+                      <h3 className="text-xl sm:text-2xl font-semibold text-[#f5f6f9] group-hover:text-[#e07a5f] transition-colors">
                         {article.title}
                       </h3>
-                      <p className="text-sm sm:text-base text-[#888888] leading-relaxed">
+
+                      <p className="text-sm text-[#8e92a4] leading-relaxed">
                         {article.excerpt}
                       </p>
                     </div>
 
-                    <div className="shrink-0 text-xs font-mono text-[#555555] flex items-center gap-2">
-                      <span>{formatDate(article.date)}</span>
-                      <span className="text-[#888888] group-hover:text-[#c8a97e] group-hover:translate-x-1 transition-all">
-                        →
-                      </span>
+                    <div className="shrink-0 text-sm font-mono text-[#54586d] group-hover:text-[#e07a5f] group-hover:translate-x-1 transition-all flex items-center gap-1">
+                      <span>Read</span>
+                      <span>→</span>
                     </div>
                   </div>
                 </Link>

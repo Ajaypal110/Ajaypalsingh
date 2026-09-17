@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #0F1330; color: #0F1330; font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #0F1330; text-decoration: none; } a:hover { color: #1F2AD6; }
+    :focus-visible { outline: 2px solid #1F2AD6; outline-offset: 3px; }
+    .ch-row .ch-title { transition: transform .7s cubic-bezier(.16,1,.3,1), color .3s; }
+    .ch-row:hover .ch-title { transform: translateX(16px); color: #1F2AD6; }
+    .care { transition: background .5s, color .5s, transform .7s cubic-bezier(.16,1,.3,1); }
+    .care:hover { background: #1F2AD6; color: #F7F7F5; transform: translateY(-8px); }
+    .care .shape { transition: transform .9s cubic-bezier(.16,1,.3,1), background .5s; }
+    .care:hover .shape { transform: rotate(90deg); background: #F7F7F5; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+  </style>
+</helmet>
+
+<div style="position: relative; width: 1440px; height: 4900px; overflow: hidden;">
+  <dc-import name="Header" active="About" on-dark="{{ false }}" hint-size="100%,96px"></dc-import>
+
+  <main style="position: relative; z-index: 2; background: #F7F7F5; margin-bottom: 780px; border-radius: 0 0 48px 48px; overflow: hidden;">
+
+    <section style="position: relative; height: 1000px; padding: 0 64px;">
+      <p style="position: absolute; top: 172px; left: 64px; margin: 0; font-size: 15px; color: #5A5F7A;">About</p>
+      <h1 style="position: absolute; top: 200px; left: 56px; width: 900px; margin: 0; font-size: 196px; font-weight: 500; line-height: .88; letter-spacing: -0.065em;">Hi, I'm Ajaypal.</h1>
+      <figure style="position: absolute; top: 150px; right: 64px; width: 360px; margin: 0;">
+        <div style="height: 460px; border-radius: 6px; background: #3A45E6; overflow: hidden; position: relative;">
+          <svg aria-hidden="true" width="100%" height="100%" viewBox="0 0 360 460" preserveAspectRatio="xMidYMax slice"><circle cx="180" cy="190" r="74" fill="#5560F0"></circle><path d="M20 460c0-120 70-200 160-200s160 80 160 200z" fill="#5560F0"></path></svg>
+          <span style="position: absolute; left: 18px; bottom: 16px; font-size: 13px; color: #F7F7F5;">[Your photo]</span>
+        </div>
+        <figcaption style="margin-top: 10px; display: flex; justify-content: space-between; font-size: 13px; color: #5A5F7A;"><span>[Place]</span><span>[Year]</span></figcaption>
+      </figure>
+      <div style="position: absolute; top: 650px; left: 64px; right: 64px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;">
+        <p style="grid-column: span 6; margin: 0; font-size: 36px; line-height: 1.22; letter-spacing: -0.025em;">I'm a second-year B.Tech CSE student with an AI focus. I got into technology by learning it and building with it, and then got curious about everything around it.</p>
+        <p style="grid-column: 8 / span 4; margin: 8px 0 0; font-size: 20px; line-height: 1.5; color: #5A5F7A;">I'm building toward being a founder, and I'm early in that. This page is the honest version of how I got here and where I'm going.</p>
+      </div>
+    </section>
+
+    <section aria-label="Photo" style="padding: 0 64px;">
+      <div style="height: 640px; border-radius: 32px; background: #1F2AD6; position: relative; overflow: hidden;">
+        <svg aria-hidden="true" width="1100" height="1100" viewBox="0 0 1100 1100" fill="none" style="position: absolute; right: -300px; top: -230px; opacity: .3;"><circle cx="550" cy="550" r="549" stroke="#AEB5FF"></circle><circle cx="550" cy="550" r="420" stroke="#AEB5FF"></circle><circle cx="550" cy="550" r="290" stroke="#AEB5FF"></circle><circle cx="550" cy="550" r="160" stroke="#AEB5FF"></circle></svg>
+        <div style="position: absolute; left: 40px; bottom: 36px; color: #F7F7F5;">
+          <p style="margin: 0; font-size: 28px; letter-spacing: -0.02em;">[Wide photo: you working, or a place that matters to you]</p>
+          <p style="margin: 8px 0 0; font-size: 14px; color: #D6DAFF;">Landscape, 2:1</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="long-title" style="padding: 160px 64px 0;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid #0F1330; padding-bottom: 30px;">
+        <h2 id="long-title" style="margin: 0; font-size: 96px; font-weight: 500; letter-spacing: -0.06em; line-height: .95;">The long version</h2>
+        <p style="margin: 0; max-width: 300px; font-size: 18px; line-height: 1.45; color: #5A5F7A;">No dates, just the order things happened in.</p>
+      </div>
+      <ol style="list-style: none; margin: 0; padding: 0;">
+        <sc-for list="{{chaptersA}}" as="c" hint-placeholder-count="3">
+          <li class="ch-row" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding: 48px 0; border-bottom: 1px solid #DADCE8;">
+            <span style="grid-column: span 2; font-size: 16px; color: #1F2AD6; font-variant-numeric: tabular-nums; padding-top: 10px;">{{c.n}}</span>
+            <h3 class="ch-title" style="grid-column: span 4; margin: 0; font-size: 44px; font-weight: 500; letter-spacing: -0.045em; line-height: 1.02;">{{c.t}}</h3>
+            <p style="grid-column: span 6; margin: 0; font-size: 23px; line-height: 1.5; color: #3A3F5C;">{{c.text}}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <section style="padding: 60px 64px;">
+      <div style="background: #0F1330; color: #F7F7F5; border-radius: 32px; padding: 80px 64px; position: relative; overflow: hidden;">
+        <svg aria-hidden="true" width="120" height="120" viewBox="0 0 42 42" style="position: absolute; right: 56px; top: 56px; opacity: .9;"><path d="M12 28 L19 13 L26 28" fill="none" stroke="#1F2AD6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M31 16.5c-1-1.6-2.6-2.3-4.3-2.3" fill="none" stroke="#1F2AD6" stroke-width="2.6" stroke-linecap="round"></path><circle cx="31" cy="26.5" r="2.4" fill="#AEB5FF"></circle></svg>
+        <p style="margin: 0; max-width: 1050px; font-size: 76px; font-weight: 500; line-height: 1.02; letter-spacing: -0.055em;">I don't want to be defined by one skill. I want to be known for the things I build.</p>
+      </div>
+    </section>
+
+    <section style="padding: 0 64px;">
+      <ol start="4" style="list-style: none; margin: 0; padding: 0;">
+        <sc-for list="{{chaptersB}}" as="c" hint-placeholder-count="2">
+          <li class="ch-row" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding: 48px 0; border-bottom: 1px solid #DADCE8;">
+            <span style="grid-column: span 2; font-size: 16px; color: #1F2AD6; font-variant-numeric: tabular-nums; padding-top: 10px;">{{c.n}}</span>
+            <h3 class="ch-title" style="grid-column: span 4; margin: 0; font-size: 44px; font-weight: 500; letter-spacing: -0.045em; line-height: 1.02;">{{c.t}}</h3>
+            <p style="grid-column: span 6; margin: 0; font-size: 23px; line-height: 1.5; color: #3A3F5C;">{{c.text}}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <section aria-labelledby="care-title" style="padding: 140px 64px 160px;">
+      <h2 id="care-title" style="margin: 0; font-size: 64px; font-weight: 500; letter-spacing: -0.05em;">What I keep coming back to</h2>
+      <div style="margin-top: 44px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+        <sc-for list="{{care}}" as="k" hint-placeholder-count="4">
+          <article class="care" style="height: 300px; border-radius: 26px; background: #ECEEF8; padding: 28px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+            <span class="shape" aria-hidden="true" style="width: 44px; height: 44px; border-radius: {{k.r}}; background: #1F2AD6; display: block;"></span>
+            <h3 style="margin: 0; font-size: 28px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1;">{{k.t}}</h3>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+
+  <dc-import name="Footer" hint-size="100%,780px"></dc-import>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":4900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      chaptersA: [
+        { n: '01', t: 'Learning by doing', text: 'Technology got interesting to me once I started learning it properly and building with it. Reading about things was never enough. I wanted to make them work.' },
+        { n: '02', t: 'More than code', text: 'Over time, learning technology stopped being only about programming languages. I got curious about how products work and how people actually use software.' },
+        { n: '03', t: 'From products to business', text: 'Then the questions got bigger. How can a product be better? How does a technical idea turn into a real business?' }
+      ],
+      chaptersB: [
+        { n: '04', t: 'Becoming a founder', text: "That's where my interest in entrepreneurship came from. Now I'm building my first venture, Ojaven, and learning a lot from doing it." },
+        { n: '05', t: 'Still early', text: "I'm in my second year of B.Tech CSE with an AI focus. I'm early in all of this, and that's fine. This site is where I'll keep track of what comes next." }
+      ],
+      care: [
+        { t: 'How products work', r: '50%' },
+        { t: 'How people really use software', r: '10px' },
+        { t: 'How ideas become businesses', r: '22px 22px 0 0' },
+        { t: 'Learning something new', r: '0 22px' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

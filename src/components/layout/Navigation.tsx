@@ -15,17 +15,17 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40)
+    const handleScroll = () => setScrolled(window.scrollY > 30)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname)
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
     setMobileOpen(false)
-  }, [pathname])
+  }
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = 'hidden'
@@ -40,30 +40,33 @@ export function Navigation() {
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{
-          y: scrollDirection === 'down' && scrolled ? -80 : 0,
+          y: scrollDirection === 'down' && scrolled ? -90 : 0,
           opacity: 1,
         }}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-[#060606]/90 backdrop-blur-md border-b border-[#1f1f1f]'
-            : 'bg-transparent'
+            ? 'bg-[#08090c]/85 backdrop-blur-md border-b border-[#1e2230]/80 py-3.5'
+            : 'bg-transparent py-5'
         )}
       >
         <div className="container-site">
-          <div className="flex items-center justify-between h-16 md:h-18">
-            {/* Logo */}
+          <div className="flex items-center justify-between">
+            {/* Logo / Personal Brand Mark */}
             <Link
               href="/"
-              className="font-semibold text-sm tracking-tight text-[#f0f0f0] hover:text-[#c8a97e] transition-colors duration-200"
+              className="flex items-center gap-2.5 group"
               aria-label="Ajaypal Singh — Home"
             >
-              Ajaypal Singh
+              <span className="w-2 h-2 rounded-full bg-[#34d399] animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+              <span className="font-semibold text-sm tracking-tight text-[#f5f6f9] group-hover:text-[#e07a5f] transition-colors duration-200">
+                Ajaypal Singh
+              </span>
             </Link>
 
-            {/* Desktop nav */}
-            <nav aria-label="Main navigation" className="hidden md:flex items-center gap-8">
+            {/* Desktop Navigation Links */}
+            <nav aria-label="Main navigation" className="hidden md:flex items-center gap-7">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href
                 return (
@@ -71,82 +74,112 @@ export function Navigation() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      'text-sm transition-colors duration-200 link-underline',
+                      'text-sm font-medium transition-colors duration-200 relative py-1',
                       isActive
-                        ? 'text-[#c8a97e]'
-                        : 'text-[#888888] hover:text-[#f0f0f0]'
+                        ? 'text-[#f5f6f9]'
+                        : 'text-[#8e92a4] hover:text-[#f5f6f9]'
                     )}
                   >
                     {link.label}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeNavIndicator"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#e07a5f] rounded-full"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
                   </Link>
                 )
               })}
+
+              <Link
+                href="/contact"
+                className="ml-2 inline-flex items-center gap-1.5 text-xs font-mono px-3.5 py-1.5 rounded-full border border-[#1e2230] bg-[#0f1117] text-[#8e92a4] hover:text-[#f5f6f9] hover:border-[#e07a5f]/60 hover:bg-[#141721] transition-all"
+              >
+                <span>Get in Touch</span>
+                <span className="text-[#e07a5f]">→</span>
+              </Link>
             </nav>
 
-            {/* Mobile menu button */}
+            {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
-              className="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
+              className="md:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg border border-[#1e2230] bg-[#0f1117] text-[#f5f6f9]"
             >
-              <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.2 }}
-                className="block w-5 h-px bg-[#f0f0f0]"
-              />
-              <motion.span
-                animate={mobileOpen ? { opacity: 0, x: -8 } : { opacity: 1, x: 0 }}
-                transition={{ duration: 0.2 }}
-                className="block w-5 h-px bg-[#f0f0f0]"
-              />
-              <motion.span
-                animate={mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                transition={{ duration: 0.2 }}
-                className="block w-5 h-px bg-[#f0f0f0]"
-              />
+              <div className="w-4 flex flex-col gap-1">
+                <span
+                  className={cn(
+                    'block h-0.5 bg-[#f5f6f9] transition-transform duration-200 origin-center',
+                    mobileOpen && 'rotate-45 translate-y-1.5'
+                  )}
+                />
+                <span
+                  className={cn(
+                    'block h-0.5 bg-[#f5f6f9] transition-opacity duration-200',
+                    mobileOpen && 'opacity-0'
+                  )}
+                />
+                <span
+                  className={cn(
+                    'block h-0.5 bg-[#f5f6f9] transition-transform duration-200 origin-center',
+                    mobileOpen && '-rotate-45 -translate-y-1.5'
+                  )}
+                />
+              </div>
             </button>
           </div>
         </div>
       </motion.header>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile Drawer Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#060606]/98 backdrop-blur-lg md:hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 bg-[#08090c]/98 backdrop-blur-xl pt-24 px-6 md:hidden flex flex-col justify-between pb-10"
           >
-            <div className="flex flex-col justify-center h-full container-site">
-              <nav aria-label="Mobile navigation" className="flex flex-col gap-6">
-                {navLinks.map((link, i) => (
-                  <motion.div
+            <div className="space-y-6">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#54586d]">
+                Navigation
+              </span>
+              <nav className="flex flex-col space-y-4">
+                <Link
+                  href="/"
+                  className={cn(
+                    'text-2xl font-medium transition-colors',
+                    pathname === '/' ? 'text-[#e07a5f]' : 'text-[#8e92a4] hover:text-[#f5f6f9]'
+                  )}
+                >
+                  Home
+                </Link>
+                {navLinks.map((link) => (
+                  <Link
                     key={link.href}
-                    initial={{ opacity: 0, x: -24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.05 + i * 0.07,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
+                    href={link.href}
+                    className={cn(
+                      'text-2xl font-medium transition-colors',
+                      pathname === link.href ? 'text-[#e07a5f]' : 'text-[#8e92a4] hover:text-[#f5f6f9]'
+                    )}
                   >
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        'text-3xl font-semibold tracking-tight transition-colors duration-200',
-                        pathname === link.href
-                          ? 'text-[#c8a97e]'
-                          : 'text-[#f0f0f0] hover:text-[#c8a97e]'
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
+                    {link.label}
+                  </Link>
                 ))}
               </nav>
+            </div>
+
+            <div className="space-y-4 pt-6 border-t border-[#1e2230]">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#8e92a4]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#34d399] animate-pulse" />
+                <span>Building Ojaven • Target: 10 July 2027</span>
+              </div>
+              <p className="text-xs text-[#54586d] font-mono">
+                ajaypalsingh.in — India
+              </p>
             </div>
           </motion.div>
         )}

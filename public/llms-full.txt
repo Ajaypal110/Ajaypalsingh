@@ -15,9 +15,9 @@ Based In: India
 Personal Website: https://ajaypalsingh.in
 GitHub: https://github.com/Ajaypal110
 
-Ajaypal Singh is a technology entrepreneur and software builder based in India. He identifies as a founder, builder, and entrepreneur — someone who works across the entire lifecycle of software products from ideation and system design through to implementation, launch, and operations.
+Ajaypal Singh is an independent technology founder and software builder based in India. He identifies as a founder, builder, and entrepreneur — someone who works across system design, software craft, and product architecture.
 
-His philosophy emphasizes substance over noise, craftsmanship at scale, and the power of patience and compounding in building meaningful technology companies.
+His philosophy emphasizes substance over noise, software craftsmanship, and the power of patience and compounding in building durable technology ventures.
 
 ---
 
@@ -26,54 +26,44 @@ His philosophy emphasizes substance over noise, craftsmanship at scale, and the 
 Name: Ojaven
 Type: B2B SaaS Platform
 Target Market: Modern digital agencies
-Core Purpose: Simplifying workflows, client collaboration, and project execution for digital agencies
-Status: In Active Development
+Core Purpose: Simplifying workflows, client collaboration, and project delivery for digital agencies
+Status: In Active Engineering
 Planned Launch Date: 10 July 2027
 Founder: Ajaypal Singh (sole founder)
 
 ### Why Ojaven Exists
 
-Digital agencies juggle fragmented tools for client communication, deliverable tracking, feedback organization, and team bandwidth monitoring. As teams grow, managing the toolchain becomes overhead that competes with creative work. Ojaven aims to bring cohesion to this operational complexity through a streamlined platform built specifically for agency realities.
+Digital agencies juggle fragmented tools for client communication, deliverable tracking, feedback organization, and team bandwidth monitoring. As teams grow, managing the toolchain becomes overhead that competes with creative work. Ojaven brings cohesion to this operational complexity through a streamlined platform built specifically for agency realities.
 
-### Ojaven Architectural Concepts
+### Ojaven Architectural Modules
 
-1. Unified Client Portal — Consolidating communication, feedback, and deliverables in one place
-2. Intelligent Scheduling Engine — Understanding team bandwidth and project dependencies
-3. Modular Dashboard System — Customizable views for different roles and workflows
+1. Unified Client Portal — Consolidating communication, feedback, and deliverable sign-offs in one clear interface.
+2. Operational Core — Cohesive project pipeline tracking commitments, bandwidth, and milestones.
+3. Ambient System Automation — Removing administrative overhead through background operational routines.
 
 ---
 
 ## Website Pages
 
 ### Homepage (/)
-Ajaypal Singh's personal founder website. Features hero introduction, about preview, Ojaven preview, selected builds, and recent writing.
+Ajaypal Singh's personal digital home. Features asymmetric hero statement, personal perspective, Ojaven venture spotlight, real-time focus horizon, ideas & writing preview, founder principles, and direct contact.
 
 ### About (/about)
-Detailed background on Ajaypal Singh's journey into technology and entrepreneurship. Covers his path to building, personal timeline, current focus areas, and core principles.
+Detailed background on Ajaypal Singh's journey into technology and entrepreneurship. Covers how he got into tech, the shift from learning to building, why entrepreneurship matters, why he is building Ojaven, and his milestone evolution.
 
 ### Ojaven (/ojaven)
-Deep dive into Ojaven — why it's being built, the problem space, architectural concepts, and founder commitment. Includes launch countdown and build journal.
-
-### Builds (/builds)
-Portfolio of software projects and experiments built by Ajaypal Singh, including Ojaven (primary), Wanderlust (travel), Khammaghani (cultural/Rajasthani music), and other explorations.
+Deep dive into Ojaven — why it's being built, the problem space, architectural modules, and development status with target launch on 10 July 2027.
 
 ### Writing (/writing)
-Essays and long-form thinking on building digital products, SaaS architecture, entrepreneurship realities, and technology craft.
+Personal notebook of thoughts, lessons, and essays on building digital products, SaaS architecture, entrepreneurship realities, and technology craft.
 
 #### Published Articles:
 - "Why I Am Building Ojaven" — The origin story and motivation behind Ojaven
 - "What Building Teaches You" — Lessons from hands-on product development
-- "Thinking About SaaS in 2026" — Observations on the SaaS landscape
+- "Thinking About SaaS in 2026" — Observations on modern SaaS craft
 
 ### Contact (/contact)
 Direct communication channel for founders, engineers, and creators interested in collaboration or discussion.
-
----
-
-## Other Projects
-
-- Wanderlust: A travel exploration platform
-- Khammaghani: A Rajasthani folk music / cultural project
 
 ---
 
@@ -81,8 +71,8 @@ Direct communication channel for founders, engineers, and creators interested in
 
 Ajaypal Singh builds with modern web technologies including:
 - Next.js, React, TypeScript
-- Node.js ecosystem
-- SaaS architecture and system design
+- Modern web architecture and performance optimization
+- SaaS data architecture and system design
 - Full-stack product development
 
 ---

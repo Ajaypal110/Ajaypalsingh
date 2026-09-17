@@ -29,12 +29,13 @@ export const siteConfig = {
     'builder entrepreneur India',
   ],
 
-  // Social links — replace PLACEHOLDER values with actual URLs
+  // Social links — actual profiles provided by user
   social: {
-    email: 'PLACEHOLDER_EMAIL',
-    linkedin: 'PLACEHOLDER_LINKEDIN_URL',
-    github: 'https://github.com/Ajaypal110',
-    twitter: 'PLACEHOLDER_TWITTER_URL',
+    email: 'ajaypalsingh82775@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/ajaypalsingh110/',
+    twitter: 'https://x.com/ajaypal110125',
+    instagram: 'https://www.instagram.com/_ajaypal_singh_/',
+    facebook: 'https://www.facebook.com/profile.php?id=100085924245709',
   },
 
   // Ojaven venture details

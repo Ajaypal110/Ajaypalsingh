@@ -1,24 +1,39 @@
 // What I am focused on right now
-// Update lastUpdated and items whenever your focus changes
+// Single source of truth for current pursuits
+
+export interface FocusItem {
+  category: 'Building' | 'Learning' | 'Exploring' | 'Thinking'
+  label: string
+  detail: string
+  tag?: string
+}
 
 export const nowData = {
   lastUpdated: 'September 2026',
-  focus: [
+  items: [
     {
       category: 'Building',
-      item: 'Building Ojaven — working through the core product architecture and early design decisions.',
+      label: 'Ojaven',
+      detail: 'Architecting the core data model, operational pipelines, and interface system for the 10 July 2027 launch.',
+      tag: 'Primary Venture',
     },
     {
       category: 'Learning',
-      item: 'Exploring how AI is changing the way software products are built and what that means for founders.',
+      label: 'AI & Systems Leverage',
+      detail: 'Investigating how high-leverage founders use AI agents and automated reasoning to build software at 10x velocity.',
+      tag: 'Technical Depth',
+    },
+    {
+      category: 'Exploring',
+      label: 'Product Distribution',
+      detail: 'Studying how niche B2B tools build lasting organic demand without relying on traditional paid acquisition traps.',
+      tag: 'Strategy',
     },
     {
       category: 'Thinking',
-      item: 'Reading, writing, and thinking about entrepreneurship, technology, and what makes products worth building.',
+      label: 'Compounding & Craft',
+      detail: 'Focusing on long-term conviction over short-term noise. Building things designed to stay useful for years.',
+      tag: 'Philosophy',
     },
-    {
-      category: 'Experimenting',
-      item: 'Running small experiments with ideas before they become projects — most of them go nowhere, and that is fine.',
-    },
-  ],
+  ] as FocusItem[],
 }

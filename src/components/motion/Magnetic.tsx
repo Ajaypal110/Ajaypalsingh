@@ -4,9 +4,8 @@ import {
   motion,
   useMotionValue,
   useSpring,
-  useTransform,
 } from 'motion/react'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 interface MagneticProps {
@@ -18,7 +17,6 @@ interface MagneticProps {
 export function Magnetic({ children, strength = 0.3, className }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null)
   const prefersReduced = useReducedMotion()
-  const [isHovered, setIsHovered] = useState(false)
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -40,7 +38,6 @@ export function Magnetic({ children, strength = 0.3, className }: MagneticProps)
   }
 
   const handleMouseLeave = () => {
-    setIsHovered(false)
     x.set(0)
     y.set(0)
   }
@@ -51,7 +48,6 @@ export function Magnetic({ children, strength = 0.3, className }: MagneticProps)
       className={className}
       style={{ x: springX, y: springY }}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
     >
       {children}

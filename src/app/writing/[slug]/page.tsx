@@ -5,7 +5,6 @@ import { articles } from '@/lib/data/articles'
 import { formatDate } from '@/lib/utils'
 import { generateArticleJsonLd, generatePageMetadata } from '@/lib/seo'
 import { siteConfig } from '@/lib/data/site'
-import { Reveal } from '@/components/motion/Reveal'
 
 interface ArticlePageProps {
   params: Promise<{
@@ -32,8 +31,8 @@ export async function generateMetadata({
   }
 
   return generatePageMetadata({
-    title: `${article.title} — by Ajaypal Singh`,
-    description: `${article.excerpt} Written by Ajaypal Singh (Ajaypal Singh Solanki).`,
+    title: `${article.title} — Ajaypal Singh`,
+    description: `${article.excerpt} Notes by Ajaypal Singh (Ajaypal Singh Solanki).`,
     path: `/writing/${article.slug}`,
     type: 'article',
     publishedTime: article.date,
@@ -41,7 +40,7 @@ export async function generateMetadata({
     keywords: [
       `${article.title}`,
       `Ajaypal Singh ${article.category}`,
-      'Ajaypalsingh blog',
+      'Ajaypalsingh notes',
     ],
   })
 }
@@ -60,115 +59,103 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     .slice(0, 2)
 
   return (
-    <article className="pt-32 pb-24">
+    <article className="w-full text-[#0F1330] px-6 md:px-12 lg:px-16 pt-28 md:pt-36 pb-28 lg:pb-36">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="container-site">
-        <div className="max-w-2xl mx-auto space-y-12">
-          {/* Back Navigation */}
-          <Reveal>
-            <Link
-              href="/writing"
-              className="inline-flex items-center gap-1.5 text-xs font-mono text-[#555555] hover:text-[#c8a97e] transition-colors"
-            >
-              <span>←</span>
-              <span>Back to all essays</span>
-            </Link>
-          </Reveal>
+      <div className="max-w-3xl mx-auto space-y-12">
+        {/* Back Navigation */}
+        <Link
+          href="/writing"
+          className="inline-flex items-center gap-2 text-[15px] font-medium text-[#5A5F7A] hover:text-[#1F2AD6] transition-colors group"
+        >
+          <span className="transition-transform group-hover:-translate-x-1">←</span>
+          <span>Back to all notes</span>
+        </Link>
 
-          {/* Article Header */}
-          <header className="space-y-6">
-            <Reveal delay={0.1}>
-              <div className="flex items-center gap-3 text-xs font-mono text-[#555555]">
-                <span className="text-[#c8a97e] uppercase tracking-wider">{article.category}</span>
-                <span>•</span>
-                <span>{formatDate(article.date)}</span>
-                <span>•</span>
-                <span>{article.readingTime}</span>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <h1 className="font-display text-4xl sm:text-5xl text-[#f0f0f0] font-normal leading-tight">
-                {article.title}
-              </h1>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <p className="text-lg text-[#888888] italic border-l-2 border-[#c8a97e]/40 pl-4 py-1 leading-relaxed">
-                {article.excerpt}
-              </p>
-            </Reveal>
-          </header>
-
-          {/* Article Content */}
-          <div className="pt-8 border-t border-[#151515] space-y-6 text-base sm:text-lg text-[#bbbbbb] leading-relaxed font-normal font-body">
-            {article.content.map((paragraph, index) => (
-              <Reveal key={index} delay={0.05 * index}>
-                <p>{paragraph}</p>
-              </Reveal>
-            ))}
+        {/* Article Header */}
+        <header className="space-y-6">
+          <div className="flex flex-wrap items-center gap-3 text-[14px]">
+            <span className="px-3 py-1 rounded-full bg-[#ECEEF8] text-[#1F2AD6] font-medium">
+              {article.category}
+            </span>
+            <span className="text-[#DADCE8]">•</span>
+            <span className="text-[#5A5F7A]">{formatDate(article.date)}</span>
+            <span className="text-[#DADCE8]">•</span>
+            <span className="text-[#5A5F7A]">{article.readingTime}</span>
           </div>
 
-          {/* Author Card */}
-          <div className="pt-12 border-t border-[#151515]">
-            <Reveal>
-              <div className="p-6 sm:p-8 rounded-xl border border-[#1f1f1f] bg-[#0c0c0c] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                <div className="space-y-1">
-                  <span className="text-xs uppercase tracking-widest text-[#c8a97e] font-mono">
-                    Written by
-                  </span>
-                  <h3 className="font-display text-xl text-[#f0f0f0]">
-                    {siteConfig.name}
-                  </h3>
-                  <p className="text-xs text-[#888888] font-mono">
-                    {siteConfig.tagline}
-                  </p>
-                </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-[-0.045em] leading-[1.05] text-[#0F1330]">
+            {article.title}
+          </h1>
 
-                <Link
-                  href="/about"
-                  className="px-5 py-2.5 rounded-full border border-[#1f1f1f] hover:border-[#c8a97e] text-xs font-mono text-[#f0f0f0] hover:text-[#c8a97e] transition-colors"
-                >
-                  About the Author →
-                </Link>
-              </div>
-            </Reveal>
-          </div>
+          <p className="text-xl sm:text-2xl leading-[1.4] text-[#5A5F7A] border-l-2 border-[#1F2AD6] pl-5 py-1">
+            {article.excerpt}
+          </p>
+        </header>
 
-          {/* Related Articles */}
-          {relatedArticles.length > 0 && (
-            <div className="pt-12 border-t border-[#151515] space-y-6">
-              <Reveal>
-                <h3 className="font-display text-2xl text-[#f0f0f0]">
-                  Continue Reading
-                </h3>
-              </Reveal>
-
-              <div className="space-y-4">
-                {relatedArticles.map((rel) => (
-                  <Reveal key={rel.slug}>
-                    <Link
-                      href={`/writing/${rel.slug}`}
-                      className="block p-5 rounded-xl border border-[#1f1f1f] bg-[#0c0c0c] hover:border-[#333333] transition-all group"
-                    >
-                      <div className="flex items-center justify-between text-xs font-mono text-[#555555] mb-2">
-                        <span className="text-[#c8a97e]">{rel.category}</span>
-                        <span>{rel.readingTime}</span>
-                      </div>
-                      <h4 className="font-display text-xl text-[#f0f0f0] group-hover:text-[#c8a97e] transition-colors">
-                        {rel.title}
-                      </h4>
-                    </Link>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-          )}
+        {/* Article Body */}
+        <div className="pt-8 border-t border-[#DADCE8] space-y-6 text-lg sm:text-xl text-[#0F1330] leading-[1.65]">
+          {article.content.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
         </div>
+
+        {/* Author Card */}
+        <div className="pt-12 border-t border-[#DADCE8]">
+          <div className="p-8 rounded-[24px] border border-[#DADCE8] bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-sm">
+            <div className="space-y-1">
+              <span className="text-[13px] uppercase tracking-wider text-[#1F2AD6] font-medium">
+                Written by
+              </span>
+              <h3 className="text-2xl font-medium text-[#0F1330]">
+                {siteConfig.name}
+              </h3>
+              <p className="text-[15px] text-[#5A5F7A]">
+                {siteConfig.tagline} • Building Ojaven
+              </p>
+            </div>
+
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0F1330] text-[#F7F7F5] hover:bg-[#1F2AD6] text-[15px] font-medium transition-colors"
+            >
+              <span>About Ajaypal</span>
+              <span>→</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Related Articles */}
+        {relatedArticles.length > 0 && (
+          <div className="pt-12 border-t border-[#DADCE8] space-y-6">
+            <h3 className="text-2xl font-medium tracking-[-0.03em] text-[#0F1330]">
+              Other notes
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedArticles.map((rel) => (
+                <Link
+                  key={rel.slug}
+                  href={`/writing/${rel.slug}`}
+                  className="group block p-6 rounded-[20px] border border-[#DADCE8] bg-white hover:border-[#1F2AD6] transition-all shadow-sm"
+                >
+                  <div className="flex items-center justify-between text-[13px] text-[#5A5F7A] mb-3">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[#ECEEF8] text-[#1F2AD6] font-medium">
+                      {rel.category}
+                    </span>
+                    <span>{rel.readingTime}</span>
+                  </div>
+                  <h4 className="text-xl font-medium text-[#0F1330] group-hover:text-[#1F2AD6] transition-colors leading-[1.25]">
+                    {rel.title}
+                  </h4>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </article>
   )

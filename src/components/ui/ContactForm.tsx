@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { siteConfig } from '@/lib/data/site'
 
 interface FormState {
   name: string
@@ -72,7 +71,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="rounded-2xl border border-[#1f1f1f] bg-[#0c0c0c] p-6 sm:p-10">
+    <div className="rounded-[28px] border border-[#DADCE8] bg-white p-6 sm:p-10 shadow-sm">
       <AnimatePresence mode="wait">
         {isSuccess ? (
           <motion.div
@@ -81,13 +80,13 @@ export function ContactForm() {
             animate={{ opacity: 1, scale: 1 }}
             className="py-12 text-center space-y-4"
           >
-            <div className="w-12 h-12 rounded-full bg-[#c8a97e]/10 border border-[#c8a97e]/30 text-[#c8a97e] flex items-center justify-center mx-auto text-xl font-mono">
+            <div className="w-14 h-14 rounded-full bg-[#ECEEF8] text-[#1F2AD6] flex items-center justify-center mx-auto text-2xl font-medium">
               ✓
             </div>
-            <h3 className="font-display text-2xl sm:text-3xl text-[#f0f0f0]">
+            <h3 className="text-3xl font-medium text-[#0F1330] tracking-[-0.03em]">
               Message Received
             </h3>
-            <p className="text-sm text-[#888888] max-w-md mx-auto leading-relaxed">
+            <p className="text-base text-[#5A5F7A] max-w-md mx-auto leading-relaxed">
               Thank you for reaching out, {formData.name}. I read every note and will get back to you soon.
             </p>
             <div className="pt-4">
@@ -97,61 +96,59 @@ export function ContactForm() {
                   setIsSuccess(false)
                   setFormData({ name: '', email: '', message: '', honeypot: '' })
                 }}
-                className="text-xs font-mono text-[#c8a97e] hover:underline"
+                className="text-[15px] font-medium text-[#1F2AD6] hover:underline"
               >
                 Send another message →
               </button>
             </div>
           </motion.div>
         ) : (
-          <motion.form
-            key="form"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            onSubmit={handleSubmit}
-            className="space-y-6"
-            noValidate
-          >
-            {/* Honeypot anti-spam */}
-            <div className="hidden" aria-hidden="true">
-              <input
-                type="text"
-                name="b_website_hp"
-                tabIndex={-1}
-                value={formData.honeypot}
-                onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
-                autoComplete="off"
-              />
-            </div>
+          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+            {/* Honeypot hidden input */}
+            <input
+              type="text"
+              name="website"
+              value={formData.honeypot}
+              onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+            />
 
-            {/* Name */}
-            <div className="space-y-2">
-              <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-[#888888]">
-                Name <span className="text-[#c8a97e]">*</span>
+            <div>
+              <label
+                htmlFor="contact-name"
+                className="block text-[14px] font-medium text-[#0F1330] mb-2"
+              >
+                Your Name <span className="text-[#1F2AD6]">*</span>
               </label>
               <input
-                id="name"
+                id="contact-name"
                 type="text"
                 value={formData.name}
                 onChange={(e) => {
                   setFormData({ ...formData, name: e.target.value })
                   if (errors.name) setErrors({ ...errors, name: undefined })
                 }}
-                placeholder="What should I call you?"
-                className={`w-full px-4 py-3 rounded-lg bg-[#141414] border text-sm text-[#f0f0f0] placeholder-[#555555] focus:outline-none focus:ring-1 focus:ring-[#c8a97e] transition-colors ${
-                  errors.name ? 'border-red-500/50' : 'border-[#1f1f1f] focus:border-[#c8a97e]'
+                placeholder="Ajaypal Singh"
+                className={`w-full px-4 py-3 rounded-xl bg-[#F7F7F5] border text-[16px] text-[#0F1330] placeholder:text-[#8A8FB0] focus:outline-none focus:border-[#1F2AD6] transition-colors ${
+                  errors.name ? 'border-red-500' : 'border-[#DADCE8]'
                 }`}
               />
-              {errors.name && <p className="text-xs text-red-400 font-mono">{errors.name}</p>}
+              {errors.name && (
+                <p className="text-xs text-red-600 mt-1.5 font-medium">{errors.name}</p>
+              )}
             </div>
 
-            {/* Email */}
-            <div className="space-y-2">
-              <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-[#888888]">
-                Email <span className="text-[#c8a97e]">*</span>
+            <div>
+              <label
+                htmlFor="contact-email"
+                className="block text-[14px] font-medium text-[#0F1330] mb-2"
+              >
+                Your Email <span className="text-[#1F2AD6]">*</span>
               </label>
               <input
-                id="email"
+                id="contact-email"
                 type="email"
                 value={formData.email}
                 onChange={(e) => {
@@ -159,49 +156,55 @@ export function ContactForm() {
                   if (errors.email) setErrors({ ...errors, email: undefined })
                 }}
                 placeholder="you@domain.com"
-                className={`w-full px-4 py-3 rounded-lg bg-[#141414] border text-sm text-[#f0f0f0] placeholder-[#555555] focus:outline-none focus:ring-1 focus:ring-[#c8a97e] transition-colors ${
-                  errors.email ? 'border-red-500/50' : 'border-[#1f1f1f] focus:border-[#c8a97e]'
+                className={`w-full px-4 py-3 rounded-xl bg-[#F7F7F5] border text-[16px] text-[#0F1330] placeholder:text-[#8A8FB0] focus:outline-none focus:border-[#1F2AD6] transition-colors ${
+                  errors.email ? 'border-red-500' : 'border-[#DADCE8]'
                 }`}
               />
-              {errors.email && <p className="text-xs text-red-400 font-mono">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-xs text-red-600 mt-1.5 font-medium">{errors.email}</p>
+              )}
             </div>
 
-            {/* Message */}
-            <div className="space-y-2">
-              <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wider text-[#888888]">
-                Message <span className="text-[#c8a97e]">*</span>
+            <div>
+              <label
+                htmlFor="contact-message"
+                className="block text-[14px] font-medium text-[#0F1330] mb-2"
+              >
+                Message <span className="text-[#1F2AD6]">*</span>
               </label>
               <textarea
-                id="message"
+                id="contact-message"
                 rows={5}
                 value={formData.message}
                 onChange={(e) => {
                   setFormData({ ...formData, message: e.target.value })
                   if (errors.message) setErrors({ ...errors, message: undefined })
                 }}
-                placeholder="What would you like to discuss or build together?"
-                className={`w-full px-4 py-3 rounded-lg bg-[#141414] border text-sm text-[#f0f0f0] placeholder-[#555555] focus:outline-none focus:ring-1 focus:ring-[#c8a97e] transition-colors resize-none ${
-                  errors.message ? 'border-red-500/50' : 'border-[#1f1f1f] focus:border-[#c8a97e]'
+                placeholder="Tell me about what you are building or what you'd like to discuss..."
+                className={`w-full px-4 py-3 rounded-xl bg-[#F7F7F5] border text-[16px] text-[#0F1330] placeholder:text-[#8A8FB0] focus:outline-none focus:border-[#1F2AD6] transition-colors resize-none ${
+                  errors.message ? 'border-red-500' : 'border-[#DADCE8]'
                 }`}
               />
-              {errors.message && <p className="text-xs text-red-400 font-mono">{errors.message}</p>}
+              {errors.message && (
+                <p className="text-xs text-red-600 mt-1.5 font-medium">{errors.message}</p>
+              )}
             </div>
 
-            {/* Submit */}
-            <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#f0f0f0] text-[#060606] font-medium text-sm hover:bg-[#c8a97e] transition-all disabled:opacity-50"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message →'}
-              </button>
-
-              <p className="text-xs text-[#555555] font-mono">
-                Direct mailto fallback below
-              </p>
-            </div>
-          </motion.form>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full h-12 rounded-full bg-[#1F2AD6] text-[#F7F7F5] text-[15px] font-medium hover:bg-[#0F1330] transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+            >
+              {isSubmitting ? (
+                <span>Sending...</span>
+              ) : (
+                <>
+                  <span>Send Message</span>
+                  <span>→</span>
+                </>
+              )}
+            </button>
+          </form>
         )}
       </AnimatePresence>
     </div>

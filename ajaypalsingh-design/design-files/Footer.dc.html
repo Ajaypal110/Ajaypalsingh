@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
+  <style>
+    .ft { font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    .ft a { text-decoration: none; }
+    .ft :focus-visible { outline: 2px solid #AEB5FF; outline-offset: 3px; }
+    .ft-link { color: #B8BCD6; transition: color .3s; display: inline-flex; overflow: hidden; height: 1.35em; line-height: 1.35em; flex-direction: column; }
+    .ft-link span { transition: transform .5s cubic-bezier(.76,0,.24,1); }
+    .ft-link:hover { color: #F7F7F5; }
+    .ft-link:hover span { transform: translateY(-100%); }
+    .ft-mag { transition: transform .6s cubic-bezier(.16,1,.3,1), background .4s; }
+    .ft-mag:hover { background: #F7F7F5; color: #1F2AD6; }
+    .ft-mag .ft-mag-in { transition: transform .6s cubic-bezier(.16,1,.3,1); }
+    .ft-letter { fill: #171C44; transition: fill .4s; }
+    .ft-letter:hover { fill: #1F2AD6; }
+    .ft-toast { transition: opacity .3s, transform .5s cubic-bezier(.16,1,.3,1); }
+    .ft-ring { transition: stroke-dashoffset .2s linear; }
+    .ft-top:hover .ft-up { transform: translateY(-3px); }
+    .ft-up { transition: transform .4s cubic-bezier(.16,1,.3,1); }
+    @media (prefers-reduced-motion: reduce) { .ft * { transition: none !important; } }
+  </style>
+</helmet>
+
+<footer id="contact" class="ft" style="position: fixed; left: 0; right: 0; bottom: 0; height: 780px; z-index: 1; background: #0F1330; color: #F7F7F5; overflow: hidden;">
+  <div style="max-width: 1440px; height: 100%; margin: 0 auto; padding: 84px 64px 0; box-sizing: border-box; display: flex; flex-direction: column;">
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+      <h2 style="margin: 0; max-width: 900px; font-size: 92px; font-weight: 500; line-height: .96; letter-spacing: -0.055em;">Got an idea worth building? Let's talk.</h2>
+      <a class="ft-mag" href="mailto:[your@email.com]" ref="{{magRef}}" onMouseMove="{{magMove}}" onMouseLeave="{{magLeave}}" style="flex-shrink: 0; width: 184px; height: 184px; border-radius: 50%; background: #1F2AD6; color: #F7F7F5; display: flex; align-items: center; justify-content: center;">
+        <span class="ft-mag-in" style="display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 16px; font-weight: 600;">
+          <svg width="22" height="22" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
+          Write to me
+        </span>
+      </a>
+    </div>
+
+    <div style="margin-top: 64px; padding-top: 32px; border-top: 1px solid #1F2550; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;">
+      <div style="grid-column: span 5;">
+        <p style="margin: 0; font-size: 14px; color: #8A8FB0;">Email</p>
+        <div style="margin-top: 10px; display: flex; align-items: center; gap: 12px; position: relative;">
+          <a href="mailto:[your@email.com]" style="color: #F7F7F5; font-size: 30px; font-weight: 500; letter-spacing: -0.03em;">[your@email.com]</a>
+          <button onClick="{{copy}}" aria-label="Copy email address" style="width: 40px; height: 40px; border-radius: 50%; border: 1px solid #2A3060; background: transparent; color: #F7F7F5; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="5" width="8" height="9" rx="2"></rect><path d="M3 11V4a2 2 0 0 1 2-2h5"></path></svg>
+          </button>
+          <span class="ft-toast" role="status" style="font-size: 13px; background: #AEB5FF; color: #0F1330; border-radius: 999px; padding: 5px 12px; opacity: {{toastO}}; transform: translateX({{toastX}});">{{toastText}}</span>
+        </div>
+      </div>
+      <nav aria-label="Pages" style="grid-column: span 2;">
+        <p style="margin: 0 0 12px; font-size: 14px; color: #8A8FB0;">Pages</p>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 16px;">
+          <a class="ft-link" href="Main.dc.html"><span>Home</span><span>Home</span></a>
+          <a class="ft-link" href="About.dc.html"><span>About</span><span>About</span></a>
+          <a class="ft-link" href="Ojaven.dc.html"><span>Ojaven</span><span>Ojaven</span></a>
+          <a class="ft-link" href="Writing.dc.html"><span>Writing</span><span>Writing</span></a>
+        </div>
+      </nav>
+      <nav aria-label="Elsewhere" style="grid-column: span 2;">
+        <p style="margin: 0 0 12px; font-size: 14px; color: #8A8FB0;">Elsewhere</p>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 16px;">
+          <a class="ft-link" href="#"><span>LinkedIn</span><span>LinkedIn</span></a>
+          <a class="ft-link" href="#"><span>X</span><span>X</span></a>
+          <a class="ft-link" href="#"><span>GitHub</span><span>GitHub</span></a>
+          <a class="ft-link" href="#"><span>Instagram</span><span>Instagram</span></a>
+        </div>
+      </nav>
+      <div style="grid-column: span 3;">
+        <p style="margin: 0 0 12px; font-size: 14px; color: #8A8FB0;">Currently</p>
+        <p style="margin: 0; font-size: 16px; line-height: 1.45; color: #D6DAFF;">Studying, building and getting ready to write more.</p>
+        <p style="margin: 10px 0 0; font-size: 13px; color: #8A8FB0;">Last updated [Month Year]</p>
+      </div>
+    </div>
+
+    <div aria-hidden="true" style="margin-top: auto; height: 210px; overflow: hidden; position: relative;">
+      <svg width="100%" height="260" viewBox="0 0 1312 260" preserveAspectRatio="xMidYMin meet" style="display: block;">
+        <text x="0" y="232" textLength="1312" lengthAdjust="spacingAndGlyphs" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 288px; font-weight: 600; letter-spacing: -14px;"><tspan class="ft-letter">A</tspan><tspan class="ft-letter">j</tspan><tspan class="ft-letter">a</tspan><tspan class="ft-letter">y</tspan><tspan class="ft-letter">p</tspan><tspan class="ft-letter">a</tspan><tspan class="ft-letter">l</tspan><tspan class="ft-letter"> </tspan><tspan class="ft-letter">S</tspan><tspan class="ft-letter">i</tspan><tspan class="ft-letter">n</tspan><tspan class="ft-letter">g</tspan><tspan class="ft-letter">h</tspan></text>
+      </svg>
+    </div>
+
+    <div style="height: 64px; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1F2550; font-size: 13px; color: #8A8FB0;">
+      <span>© 2026 Ajaypal Singh</span>
+      <span>ajaypalsingh.in</span>
+      <button class="ft-top" onClick="{{toTop}}" style="display: flex; align-items: center; gap: 10px; background: transparent; border: 0; color: #F7F7F5; font: inherit; font-size: 13px; cursor: pointer; padding: 6px 0;">
+        Back to top
+        <span style="position: relative; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+          <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="position: absolute; top: 0; left: 0; transform: rotate(-90deg);"><circle cx="20" cy="20" r="18" fill="none" stroke="#1F2550" stroke-width="2"></circle><circle class="ft-ring" cx="20" cy="20" r="18" fill="none" stroke="#AEB5FF" stroke-width="2" stroke-linecap="round" stroke-dasharray="113.1" stroke-dashoffset="{{ringOffset}}"></circle></svg>
+          <svg class="ft-up" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 10V2M2.5 5.5L6 2l3.5 3.5"></path></svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":780}}'>
+class Component extends DCLogic {
+  state = { progress: 0, copied: false };
+
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this.onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(1, window.scrollY / max) : 1;
+      if (Math.abs(p - this.state.progress) > 0.004) this.setState({ progress: p });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    clearTimeout(this.ct);
+  }
+
+  renderVals() {
+    const s = this.state;
+    return {
+      ringOffset: (113.1 * (1 - s.progress)).toFixed(1),
+      toastO: s.copied ? '1' : '0',
+      toastX: s.copied ? '0' : '-8px',
+      toastText: s.copied ? 'Copied' : '',
+      copy: () => {
+        try { navigator.clipboard && navigator.clipboard.writeText('[your@email.com]'); } catch (e) {}
+        this.setState({ copied: true });
+        clearTimeout(this.ct);
+        this.ct = setTimeout(() => this.setState({ copied: false }), 1800);
+      },
+      toTop: () => window.scrollTo({ top: 0, behavior: this.reduce ? 'auto' : 'smooth' }),
+      magRef: (el) => { this.mag = el; },
+      magMove: (e) => {
+        if (this.reduce || !this.mag) return;
+        const r = this.mag.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) * 0.35;
+        const y = (e.clientY - (r.top + r.height / 2)) * 0.35;
+        this.mag.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+      },
+      magLeave: () => { if (this.mag) this.mag.style.transform = 'translate(0, 0)'; }
+    };
+  }
+}
+</script>
+</body>
+</html>

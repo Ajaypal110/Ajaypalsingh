@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #0F1330; color: #0F1330; font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #0F1330; text-decoration: none; }
+    button { font: inherit; }
+    :focus-visible { outline: 2px solid #1F2AD6; outline-offset: 3px; }
+    .acc-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .6s cubic-bezier(.16,1,.3,1); }
+    .acc.open .acc-body { grid-template-rows: 1fr; }
+    .acc-plus { transition: transform .5s cubic-bezier(.16,1,.3,1), background .3s, color .3s; }
+    .acc.open .acc-plus { transform: rotate(45deg); background: #1F2AD6; color: #F7F7F5; }
+    .seal { animation: spin 22s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .live { animation: live 2s ease-out infinite; }
+    @keyframes live { 0% { box-shadow: 0 0 0 0 rgba(174,181,255,.8); } 100% { box-shadow: 0 0 0 9px rgba(174,181,255,0); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+
+<div style="width: 390px; height: 4120px; overflow: hidden; background: #0F1330;">
+  <main style="background: #F7F7F5; border-radius: 0 0 32px 32px; overflow: hidden;">
+
+    <section style="position: relative; height: 760px; background: #1F2AD6; color: #F7F7F5; overflow: hidden;">
+      <svg aria-hidden="true" width="700" height="700" viewBox="0 0 700 700" fill="none" style="position: absolute; left: -300px; top: -200px; opacity: .22;"><circle cx="350" cy="350" r="349" stroke="#AEB5FF"></circle><circle cx="350" cy="350" r="250" stroke="#AEB5FF"></circle><circle cx="350" cy="350" r="150" stroke="#AEB5FF"></circle></svg>
+      <header style="position: absolute; top: 14px; left: 14px; right: 14px; display: flex; justify-content: space-between; align-items: center; padding: 6px 6px 6px 12px; border-radius: 999px; background: rgba(247,247,245,.14); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 5;">
+        <a href="Main.dc.html" aria-label="Ajaypal Singh, home" style="display: flex; align-items: center; gap: 10px; color: #F7F7F5;">
+          <svg width="34" height="34" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="21" fill="#F7F7F5"></circle><path d="M12 28 L19 13 L26 28" fill="none" stroke="#1F2AD6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M31 16.5c-1-1.6-2.6-2.3-4.3-2.3" fill="none" stroke="#1F2AD6" stroke-width="2.6" stroke-linecap="round"></path><circle cx="31" cy="26.5" r="2.4" fill="#AEB5FF"></circle></svg>
+          <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.02em;">Ajaypal Singh</span>
+        </a>
+        <button aria-label="Open menu" style="width: 44px; height: 44px; border-radius: 50%; border: 0; background: #0F1330; color: #F7F7F5; display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 18 18" aria-hidden="true"><circle cx="5" cy="9" r="1.8" fill="currentColor"></circle><circle cx="13" cy="9" r="1.8" fill="currentColor"></circle></svg>
+        </button>
+      </header>
+
+      <div style="position: absolute; top: 96px; right: 20px; width: 200px; height: 290px; border-radius: 4px; background: #3A45E6; overflow: hidden;">
+        <svg aria-hidden="true" width="100%" height="100%" viewBox="0 0 200 290" preserveAspectRatio="xMidYMax slice"><circle cx="100" cy="118" r="46" fill="#5560F0"></circle><path d="M10 290c0-70 40-120 90-120s90 50 90 120z" fill="#5560F0"></path></svg>
+        <span style="position: absolute; left: 12px; bottom: 10px; font-size: 11px;">[Your photo]</span>
+      </div>
+
+      <p style="position: absolute; top: 330px; left: 20px; margin: 0; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #D6DAFF; z-index: 3;"><span class="live" style="width: 7px; height: 7px; border-radius: 50%; background: #AEB5FF;"></span>Founder • Builder • Entrepreneur</p>
+      <h1 style="position: absolute; top: 360px; left: 14px; margin: 0; font-size: 102px; font-weight: 500; line-height: .88; letter-spacing: -0.065em; z-index: 3;">Ajaypal<br><span style="padding-left: 60px;">Singh</span></h1>
+      <p style="position: absolute; top: 590px; left: 20px; width: 230px; margin: 0; font-size: 18px; line-height: 1.3;">A CSE student who learns by building, and cares how ideas turn into real things.</p>
+
+      <div aria-hidden="true" style="position: absolute; top: 600px; right: 20px; width: 110px; height: 110px;">
+        <svg class="seal" width="110" height="110" viewBox="0 0 170 170">
+          <defs><path id="msealpath" d="M85 85 m-66 0 a66 66 0 1 1 132 0 a66 66 0 1 1 -132 0"></path></defs>
+          <circle cx="85" cy="85" r="84" fill="#0F1330"></circle>
+          <text style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 14.5px; font-weight: 500; letter-spacing: 2.4px;" fill="#F7F7F5"><textPath href="#msealpath">Ajaypal Singh ✦ Founder ✦ Builder ✦ Entrepreneur ✦</textPath></text>
+        </svg>
+      </div>
+    </section>
+
+    <section style="padding: 72px 20px 60px;">
+      <p style="margin: 0; font-size: 13px; color: #5A5F7A;">Hello</p>
+      <h2 style="margin: 12px 0 0; font-size: 40px; font-weight: 500; line-height: 1.02; letter-spacing: -0.05em;">I learn by building. I care about how products work, how businesses work, and how an idea becomes something that actually exists.</h2>
+      <a href="About.dc.html" style="margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600;">Read my story
+        <span style="width: 36px; height: 36px; border-radius: 50%; background: #1F2AD6; display: flex; align-items: center; justify-content: center;"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="#F7F7F5" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg></span>
+      </a>
+    </section>
+
+    <section aria-labelledby="m-do" style="padding: 0 20px 60px;">
+      <h2 id="m-do" style="margin: 0; padding-bottom: 16px; border-bottom: 1px solid #0F1330; font-size: 32px; font-weight: 500; letter-spacing: -0.04em;">How I spend my time</h2>
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="5">
+        <div class="{{r.cls}}" style="border-bottom: 1px solid #DADCE8;">
+          <button onClick="{{r.toggle}}" aria-expanded="{{r.expanded}}" style="width: 100%; min-height: 64px; background: transparent; border: 0; padding: 14px 0; display: flex; justify-content: space-between; align-items: center; text-align: left; color: #0F1330;">
+            <span style="font-size: 26px; font-weight: 500; letter-spacing: -0.035em;">{{r.title}}</span>
+            <span class="acc-plus" style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; border: 1px solid #DADCE8; display: flex; align-items: center; justify-content: center;"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 2v12M2 8h12"></path></svg></span>
+          </button>
+          <div class="acc-body"><div style="overflow: hidden;"><p style="margin: 0; padding: 0 0 20px; font-size: 17px; line-height: 1.45; color: #3A3F5C;">{{r.text}}</p></div></div>
+        </div>
+      </sc-for>
+    </section>
+
+    <section aria-labelledby="m-journey" style="background: #0F1330; color: #F7F7F5; border-radius: 32px; padding: 48px 20px;">
+      <h2 id="m-journey" style="margin: 0; font-size: 14px; font-weight: 500; color: #AEB5FF;">How I got here</h2>
+      <ol style="list-style: none; margin: 20px 0 0; padding: 0;">
+        <sc-for list="{{journey}}" as="j" hint-placeholder-count="7">
+          <li style="display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 8px; padding: 16px 0; border-top: 1px solid #1F2550;">
+            <span style="font-size: 13px; color: #AEB5FF; padding-top: 6px; font-variant-numeric: tabular-nums;">{{j.n}}</span>
+            <div>
+              <h3 style="margin: 0; font-size: 28px; font-weight: 500; letter-spacing: -0.04em;">{{j.t}}</h3>
+              <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.4; color: #D6DAFF;">{{j.text}}</p>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <section aria-labelledby="m-ventures" style="padding: 64px 20px 20px;">
+      <h2 id="m-ventures" style="margin: 0; font-size: 72px; font-weight: 500; letter-spacing: -0.065em; line-height: .9;">Ventures</h2>
+      <a href="Ojaven.dc.html" style="margin-top: 24px; display: block; padding: 20px 0; border-top: 1px solid #0F1330; border-bottom: 1px solid #DADCE8;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 34px; font-weight: 500; letter-spacing: -0.04em;">Ojaven</span>
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
+        </div>
+        <p style="margin: 6px 0 0; font-size: 16px; color: #5A5F7A;">A platform for modern agencies. In development, launch 2027.</p>
+      </a>
+      <div style="padding: 20px 0; border-bottom: 1px dashed #B8BCD6; color: #8A8FB0;">
+        <span style="font-size: 34px; font-weight: 500; letter-spacing: -0.04em;">Next</span>
+        <p style="margin: 6px 0 0; font-size: 16px;">Not started yet.</p>
+      </div>
+    </section>
+
+    <section style="padding: 40px 20px 64px;">
+      <div style="background: #1F2AD6; color: #F7F7F5; border-radius: 26px; padding: 26px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h2 style="margin: 0; font-size: 34px; font-weight: 500; letter-spacing: -0.045em;">Right now</h2>
+          <span style="font-size: 11px; color: #D6DAFF;">Updated [Month Year]</span>
+        </div>
+        <dl style="margin: 18px 0 0;">
+          <sc-for list="{{now}}" as="n" hint-placeholder-count="4">
+            <div style="padding: 12px 0; border-top: 1px solid rgba(214,218,255,.25);">
+              <dt style="font-size: 13px; color: #D6DAFF;">{{n.k}}</dt>
+              <dd style="margin: 2px 0 0; font-size: 17px;">{{n.v}}</dd>
+            </div>
+          </sc-for>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer style="color: #F7F7F5; padding: 56px 20px 24px;">
+    <h2 style="margin: 0; font-size: 50px; font-weight: 500; line-height: .96; letter-spacing: -0.055em;">Got an idea worth building? Let's talk.</h2>
+    <a href="mailto:[your@email.com]" style="margin-top: 26px; height: 56px; border-radius: 999px; background: #1F2AD6; color: #F7F7F5; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 600;">Write to me
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
+    </a>
+    <p style="margin: 16px 0 0; text-align: center; font-size: 14px; color: #B8BCD6;">[your@email.com]</p>
+    <div style="margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; border-top: 1px solid #1F2550; padding-top: 22px; font-size: 15px;">
+      <nav aria-label="Pages" style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 12px; color: #8A8FB0;">Pages</span>
+        <a href="Main.dc.html" style="color: #D6DAFF;">Home</a>
+        <a href="About.dc.html" style="color: #D6DAFF;">About</a>
+        <a href="Ojaven.dc.html" style="color: #D6DAFF;">Ojaven</a>
+        <a href="Writing.dc.html" style="color: #D6DAFF;">Writing</a>
+      </nav>
+      <nav aria-label="Elsewhere" style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 12px; color: #8A8FB0;">Elsewhere</span>
+        <a href="#" style="color: #D6DAFF;">LinkedIn</a>
+        <a href="#" style="color: #D6DAFF;">X</a>
+        <a href="#" style="color: #D6DAFF;">GitHub</a>
+        <a href="#" style="color: #D6DAFF;">Instagram</a>
+      </nav>
+    </div>
+    <div aria-hidden="true" style="margin-top: 30px; height: 84px; overflow: hidden;">
+      <svg width="350" height="110" viewBox="0 0 350 110"><text x="0" y="96" textLength="350" lengthAdjust="spacingAndGlyphs" fill="#171C44" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 120px; font-weight: 600;">Ajaypal</text></svg>
+    </div>
+    <div style="border-top: 1px solid #1F2550; padding-top: 16px; display: flex; justify-content: space-between; font-size: 12px; color: #8A8FB0;">
+      <span>© 2026 Ajaypal Singh</span>
+      <a href="#" style="color: #F7F7F5;">Back to top</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":390,"height":4120}}'>
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const data = [
+      ['Building', "Taking an idea from a note to something that works. It's how I learn best."],
+      ['Experimenting', 'Trying ideas quickly to see which ones deserve more time.'],
+      ['Studying AI', 'My degree has an AI focus. I want to build real things with it.'],
+      ['Thinking about products', 'How people actually use software, and what makes it feel right.'],
+      ['Exploring business', 'How a technical idea becomes a real business.']
+    ];
+    const rows = data.map((d, i) => ({
+      title: d[0], text: d[1],
+      cls: this.state.open === i ? 'acc open' : 'acc',
+      expanded: this.state.open === i ? 'true' : 'false',
+      toggle: () => this.setState({ open: this.state.open === i ? -1 : i })
+    }));
+    const j = [
+      ['Learning', 'Learning technology by doing it.'],
+      ['Building', 'When something has to work, it sticks.'],
+      ['Experimenting', 'Trying ideas to see what they become.'],
+      ['Products', 'How products work and get used.'],
+      ['Business', 'How an idea becomes a business.'],
+      ['Founder', 'Starting my first venture.'],
+      ['Next', "Not written yet."]
+    ];
+    return {
+      rows,
+      journey: j.map((x, i) => ({ n: String(i + 1).padStart(2, '0'), t: x[0], text: x[1] })),
+      now: [
+        { k: 'Studying', v: 'B.Tech CSE, AI focus, second year' },
+        { k: 'Building', v: 'My first venture, Ojaven' },
+        { k: 'Exploring', v: 'AI, SaaS and product building' },
+        { k: 'Learning', v: "[What you're learning this month]" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

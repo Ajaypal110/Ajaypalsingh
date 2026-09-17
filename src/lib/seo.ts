@@ -36,8 +36,6 @@ export function generatePageMetadata(options: PageMetaOptions = {}): Metadata {
     : siteConfig.title
 
   const url = `${siteConfig.url}${path}`
-
-  // Merge site-wide keywords with page-specific ones
   const allKeywords = [...siteConfig.keywords, ...extraKeywords]
 
   return {
@@ -87,15 +85,10 @@ export function generatePageMetadata(options: PageMetaOptions = {}): Metadata {
         'max-snippet': -1,
       },
     },
-    // Verification — add your verification codes here when available
-    // verification: {
-    //   google: 'YOUR_GOOGLE_VERIFICATION_CODE',
-    //   yandex: 'YOUR_YANDEX_VERIFICATION_CODE',
-    // },
     other: {
-      'theme-color': '#060606',
+      'theme-color': '#08090c',
       'color-scheme': 'dark',
-      'msapplication-TileColor': '#060606',
+      'msapplication-TileColor': '#08090c',
     },
   }
 }
@@ -136,7 +129,7 @@ export function generatePersonJsonLd() {
       'Ajaypal Solanki',
     ],
     url: siteConfig.url,
-    jobTitle: 'Founder & Entrepreneur',
+    jobTitle: 'Founder & Builder',
     description:
       'Ajaypal Singh (Ajaypal Singh Solanki) is a founder, builder, and entrepreneur based in India. Currently building Ojaven, a platform for modern digital agencies.',
     nationality: {
@@ -144,19 +137,19 @@ export function generatePersonJsonLd() {
       name: 'India',
     },
     knowsAbout: [
-      'Software Development',
-      'SaaS Architecture',
+      'Software Architecture',
+      'B2B SaaS',
       'Entrepreneurship',
       'Product Design',
       'System Design',
-      'Web Development',
       'Digital Agency Operations',
     ],
     sameAs: [
       siteConfig.social.linkedin,
-      siteConfig.social.github,
       siteConfig.social.twitter,
-    ].filter((url) => !url.startsWith('PLACEHOLDER')),
+      siteConfig.social.instagram,
+      siteConfig.social.facebook,
+    ],
     founder: [{ '@id': siteConfig.ids.ojaven }],
     image: `${siteConfig.url}/og-default.png`,
     mainEntityOfPage: siteConfig.url,
@@ -237,26 +230,6 @@ export function generateOjavenPageJsonLd() {
   }
 }
 
-export function generateBuildsPageJsonLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'CollectionPage',
-        name: 'Builds & Projects by Ajaypal Singh',
-        description:
-          'Software projects, platforms, and technical experiments built by Ajaypal Singh.',
-        url: `${siteConfig.url}/builds`,
-        author: { '@id': siteConfig.ids.person },
-      },
-      generateBreadcrumbJsonLd([
-        { name: 'Home', url: siteConfig.url },
-        { name: 'Builds', url: `${siteConfig.url}/builds` },
-      ]),
-    ],
-  }
-}
-
 export function generateWritingPageJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -265,7 +238,7 @@ export function generateWritingPageJsonLd() {
         '@type': 'CollectionPage',
         name: 'Writing by Ajaypal Singh',
         description:
-          'Essays on building digital products, SaaS architecture, entrepreneurship, and technology craft by Ajaypal Singh.',
+          'Personal notes, thoughts, and essays on building software, SaaS, technology, and entrepreneurship by Ajaypal Singh.',
         url: `${siteConfig.url}/writing`,
         author: { '@id': siteConfig.ids.person },
       },
@@ -285,7 +258,7 @@ export function generateContactPageJsonLd() {
         '@type': 'ContactPage',
         name: 'Contact Ajaypal Singh',
         description:
-          'Get in touch with Ajaypal Singh regarding software, founder collaborations, Ojaven, or business inquiries.',
+          'Get in touch with Ajaypal Singh regarding software, founder collaborations, Ojaven, or ideas worth building.',
         url: `${siteConfig.url}/contact`,
         about: { '@id': siteConfig.ids.person },
       },

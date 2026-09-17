@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react'
-
 export interface Article {
   slug: string
   title: string
@@ -12,10 +10,12 @@ export interface Article {
 
 export const articleCategories = [
   'All',
-  'Building',
-  'Technology',
-  'Entrepreneurship',
+  'Building Ojaven',
+  'AI',
   'SaaS',
+  'Product',
+  'Entrepreneurship',
+  'Lessons',
 ] as const
 
 export const articles: Article[] = [
@@ -23,9 +23,9 @@ export const articles: Article[] = [
     slug: 'why-i-am-building-ojaven',
     title: 'Why I Am Building Ojaven',
     excerpt:
-      'Every product starts with a frustration. Here is the frustration that led me to start building Ojaven, and what I hope it becomes.',
+      'Every product starts with a friction point that refuses to go away. Here is the problem behind Ojaven, and why I chose to build it.',
     date: '2026-09-01',
-    category: 'Building',
+    category: 'Building Ojaven',
     readingTime: '5 min read',
     content: [
       'Almost every digital agency follows a familiar pattern: they start small with two or three talented people delivering great client work. Early on, communication is effortless. A group chat and a couple of shared documents are enough.',
@@ -42,13 +42,13 @@ export const articles: Article[] = [
     excerpt:
       'The lessons that only come from putting something into the world — not from reading about it, watching tutorials, or planning in a notebook.',
     date: '2026-08-15',
-    category: 'Building',
+    category: 'Lessons',
     readingTime: '6 min read',
     content: [
       'You can read hundreds of essays on product design and clean architecture, but nothing compares to the education you receive when you deploy software to actual users.',
       'When an idea exists solely in your head or in a design mock, it is pristine. There are no edge cases, no network drops, no unexpected user behaviors. Everything functions harmoniously.',
       'The moment you write the first line of code and ship a build, reality intervenes. You realize that a feature you thought was essential is completely ignored, while a secondary detail causes unexpected bottlenecks. This friction is where real learning occurs.',
-      'Over the projects I have built—whether experimental tools like Wanderlust and Khammaghani or architectural systems like Ojaven—the single most valuable lesson has been the virtue of simplicity.',
+      'Across every piece of software I have designed and deployed, the single most valuable lesson has been the virtue of simplicity.',
       'Complexity is effortless to generate in software. It creeps into databases, API contracts, and UI components. Simplicity, by contrast, requires intense discipline and ruthless pruning. Every line of code you choose not to write is a bug you will never have to debug.',
     ],
   },
@@ -56,7 +56,7 @@ export const articles: Article[] = [
     slug: 'thinking-about-saas-in-2026',
     title: 'Thinking About SaaS in 2026',
     excerpt:
-      'The SaaS landscape has changed significantly. Here are some patterns I am noticing as someone who is actively building in this space.',
+      'Software has changed dramatically. Here are some observations from someone actively architecting a product today.',
     date: '2026-07-20',
     category: 'SaaS',
     readingTime: '7 min read',

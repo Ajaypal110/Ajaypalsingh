@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
+  <style>
+    .hd { font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    .hd a { text-decoration: none; }
+    .hd :focus-visible { outline: 2px solid #AEB5FF; outline-offset: 3px; }
+    .hd-bar { max-width: 1440px; margin: 0 auto; padding: 22px 36px; border-radius: 0; background: rgba(247,247,245,0); border: 1px solid rgba(15,19,48,0); transition: max-width .8s cubic-bezier(.16,1,.3,1), padding .8s cubic-bezier(.16,1,.3,1), margin .8s cubic-bezier(.16,1,.3,1), background .5s, border-color .5s, border-radius .8s cubic-bezier(.16,1,.3,1), box-shadow .5s; }
+    .hd-bar.compact { max-width: 1120px; margin-top: 12px; padding: 8px 8px 8px 16px; border-radius: 999px; background: rgba(247,247,245,.78); border-color: rgba(15,19,48,.08); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); box-shadow: 0 10px 40px -18px rgba(15,19,48,.35); }
+    .hd-sub { display: block; overflow: hidden; max-height: 20px; opacity: 1; transition: max-height .6s cubic-bezier(.16,1,.3,1), opacity .4s; }
+    .compact .hd-sub { max-height: 0; opacity: 0; }
+    .hd-pill { transition: transform .55s cubic-bezier(.16,1,.3,1), width .55s cubic-bezier(.16,1,.3,1), opacity .3s; }
+    .hd-link { transition: color .35s; }
+    .hd-roll { display: inline-flex; flex-direction: column; overflow: hidden; height: 1.2em; line-height: 1.2em; }
+    .hd-roll span { transition: transform .55s cubic-bezier(.76,0,.24,1); }
+    .hd-btn:hover .hd-roll span, .hd-big:hover .hd-roll span { transform: translateY(-100%); }
+    .hd-arrow { transition: transform .55s cubic-bezier(.76,0,.24,1); }
+    .hd-btn:hover .hd-arrow { transform: rotate(45deg); }
+    .hd-menu { clip-path: inset(0 0 100% 0); visibility: hidden; transition: clip-path 1s cubic-bezier(.76,0,.24,1), visibility 0s linear 1s; }
+    .hd-menu.open { clip-path: inset(0 0 0 0); visibility: visible; transition: clip-path 1s cubic-bezier(.76,0,.24,1), visibility 0s; }
+    .hd-item { opacity: 0; transform: translateY(40px); transition: opacity .6s, transform .9s cubic-bezier(.16,1,.3,1); }
+    .open .hd-item { opacity: 1; transform: none; transition-delay: var(--d); }
+    .hd-big { transition: color .3s, padding-left .6s cubic-bezier(.16,1,.3,1); }
+    .hd-big:hover { color: #AEB5FF; padding-left: 28px; }
+    @media (prefers-reduced-motion: reduce) { .hd *, .hd-bar, .hd-menu { transition: none !important; } }
+  </style>
+</helmet>
+
+<div class="hd" style="position: fixed; top: 0; left: 0; right: 0; z-index: 80; pointer-events: none;">
+  <div class="{{barClass}}" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; box-sizing: border-box;">
+
+    <a href="Main.dc.html" aria-label="Ajaypal Singh, home" style="justify-self: start; display: flex; align-items: center; gap: 12px; pointer-events: auto; color: {{fg}};">
+      <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
+        <circle cx="21" cy="21" r="21" fill="{{markBg}}"></circle>
+        <path d="M12 28 L19 13 L26 28" fill="none" stroke="{{markFg}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M31 16.5c-1-1.6-2.6-2.3-4.3-2.3" fill="none" stroke="{{markFg}}" stroke-width="2.6" stroke-linecap="round"></path>
+        <circle cx="31" cy="26.5" r="2.4" fill="#AEB5FF"></circle>
+      </svg>
+      <span style="display: flex; flex-direction: column; line-height: 1.15;">
+        <span style="font-size: 16px; font-weight: 600; letter-spacing: -0.02em;">Ajaypal Singh</span>
+        <span class="hd-sub" style="font-size: 13px; color: {{fgSoft}};">Founder and builder</span>
+      </span>
+    </a>
+
+    <nav aria-label="Main" onMouseLeave="{{navLeave}}" style="justify-self: center; position: relative; display: flex; padding: 5px; border-radius: 999px; background: rgba(255,255,255,.8); border: 1px solid rgba(15,19,48,.08); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); pointer-events: auto;">
+      <span class="hd-pill" aria-hidden="true" style="position: absolute; top: 5px; bottom: 5px; left: 0; border-radius: 999px; background: #0F1330; width: {{pillW}}px; transform: translateX({{pillX}}px); opacity: {{pillO}};"></span>
+      <sc-for list="{{links}}" as="l" hint-placeholder-count="5">
+        <a class="hd-link" href="{{l.href}}" ref="{{l.ref}}" onMouseEnter="{{l.enter}}" onFocus="{{l.enter}}" aria-current="{{l.current}}" style="position: relative; z-index: 1; padding: 10px 18px; border-radius: 999px; font-size: 14px; font-weight: 500; color: {{l.color}};">{{l.label}}</a>
+      </sc-for>
+    </nav>
+
+    <div style="justify-self: end; display: flex; align-items: center; gap: 8px; pointer-events: auto;">
+      <a class="hd-btn" href="#contact" style="display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 8px 0 22px; border-radius: 999px; background: {{btnBg}}; color: {{btnFg}}; font-size: 14px; font-weight: 600;">
+        <span class="hd-roll"><span>Say hello</span><span>Say hello</span></span>
+        <span style="width: 34px; height: 34px; border-radius: 50%; background: {{btnDot}}; display: flex; align-items: center; justify-content: center;">
+          <svg class="hd-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="{{btnDotFg}}" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
+        </span>
+      </a>
+      <button onClick="{{openMenu}}" aria-label="Open menu" aria-expanded="{{menuExpanded}}" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(15,19,48,.08); background: #0F1330; color: #F7F7F5; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="5" cy="9" r="1.8" fill="currentColor"></circle><circle cx="13" cy="9" r="1.8" fill="currentColor"></circle></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="{{menuClass}}" aria-hidden="{{menuHidden}}" style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: #0F1330; color: #F7F7F5; pointer-events: auto; overflow: auto;">
+    <div style="max-width: 1440px; margin: 0 auto; min-height: 100%; box-sizing: border-box; padding: 28px 36px 36px; display: flex; flex-direction: column;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 16px; font-weight: 600; letter-spacing: -0.02em;">Ajaypal Singh</span>
+        <button onClick="{{closeMenu}}" aria-label="Close menu" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid #2A3060; background: transparent; color: #F7F7F5; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"></path></svg>
+        </button>
+      </div>
+      <div style="flex-grow: 1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding: 48px 0;">
+        <nav aria-label="Menu" style="grid-column: span 7; display: flex; flex-direction: column;">
+          <sc-for list="{{menuLinks}}" as="m" hint-placeholder-count="5">
+            <a class="hd-item hd-big" href="{{m.href}}" onClick="{{closeMenu}}" onMouseEnter="{{m.enter}}" onFocus="{{m.enter}}" style="--d: {{m.d}}; display: block; padding: 10px 0; border-bottom: 1px solid #1F2550; color: #F7F7F5; font-size: 88px; font-weight: 500; letter-spacing: -0.055em; line-height: 1;">
+              <span class="hd-roll" style="height: 1em; line-height: 1em;"><span>{{m.label}}</span><span>{{m.label}}</span></span>
+            </a>
+          </sc-for>
+        </nav>
+        <div class="hd-item" style="--d: 300ms; grid-column: 9 / span 4; aspect-ratio: 4 / 5; border-radius: 28px; background: #1F2AD6; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; position: relative;">
+          <svg aria-hidden="true" width="360" height="360" viewBox="0 0 360 360" fill="none" style="position: absolute; right: -120px; top: -120px; opacity: .5;"><circle cx="180" cy="180" r="179" stroke="#AEB5FF"></circle><circle cx="180" cy="180" r="120" stroke="#AEB5FF"></circle><circle cx="180" cy="180" r="60" stroke="#AEB5FF"></circle></svg>
+          <span style="font-size: 14px; color: #D6DAFF; position: relative;">{{preview.kicker}}</span>
+          <p style="margin: 0; font-size: 32px; line-height: 1.15; letter-spacing: -0.03em; position: relative;">{{preview.text}}</p>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 24px; border-top: 1px solid #1F2550; padding-top: 22px; font-size: 14px; color: #B8BCD6;">
+        <a href="mailto:[your@email.com]" style="color: #F7F7F5;">[your@email.com]</a>
+        <div style="display: flex; gap: 24px;">
+          <a href="#" style="color: #B8BCD6;">LinkedIn</a>
+          <a href="#" style="color: #B8BCD6;">X</a>
+          <a href="#" style="color: #B8BCD6;">GitHub</a>
+          <a href="#" style="color: #B8BCD6;">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"active":{"editor":"enum","options":["Home","About","Ojaven","Writing","Contact"],"default":"Home"},"onDark":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":96}}'>
+class Component extends DCLogic {
+  state = { compact: false, hover: -1, pos: [], menu: false, prev: 0 };
+  els = [];
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const c = window.scrollY > 40;
+      if (c !== this.state.compact) this.setState({ compact: c });
+      clearTimeout(this.mt);
+      this.mt = setTimeout(() => this.measure(), 820);
+    };
+    this.onResize = () => this.measure();
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    this.measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.measure());
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    clearTimeout(this.mt);
+  }
+
+  measure() {
+    const pos = this.els.map((el) => (el ? { x: el.offsetLeft, w: el.offsetWidth } : { x: 0, w: 0 }));
+    this.setState({ pos });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const names = ['Home', 'About', 'Ojaven', 'Writing', 'Contact'];
+    const hrefs = ['Main.dc.html', 'About.dc.html', 'Ojaven.dc.html', 'Writing.dc.html', '#contact'];
+    const activeIdx = Math.max(0, names.indexOf(this.props.active || 'Home'));
+    const target = s.hover >= 0 ? s.hover : activeIdx;
+    const p = s.pos[target] || { x: 0, w: 0 };
+    const dark = !!this.props.onDark && !s.compact;
+
+    const links = names.map((label, i) => ({
+      label,
+      href: hrefs[i],
+      current: i === activeIdx ? 'page' : 'false',
+      color: i === target ? '#F7F7F5' : '#0F1330',
+      ref: (el) => { this.els[i] = el; },
+      enter: () => this.setState({ hover: i })
+    }));
+
+    const previews = [
+      { kicker: 'Home', text: 'Who I am, what I care about, and what I am building.' },
+      { kicker: 'About', text: 'The longer story, from learning to code to starting a company.' },
+      { kicker: 'Ojaven', text: 'My notes on the venture I am building right now.' },
+      { kicker: 'Writing', text: 'My notebook on building, AI, software and business.' },
+      { kicker: 'Contact', text: 'Have an idea, a question or something to build? Write to me.' }
+    ];
+
+    return {
+      barClass: s.compact ? 'hd-bar compact' : 'hd-bar',
+      fg: dark ? '#F7F7F5' : '#0F1330',
+      fgSoft: dark ? '#D6DAFF' : '#5A5F7A',
+      markBg: dark ? '#F7F7F5' : '#1F2AD6',
+      markFg: dark ? '#1F2AD6' : '#F7F7F5',
+      btnBg: dark ? '#F7F7F5' : '#1F2AD6',
+      btnFg: dark ? '#1F2AD6' : '#F7F7F5',
+      btnDot: dark ? '#1F2AD6' : '#F7F7F5',
+      btnDotFg: dark ? '#F7F7F5' : '#1F2AD6',
+      links,
+      pillX: p.x,
+      pillW: p.w,
+      pillO: p.w ? '1' : '0',
+      navLeave: () => this.setState({ hover: -1 }),
+      menuClass: s.menu ? 'hd-menu open' : 'hd-menu',
+      menuHidden: s.menu ? 'false' : 'true',
+      menuExpanded: s.menu ? 'true' : 'false',
+      openMenu: () => this.setState({ menu: true }),
+      closeMenu: () => this.setState({ menu: false }),
+      menuLinks: names.map((label, i) => ({ label, href: hrefs[i], d: (120 + i * 60) + 'ms', enter: () => this.setState({ prev: i }) })),
+      preview: previews[s.prev]
+    };
+  }
+}
+</script>
+</body>
+</html>

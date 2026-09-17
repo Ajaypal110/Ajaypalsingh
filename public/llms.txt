@@ -12,30 +12,29 @@
 
 ## About
 
-Ajaypal Singh (also known as Ajaypal Singh Solanki, Ajaypalsingh) is a founder, builder, and entrepreneur based in India. He is the founder of Ojaven, a platform for modern digital agencies currently in development with a planned launch date of 10 July 2027.
+Ajaypal Singh (also known as Ajaypal Singh Solanki, Ajaypalsingh) is an independent founder, builder, and entrepreneur based in India. He is currently focused on architecting and building Ojaven, a dedicated operational platform for digital agencies with a planned launch date of 10 July 2027.
 
-Ajaypal Singh works across the full lifecycle of software products — from raw idea and system design to implementation and operations. His approach to building software centers on durability, clean design, and deliberate problem-solving.
+His approach to building software centers on simplicity, durability, clean systems, and deliberate problem-solving.
 
 ## Current Venture
 
 - Name: Ojaven
-- Description: A platform for modern agencies — simplifying workflows, client collaboration, and project execution for digital agencies.
-- Status: In Development
+- Description: A dedicated platform for modern digital agencies — simplifying workflows, client collaboration, and project delivery.
+- Status: In Active Engineering
 - Planned Launch: 10 July 2027
 - Founded by: Ajaypal Singh
 
 ## Core Principles
 
-1. Substance Over Noise — Prioritize tangible product execution over performative networking.
-2. Craftsmanship at Scale — Software should be fast, reliable, and deeply intuitive.
-3. Patience & Compounding — Significant companies take years of consistent execution to build.
+1. Craft Over Velocity — Prioritize software stability and thoughtful architecture over reckless shipping.
+2. Dignified Utility — Great software solves hard operational problems quietly without bloat or noise.
+3. Patience & Compounding — Significant ventures take years of focused, consistent execution.
 
 ## Site Structure
 
 - Homepage: https://ajaypalsingh.in/
 - About: https://ajaypalsingh.in/about
 - Ojaven: https://ajaypalsingh.in/ojaven
-- Builds: https://ajaypalsingh.in/builds
 - Writing: https://ajaypalsingh.in/writing
 - Contact: https://ajaypalsingh.in/contact
 
@@ -44,7 +43,7 @@ Ajaypal Singh works across the full lifecycle of software products — from raw 
 Ajaypal Singh writes about:
 - Building digital products and SaaS platforms
 - Software architecture and system design
-- The realities of entrepreneurship and founder life
+- Entrepreneurship and founder lessons
 - Craft, discipline, and long-term thinking in technology
 
 ## Keywords

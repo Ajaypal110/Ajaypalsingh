@@ -16,7 +16,7 @@ interface RevealProps {
   once?: boolean
 }
 
-const getVariants = (direction: Direction, prefersReduced: boolean): Variants => {
+const getVariants = (direction: Direction, prefersReduced: boolean, duration: number = 0.6): Variants => {
   if (prefersReduced || direction === 'none') {
     return {
       hidden: { opacity: 0 },
@@ -41,7 +41,7 @@ const getVariants = (direction: Direction, prefersReduced: boolean): Variants =>
       x: 0,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration,
         ease: [0.16, 1, 0.3, 1] as const,
       },
     },
@@ -53,14 +53,14 @@ export function Reveal({
   className,
   direction = 'up',
   delay = 0,
-  duration: _duration,
+  duration = 0.6,
   once = true,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null)
   const prefersReduced = useReducedMotion()
   const isInView = useInView(ref, { once, margin: '-10% 0px' })
 
-  const variants = getVariants(direction, prefersReduced)
+  const variants = getVariants(direction, prefersReduced, duration)
 
   return (
     <motion.div
@@ -68,10 +68,10 @@ export function Reveal({
       variants={variants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
+      transition={{
+        delay: prefersReduced ? 0 : delay,
+      }}
       className={cn(className)}
-      style={delay ? { transitionDelay: `${delay}s` } : undefined}
-      custom={delay}
-      transition={delay ? { delay } : undefined}
     >
       {children}
     </motion.div>
