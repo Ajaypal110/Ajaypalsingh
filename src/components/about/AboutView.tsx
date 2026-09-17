@@ -86,13 +86,11 @@ export function AboutView() {
                   <path d="M20 460c0-120 70-200 160-200s160 80 160 200z" fill="#5560F0" />
                 </svg>
               )}
-              <span className="absolute left-4 bottom-4 text-[13px] text-[#F7F7F5] font-mono">
-                [Your photo]
-              </span>
+
             </div>
             <figcaption className="mt-2.5 flex justify-between text-[13px] text-[#5A5F7A]">
-              <span>[Place]</span>
-              <span>[Year]</span>
+              <span>Rajasthan, India</span>
+              <span>2025</span>
             </figcaption>
           </figure>
         </div>
@@ -133,11 +131,9 @@ export function AboutView() {
           </svg>
           <div className="relative z-10">
             <p className="m-0 text-lg sm:text-2xl lg:text-[28px] tracking-[-0.02em]">
-              [Wide photo: you working, or a place that matters to you]
+              Building something from zero is the most honest way to learn.
             </p>
-            <p className="m-0 mt-2 text-xs sm:text-sm text-[#D6DAFF] font-mono">
-              Landscape, 2:1
-            </p>
+
           </div>
         </div>
       </section>

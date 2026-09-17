@@ -57,7 +57,7 @@ export function ContactForm() {
     return (
       <div
         role="status"
-        className="rounded-[32px] p-14 flex flex-col justify-between min-h-[560px] relative overflow-hidden"
+        className="rounded-[24px] sm:rounded-[32px] p-8 sm:p-12 flex flex-col justify-between min-h-[480px] sm:min-h-[560px] relative overflow-hidden"
         style={{ background: '#1F2AD6', color: '#F7F7F5' }}
       >
         {/* decorative rings */}
@@ -91,7 +91,7 @@ export function ContactForm() {
         <div className="relative">
           <h2
             className="m-0 font-medium leading-[.95] tracking-[-0.06em]"
-            style={{ fontSize: 'clamp(56px, 8vw, 88px)' }}
+            style={{ fontSize: 'clamp(40px, 8vw, 88px)' }}
           >
             Thanks, {firstName}.
           </h2>
@@ -115,7 +115,7 @@ export function ContactForm() {
 
   return (
     <div
-      className="rounded-[32px] p-8 sm:p-12 box-border"
+      className="rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 box-border"
       style={{ border: '1px solid #DADCE8', background: '#FFFFFF' }}
     >
       <div className="flex justify-between items-baseline gap-4">
@@ -237,7 +237,7 @@ export function ContactForm() {
       </div>
 
       {/* Submit row */}
-      <div className="mt-9 flex justify-between items-center gap-6 flex-wrap">
+      <div className="mt-9 flex flex-col sm:flex-row sm:justify-between items-start sm:items-center gap-4">
         <p className="m-0 max-w-[300px] text-[14px] leading-[1.45]" style={{ color: '#5A5F7A' }}>
           Your details are only used to reply to you.
         </p>
@@ -293,7 +293,7 @@ export function ContactForm() {
           border-bottom: 1px solid #DADCE8;
           background: transparent;
           padding: 10px 0 16px;
-          font-size: 22px;
+          font-size: clamp(16px, 3.5vw, 22px);
           letter-spacing: -0.02em;
           color: #0F1330;
           outline: none;

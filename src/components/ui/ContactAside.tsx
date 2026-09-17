@@ -46,11 +46,12 @@ export function ContactAside() {
   return (
     <div className="flex flex-col gap-4">
       {/* Email card — dark navy */}
-      <div className="rounded-[28px] p-8" style={{ background: '#0F1330', color: '#F7F7F5' }}>
+      <div className="rounded-[24px] sm:rounded-[28px] p-6 sm:p-8" style={{ background: '#0F1330', color: '#F7F7F5' }}>
         <p className="m-0 text-[14px]" style={{ color: '#8A8FB0' }}>Prefer email?</p>
         <a
           href={`mailto:${email}`}
-          className="block mt-2.5 text-[#F7F7F5] text-[26px] sm:text-[28px] font-medium tracking-[-0.03em] break-all hover:opacity-80 transition-opacity"
+          className="block mt-2.5 text-[#F7F7F5] font-medium tracking-[-0.03em] break-all hover:opacity-80 transition-opacity"
+          style={{ fontSize: 'clamp(18px, 4vw, 26px)' }}
         >
           {email}
         </a>
@@ -83,7 +84,7 @@ export function ContactAside() {
 
       {/* Social links card — white with fill hover */}
       <div
-        className="rounded-[28px] overflow-hidden"
+        className="rounded-[24px] sm:rounded-[28px] overflow-hidden"
         style={{ border: '1px solid #DADCE8', background: '#FFFFFF' }}
       >
         <p className="m-0 px-7 pt-6 pb-3 text-[14px]" style={{ color: '#5A5F7A' }}>
@@ -124,7 +125,7 @@ export function ContactAside() {
       </div>
 
       {/* Info card — light blue-grey */}
-      <div className="rounded-[28px] p-7" style={{ background: '#ECEEF8' }}>
+      <div className="rounded-[24px] sm:rounded-[28px] p-5 sm:p-7" style={{ background: '#ECEEF8' }}>
         <dl className="m-0 space-y-0">
           <div className="flex justify-between items-center pb-3.5" style={{ borderBottom: '1px solid #DADCE8' }}>
             <dt className="text-[14px]" style={{ color: '#5A5F7A' }}>My local time</dt>

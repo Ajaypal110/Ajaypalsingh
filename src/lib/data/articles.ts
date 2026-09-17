@@ -30,7 +30,7 @@ export const articles: Article[] = [
     title: 'Why I Am Building Ojaven',
     excerpt:
       'Every product starts with a friction point that refuses to go away. Here is the architectural critique, operational reality, and long-term vision behind building Ojaven.',
-    date: '2026-09-01',
+    date: '2026-07-11',
     category: 'Building Ojaven',
     readingTime: '12 min read',
     tags: ['Building Ojaven', 'Entrepreneurship', 'Product Architecture'],

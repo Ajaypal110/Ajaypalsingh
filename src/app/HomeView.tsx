@@ -215,10 +215,7 @@ export function HomeView() {
                   </svg>
                 )}
 
-                <div className="absolute left-5 right-5 bottom-5 flex justify-between text-[13px] text-[#F7F7F5] font-mono">
-                  <span>[Your photo]</span>
-                  <span>Portrait, 3:5</span>
-                </div>
+
 
                 {/* 6 Opening Shutters */}
                 <div
