@@ -81,7 +81,8 @@ Every page sets its own `title`, `description`, `alternates.canonical` and `open
 | Home | `/` | Ajaypal Singh \| Founder and Builder | Ajaypal Singh is a founder and builder creating products and companies. Currently building Ojaven, a platform for modern agencies. | Ajaypal Singh |
 | About | `/about` | About Ajaypal Singh \| Founder and Builder | The story of Ajaypal Singh: how curiosity about technology turned into building products, thinking about business and founding Ojaven. | Hi, I'm Ajaypal. |
 | Ojaven | `/ojaven` | Ojaven \| Founder Notes by Ajaypal Singh | Ajaypal Singh on building Ojaven, a platform for modern agencies: why it exists, where it is now and the road to its July 2027 launch. | Ojaven |
-| Writing | `/writing` | Notes \| Ajaypal Singh | Notes by Ajaypal Singh on building Ojaven, AI, SaaS, product building, entrepreneurship and the lessons learned along the way. | Notes |
+| Writing | `/writing` | Writing \| Ajaypal Singh | Essays, notes, books and ideas by Ajaypal Singh on building Ojaven, AI, SaaS, products and entrepreneurship. | Writing |
+| Writing sections | `/writing/essays`, `/notes`, `/books`, `/ideas` | See `WRITING_PAGES_DESIGN.md` 1.10 | See `WRITING_PAGES_DESIGN.md` 1.10 | Writing |
 | Single note | `/writing/[slug]` | `[Note title] \| Ajaypal Singh` | `[1–2 sentence summary of the note, 140–155 characters]` | `[Note title]` |
 | Contact | `/contact` | Contact Ajaypal Singh \| Say Hello | Get in touch with Ajaypal Singh about an idea, a product, a collaboration or Ojaven. Send a message or email directly. | Say hello. |
 | 404 | any missing URL | Page not found \| Ajaypal Singh | (none, `noindex`) | This page doesn't exist. |
@@ -112,7 +113,7 @@ Every page sets its own `title`, `description`, `alternates.canonical` and `open
 | Home | Who I am, what I care about, and what I am building. |
 | About | The longer story, from learning to code to starting a company. |
 | Ojaven | My notes on the venture I am building right now. |
-| Writing | My notebook on building, AI, software and business. |
+| Writing | Essays, notes, books and ideas on building, AI, software and business. |
 | Contact | Have an idea, a question or something to build? Write to me. |
 
 ### 3.2 Home (`/`)
@@ -257,6 +258,9 @@ Every page sets its own `title`, `description`, `alternates.canonical` and `open
   - **Get in touch** (to `/contact`)
 
 ### 3.5 Writing (`/writing`)
+
+> **Updated:** Writing now has four sections (Essays, Notes, Books, Ideas). The full text and layout are in `WRITING_PAGES_DESIGN.md` section 1, which replaces the text below. Build logs stay on the Ojaven page.
+
 
 **Hero**
 - Label: Writing

@@ -124,6 +124,7 @@ export function Footer() {
                 { label: 'About', href: '/about' },
                 { label: 'Ojaven', href: '/ojaven' },
                 { label: 'Writing', href: '/writing' },
+                { label: 'Sitemap', href: '/sitemap' },
               ].map((p) => (
                 <Link key={p.label} href={p.href} className="ft-link">
                   <span>{p.label}</span>

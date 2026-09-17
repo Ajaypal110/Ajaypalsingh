@@ -3,10 +3,10 @@
 
 export const siteConfig = {
   name: 'Ajaypal Singh',
-  fullName: 'Ajaypal Singh Solanki',
+  fullName: 'Ajaypal Singh',
   title: 'Ajaypal Singh — Founder, Builder & Entrepreneur',
   description:
-    'Ajaypal Singh (Ajaypal Singh Solanki) is a founder, builder, and entrepreneur based in India. Currently building Ojaven — a platform for modern digital agencies. Explore builds, writing, and the journey.',
+    'Ajaypal Singh is a founder, builder, and entrepreneur based in India. Currently building Ojaven — a platform for modern digital agencies. Explore builds, writing, and the journey.',
   url: 'https://ajaypalsingh.in',
   tagline: 'Founder • Builder • Entrepreneur',
   location: 'India',
@@ -14,10 +14,8 @@ export const siteConfig = {
   // SEO keyword variations — used across metadata and JSON-LD
   keywords: [
     'Ajaypal Singh',
-    'Ajaypal Singh Solanki',
     'Ajaypalsingh',
     'Ajaypal',
-    'Ajaypal Solanki',
     'ajaypalsingh.in',
     'Ojaven founder',
     'Ojaven',

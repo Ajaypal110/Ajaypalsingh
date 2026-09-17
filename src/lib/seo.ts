@@ -269,6 +269,57 @@ export function generateOjavenPageJsonLd() {
   }
 }
 
+export type WritingSection = 'all' | 'articles' | 'notes' | 'books' | 'ideas'
+
+export function generateWritingSectionMetadata(section: WritingSection = 'all'): Metadata {
+  switch (section) {
+    case 'articles':
+      return generatePageMetadata({
+        title: 'Articles | Ajaypal Singh',
+        description:
+          'Long-form articles by Ajaypal Singh on building products, SaaS, AI and growing a business.',
+        path: '/writing/articles',
+        image: '/og/writing.png',
+        noIndex: false,
+      })
+    case 'notes':
+      return generatePageMetadata({
+        title: 'Notes | Ajaypal Singh',
+        description:
+          'Short notes by Ajaypal Singh: quick thoughts and lessons on building, products and business.',
+        path: '/writing/notes',
+        image: '/og/writing.png',
+        noIndex: true, // While section is empty ("Coming soon")
+      })
+    case 'books':
+      return generatePageMetadata({
+        title: 'Books | Ajaypal Singh',
+        description: 'Books written by Ajaypal Singh.',
+        path: '/writing/books',
+        image: '/og/writing.png',
+        noIndex: true, // While section is empty ("Coming soon")
+      })
+    case 'ideas':
+      return generatePageMetadata({
+        title: 'Ideas | Ajaypal Singh',
+        description: 'Ideas Ajaypal Singh is exploring, from early thinking to testing.',
+        path: '/writing/ideas',
+        image: '/og/writing.png',
+        noIndex: true, // While section is empty ("Coming soon")
+      })
+    case 'all':
+    default:
+      return generatePageMetadata({
+        title: 'Writing | Ajaypal Singh',
+        description:
+          'Articles, notes, books and ideas by Ajaypal Singh on building Ojaven, AI, SaaS, products and entrepreneurship.',
+        path: '/writing',
+        image: '/og/writing.png',
+        noIndex: false,
+      })
+  }
+}
+
 export function generateWritingPageJsonLd(postSlugs: string[] = []) {
   return {
     '@context': 'https://schema.org',
@@ -277,7 +328,9 @@ export function generateWritingPageJsonLd(postSlugs: string[] = []) {
         '@type': 'CollectionPage',
         '@id': 'https://ajaypalsingh.in/writing#webpage',
         url: 'https://ajaypalsingh.in/writing',
-        name: 'Notes | Ajaypal Singh',
+        name: 'Writing | Ajaypal Singh',
+        description:
+          'Articles, notes, books and ideas by Ajaypal Singh on building Ojaven, AI, SaaS, products and entrepreneurship.',
         isPartOf: { '@id': 'https://ajaypalsingh.in/#website' },
         author: { '@id': 'https://ajaypalsingh.in/#person' },
         breadcrumb: { '@id': 'https://ajaypalsingh.in/writing#breadcrumb' },
@@ -285,7 +338,7 @@ export function generateWritingPageJsonLd(postSlugs: string[] = []) {
       {
         '@type': 'Blog',
         '@id': 'https://ajaypalsingh.in/writing#blog',
-        name: 'Notes by Ajaypal Singh',
+        name: 'Writing by Ajaypal Singh',
         url: 'https://ajaypalsingh.in/writing',
         author: { '@id': 'https://ajaypalsingh.in/#person' },
         blogPost: postSlugs.map((slug) => ({
@@ -305,12 +358,85 @@ export function generateWritingPageJsonLd(postSlugs: string[] = []) {
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'Notes',
+            name: 'Writing',
             item: 'https://ajaypalsingh.in/writing',
           },
         ],
       },
     ],
+  }
+}
+
+export function generateWritingSectionJsonLd(
+  section: WritingSection,
+  items: { slug: string; title: string }[] = []
+) {
+  if (section === 'all') {
+    return generateWritingPageJsonLd(items.map((i) => i.slug))
+  }
+
+  const sectionTitles: Record<string, string> = {
+    articles: 'Articles',
+    notes: 'Notes',
+    books: 'Books',
+    ideas: 'Ideas',
+  }
+
+  const label = sectionTitles[section] || 'Writing'
+  const path = `/writing/${section}`
+
+  const graph: any[] = [
+    {
+      '@type': 'CollectionPage',
+      '@id': `https://ajaypalsingh.in${path}#webpage`,
+      url: `https://ajaypalsingh.in${path}`,
+      name: `${label} | Ajaypal Singh`,
+      isPartOf: { '@id': 'https://ajaypalsingh.in/#website' },
+      author: { '@id': 'https://ajaypalsingh.in/#person' },
+      breadcrumb: { '@id': `https://ajaypalsingh.in${path}#breadcrumb` },
+      ...(items.length > 0
+        ? {
+            mainEntity: {
+              '@type': 'ItemList',
+              itemListElement: items.map((item, idx) => ({
+                '@type': 'ListItem',
+                position: idx + 1,
+                url: `https://ajaypalsingh.in/writing/${item.slug}`,
+                name: item.title,
+              })),
+            },
+          }
+        : {}),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `https://ajaypalsingh.in${path}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://ajaypalsingh.in/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Writing',
+          item: 'https://ajaypalsingh.in/writing',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: label,
+          item: `https://ajaypalsingh.in${path}`,
+        },
+      ],
+    },
+  ]
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graph,
   }
 }
 
@@ -378,8 +504,9 @@ export function generateArticleJsonLd(article: {
           '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ajaypalsingh.in/' },
-            { '@type': 'ListItem', position: 2, name: 'Notes', item: 'https://ajaypalsingh.in/writing' },
-            { '@type': 'ListItem', position: 3, name: article.title, item: `https://ajaypalsingh.in/writing/${article.slug}` },
+            { '@type': 'ListItem', position: 2, name: 'Writing', item: 'https://ajaypalsingh.in/writing' },
+            { '@type': 'ListItem', position: 3, name: 'Articles', item: 'https://ajaypalsingh.in/writing/articles' },
+            { '@type': 'ListItem', position: 4, name: article.title, item: `https://ajaypalsingh.in/writing/${article.slug}` },
           ],
         },
       },

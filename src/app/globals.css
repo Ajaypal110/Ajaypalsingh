@@ -169,6 +169,233 @@ button {
   transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
+.rl:hover .roll span {
+  transform: translateY(-100%);
+}
+
+/* ============================================================
+   WRITING DESIGN SPEC ANIMATIONS & EFFECTS
+   ============================================================ */
+
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.05em;
+}
+
+.rise {
+  display: block;
+  animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.fade {
+  animation: fade 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.swap {
+  animation: swap 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes swap {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tabs-pill {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab {
+  transition: color 0.35s;
+}
+
+.tab .cnt {
+  transition: background 0.35s, color 0.35s;
+}
+
+.tab-shape {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab:hover .tab-shape {
+  transform: rotate(90deg);
+}
+
+.chip {
+  transition: background 0.35s, color 0.35s, border-color 0.35s;
+}
+
+.chip:hover {
+  border-color: #0F1330;
+}
+
+.feat {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feat:hover {
+  transform: scale(0.99);
+  color: #F7F7F5;
+}
+
+.feat .feat-title {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feat:hover .feat-title {
+  transform: translateX(16px);
+}
+
+.spin-ic {
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.feat:hover .spin-ic,
+.row:hover .spin-ic,
+.sec:hover .spin-ic,
+.book:hover .spin-ic {
+  transform: rotate(45deg);
+}
+
+.row .row-title {
+  transition: color 0.3s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.row:hover .row-title {
+  color: #1F2AD6;
+  transform: translateX(12px);
+}
+
+.row-go {
+  transition: background 0.35s, color 0.35s, border-color 0.35s;
+}
+
+.row:hover .row-go {
+  background: #1F2AD6;
+  color: #F7F7F5;
+  border-color: #1F2AD6;
+}
+
+.sec {
+  transition: background 0.45s, color 0.45s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sec:hover {
+  background: #1F2AD6;
+  color: #F7F7F5;
+  transform: translateY(-8px);
+}
+
+.sec .soft {
+  transition: color 0.45s;
+}
+
+.sec:hover .soft {
+  color: #D6DAFF;
+}
+
+.sec .badge {
+  transition: background 0.45s, color 0.45s;
+}
+
+.sec:hover .badge {
+  background: rgba(247, 247, 245, 0.16);
+  color: #F7F7F5;
+}
+
+.sec .sshape {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), background 0.45s, border-color 0.45s;
+}
+
+.sec:hover .sshape {
+  transform: rotate(90deg) scale(1.1);
+}
+
+.ncard {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s;
+}
+
+.ncard:hover {
+  transform: translateY(-6px) rotate(-0.5deg);
+  box-shadow: 0 24px 50px -30px rgba(15, 19, 48, 0.45);
+}
+
+.book .cover {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: perspective(900px) rotateY(-14deg);
+}
+
+.book:hover .cover {
+  transform: perspective(900px) rotateY(0deg) translateY(-6px);
+}
+
+.shelf .b {
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shelf:hover .b1 {
+  transform: rotate(-12deg) translate(-30px, 6px);
+}
+
+.shelf:hover .b2 {
+  transform: translateY(-18px);
+}
+
+.shelf:hover .b3 {
+  transform: rotate(10deg) translate(30px, 4px);
+}
+
+.idea .idea-title {
+  transition: color 0.3s;
+}
+
+.idea:hover .idea-title {
+  color: #1F2AD6;
+}
+
+.spark {
+  animation: spark 3.2s ease-in-out infinite;
+}
+
+@keyframes spark {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.6;
+  }
+}
+
 /* Venture row hover rise */
 .vrow {
   position: relative;

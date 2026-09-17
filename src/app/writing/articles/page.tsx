@@ -3,10 +3,10 @@ import { generateWritingSectionMetadata, generateWritingSectionJsonLd } from '@/
 import { articles } from '@/lib/data/articles'
 import type { Metadata } from 'next'
 
-export const metadata: Metadata = generateWritingSectionMetadata('all')
+export const metadata: Metadata = generateWritingSectionMetadata('articles')
 
-export default function WritingPage() {
-  const jsonLd = generateWritingSectionJsonLd('all', articles)
+export default function ArticlesPage() {
+  const jsonLd = generateWritingSectionJsonLd('articles', articles)
 
   return (
     <>
@@ -14,7 +14,7 @@ export default function WritingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <WritingView initialSection="all" />
+      <WritingView initialSection="articles" />
     </>
   )
 }

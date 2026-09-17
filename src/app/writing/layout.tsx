@@ -1,34 +1,15 @@
-import { generatePageMetadata, generateWritingPageJsonLd } from '@/lib/seo'
 import type { Metadata } from 'next'
 
-export const metadata: Metadata = generatePageMetadata({
-  title: 'Writing by Ajaypal Singh — Essays & Notes',
+export const metadata: Metadata = {
+  title: 'Writing | Ajaypal Singh',
   description:
-    'Essays on building digital products, SaaS architecture, entrepreneurship, and technology craft by Ajaypal Singh (Ajaypal Singh Solanki, Ajaypalsingh).',
-  path: '/writing',
-  keywords: [
-    'Ajaypal Singh blog',
-    'Ajaypalsingh writing',
-    'Ajaypal Singh essays',
-    'SaaS founder blog India',
-    'tech entrepreneur writing',
-  ],
-})
+    'Articles, notes, books and ideas by Ajaypal Singh on building Ojaven, AI, SaaS, products and entrepreneurship.',
+}
 
 export default function WritingLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const jsonLd = generateWritingPageJsonLd()
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {children}
-    </>
-  )
+  return <>{children}</>
 }

@@ -21,7 +21,7 @@ const OG_PAGES: Record<string, { title: string; subtitle?: string }> = {
     subtitle: 'Founder notes · Launch 2027',
   },
   writing: {
-    title: 'Notes',
+    title: 'Articles',
     subtitle: 'By Ajaypal Singh',
   },
   contact: {

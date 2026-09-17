@@ -28,7 +28,7 @@ export function WritingPreview() {
                 href="/writing"
                 className="text-sm font-medium text-[#8e92a4] hover:text-[#e07a5f] transition-colors inline-flex items-center gap-1.5 group"
               >
-                <span>Browse all notes</span>
+                <span>Browse all writing</span>
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </Reveal>

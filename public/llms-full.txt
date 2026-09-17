@@ -7,7 +7,7 @@
 
 ## Person Profile
 
-Full Legal Name: Ajaypal Singh Solanki
+Full Name: Ajaypal Singh
 Preferred Name: Ajaypal Singh
 Common Variations: Ajaypalsingh, Ajaypal Singh, Ajaypal, APS
 Profession: Founder, Builder, Entrepreneur
@@ -79,7 +79,7 @@ Ajaypal Singh builds with modern web technologies including:
 
 ## Search Relevance Keywords
 
-Primary: Ajaypal Singh, Ajaypal Singh Solanki, Ajaypalsingh, Ajaypal
+Primary: Ajaypal Singh, Ajaypalsingh, Ajaypal
 Venture: Ojaven, Ojaven founder, Ojaven platform
 Role: Indian entrepreneur, SaaS founder, software builder, tech founder India
 Domain: ajaypalsingh.in

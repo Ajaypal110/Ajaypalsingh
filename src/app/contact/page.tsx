@@ -6,12 +6,12 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = generatePageMetadata({
   title: 'Contact — Ajaypal Singh',
   description:
-    'Get in touch with Ajaypal Singh (Ajaypal Singh Solanki) regarding founder discussions, Ojaven, software architecture, or collaborations.',
+    'Get in touch with Ajaypal Singh regarding founder discussions, Ojaven, software architecture, or collaborations.',
   path: '/contact',
   keywords: [
     'contact Ajaypal Singh',
     'Ajaypalsingh email',
-    'reach Ajaypal Singh Solanki',
+    'reach Ajaypal Singh',
     'Ojaven contact',
   ],
 })

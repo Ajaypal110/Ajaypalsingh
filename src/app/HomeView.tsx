@@ -333,8 +333,7 @@ export function HomeView() {
                 <div className="text-[#AEB5FF] font-mono text-xs">Approach</div>
                 <div className="mt-1 text-[17px] font-medium">Build, test, learn, repeat</div>
               </div>
-              <div className="flex justify-start lg:justify-end items-center gap-3">
-                <span className="font-mono text-xs text-[#D6DAFF]">Scroll</span>
+              <div className="flex justify-start lg:justify-end items-center">
                 <span className="relative w-[1px] h-10 bg-[rgba(214,218,255,.3)] overflow-hidden block">
                   <span className="cue absolute top-0 left-0 w-[1px] h-10 bg-[#F7F7F5] block" />
                 </span>
@@ -349,7 +348,7 @@ export function HomeView() {
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
           <p className="lg:col-span-2 m-0 text-base text-[#5A5F7A] font-mono">Hello</p>
           <h2 className="lg:col-span-10 m-0 text-3xl sm:text-5xl lg:text-[76px] xl:text-[80px] font-medium leading-[1.05] tracking-[-0.05em] text-[#0F1330]">
-            I build things. Products, companies, and the ideas behind them. I care about how an idea becomes something real.
+            Turning ideas into software, and software into real companies. Built with craft, tested in reality.
           </h2>
           <div className="lg:col-start-8 lg:col-span-5 mt-10 lg:mt-16 space-y-6">
             <p className="m-0 text-xl leading-[1.5] text-[#5A5F7A]">
@@ -654,20 +653,20 @@ export function HomeView() {
             </dl>
           </div>
 
-          {/* Right Card: Notes (Bordered Paper) */}
+          {/* Right Card: Articles (Bordered Paper) */}
           <div className="lg:col-span-6 border border-[#DADCE8] rounded-[32px] p-8 sm:p-11 flex flex-col justify-between bg-white">
             <div>
               <div className="flex justify-between items-center">
                 <h2 className="m-0 text-3xl sm:text-5xl lg:text-[56px] font-medium tracking-[-0.05em] text-[#0F1330]">
-                  Notes
+                  Articles
                 </h2>
                 <Link
-                  href="/writing"
+                  href="/writing/articles"
                   className="roll-hover inline-flex items-center gap-2.5 text-sm font-semibold text-[#0F1330] hover:text-[#1F2AD6]"
                 >
                   <span className="roll">
-                    <span>All notes</span>
-                    <span>All notes</span>
+                    <span>All articles</span>
+                    <span>All articles</span>
                   </span>
                   <svg
                     className="roll-ic w-3.5 h-3.5"
@@ -684,15 +683,13 @@ export function HomeView() {
               </div>
 
               <p className="mt-4 text-lg sm:text-xl leading-[1.45] text-[#5A5F7A] max-w-[34ch]">
-                My notebook on building, AI, SaaS, products and the lessons along the way.
+                My articles on building, AI, SaaS, products and the lessons along the way.
               </p>
             </div>
 
             <div className="mt-8 pt-8 flex flex-col gap-3">
               {[
                 { title: 'Why I Am Building Ojaven', topic: 'Building', href: '/writing/why-i-am-building-ojaven' },
-                { title: 'What Building Software Actually Teaches You', topic: 'Lessons', href: '/writing/what-building-teaches-you' },
-                { title: 'Thinking About SaaS in 2026', topic: 'SaaS', href: '/writing/thinking-about-saas-in-2026' },
               ].map((n) => (
                 <Link
                   key={n.title}

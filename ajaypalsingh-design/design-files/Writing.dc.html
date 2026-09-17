@@ -9,100 +9,355 @@
 <helmet>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; background: #0F1330; color: #0F1330; font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-    a { color: #0F1330; text-decoration: none; } a:hover { color: #1F2AD6; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #0F1330; color: #0F1330; font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: #0F1330; text-decoration: none; }
     button { font: inherit; }
     :focus-visible { outline: 2px solid #1F2AD6; outline-offset: 3px; }
+
+    .mask { display: block; overflow: hidden; padding-bottom: .05em; }
+    .rise { display: block; animation: rise 1.2s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d); }
+    @keyframes rise { from { transform: translateY(105%); } to { transform: none; } }
+    .fade { animation: fade 1s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d); }
+    @keyframes fade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .swap { animation: swap .7s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes swap { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+    .tabs-pill { transition: transform .6s cubic-bezier(.16,1,.3,1); }
+    .tab { transition: color .35s; }
+    .tab .cnt { transition: background .35s, color .35s; }
+    .tab-shape { transition: transform .6s cubic-bezier(.16,1,.3,1); }
+    .tab:hover .tab-shape { transform: rotate(90deg); }
+
     .chip { transition: background .35s, color .35s, border-color .35s; }
     .chip:hover { border-color: #0F1330; }
-    .row .row-title { transition: transform .7s cubic-bezier(.16,1,.3,1); }
-    .row:hover .row-title { transform: translateX(16px); }
-    .orb { animation: orb 14s linear infinite; }
+
     .feat { transition: transform .8s cubic-bezier(.16,1,.3,1); }
     .feat:hover { transform: scale(.99); color: #F7F7F5; }
     .feat .feat-title { transition: transform .8s cubic-bezier(.16,1,.3,1); }
     .feat:hover .feat-title { transform: translateX(16px); }
-    .feat-ic { transition: transform .6s cubic-bezier(.76,0,.24,1); }
-    .feat:hover .feat-ic { transform: rotate(45deg); }
-    .row:hover .row-title { color: #1F2AD6; }
-    .row-go { transition: background .35s, color .35s, border-color .35s, transform .6s cubic-bezier(.76,0,.24,1); }
-    .row:hover .row-go { background: #1F2AD6; color: #F7F7F5; border-color: #1F2AD6; transform: rotate(45deg); }
+    .spin-ic { transition: transform .6s cubic-bezier(.76,0,.24,1); }
+    .feat:hover .spin-ic, .row:hover .spin-ic, .sec:hover .spin-ic, .book:hover .spin-ic { transform: rotate(45deg); }
+
+    .row .row-title { transition: color .3s, transform .7s cubic-bezier(.16,1,.3,1); }
+    .row:hover .row-title { color: #1F2AD6; transform: translateX(12px); }
+    .row-go { transition: background .35s, color .35s, border-color .35s; }
+    .row:hover .row-go { background: #1F2AD6; color: #F7F7F5; border-color: #1F2AD6; }
+
+    .sec { transition: background .45s, color .45s, transform .7s cubic-bezier(.16,1,.3,1); }
+    .sec:hover { background: #1F2AD6; color: #F7F7F5; transform: translateY(-8px); }
+    .sec .soft { transition: color .45s; }
+    .sec:hover .soft { color: #D6DAFF; }
+    .sec .badge { transition: background .45s, color .45s; }
+    .sec:hover .badge { background: rgba(247,247,245,.16); color: #F7F7F5; }
+    .sec .sshape { transition: transform .9s cubic-bezier(.16,1,.3,1), background .45s, border-color .45s; }
+    .sec:hover .sshape { transform: rotate(90deg) scale(1.1); }
+
+    .ncard { transition: transform .7s cubic-bezier(.16,1,.3,1), box-shadow .5s; }
+    .ncard:hover { transform: translateY(-6px) rotate(-.5deg); box-shadow: 0 24px 50px -30px rgba(15,19,48,.45); }
+
+    .book .cover { transition: transform .9s cubic-bezier(.16,1,.3,1); transform: perspective(900px) rotateY(-14deg); }
+    .book:hover .cover { transform: perspective(900px) rotateY(0deg) translateY(-6px); }
+
+    .shelf .b { transition: transform .9s cubic-bezier(.16,1,.3,1); }
+    .shelf:hover .b1 { transform: rotate(-12deg) translate(-30px, 6px); }
+    .shelf:hover .b2 { transform: translateY(-18px); }
+    .shelf:hover .b3 { transform: rotate(10deg) translate(30px, 4px); }
+
+    .idea .idea-title { transition: color .3s; }
+    .idea:hover .idea-title { color: #1F2AD6; }
+    .spark { animation: spark 3.2s ease-in-out infinite; }
+    @keyframes spark { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.35); opacity: .6; } }
+    .orb { animation: orb 16s linear infinite; }
     @keyframes orb { to { transform: rotate(360deg); } }
+    .live { animation: live 2s ease-out infinite; }
+    @keyframes live { 0% { box-shadow: 0 0 0 0 rgba(31,42,214,.5); } 100% { box-shadow: 0 0 0 10px rgba(31,42,214,0); } }
+
+    .roll { display: inline-flex; flex-direction: column; overflow: hidden; height: 1.25em; line-height: 1.25em; }
+    .roll span { transition: transform .55s cubic-bezier(.76,0,.24,1); }
+    .rl:hover .roll span { transform: translateY(-100%); }
+
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
   </style>
 </helmet>
 
-<div style="position: relative; width: 1440px; height: 2900px; overflow: hidden;">
+<div style="position: relative; width: 100%; min-width: 1280px;">
   <dc-import name="Header" active="Writing" on-dark="{{ false }}" hint-size="100%,96px"></dc-import>
 
-  <main style="position: relative; z-index: 2; background: #F7F7F5; margin-bottom: 780px; border-radius: 0 0 48px 48px; overflow: hidden;">
-    <section style="position: relative; height: 640px; padding: 0 64px;">
-      <p style="position: absolute; top: 172px; left: 64px; margin: 0; font-size: 15px; color: #5A5F7A;">Writing</p>
-      <h1 style="position: absolute; top: 196px; left: 52px; margin: 0; font-size: 260px; font-weight: 500; line-height: .9; letter-spacing: -0.07em;">Notes</h1>
-      <p style="position: absolute; top: 250px; right: 64px; width: 420px; margin: 0; font-size: 28px; line-height: 1.25; letter-spacing: -0.02em;">My notebook on the internet. Thinking out loud about building, AI, software and business.</p>
-      <div role="group" aria-label="Filter by topic" style="position: absolute; left: 64px; right: 64px; bottom: 40px; display: flex; flex-wrap: wrap; gap: 10px;">
-        <sc-for list="{{chips}}" as="c" hint-placeholder-count="7">
-          <button class="chip" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid {{c.bd}}; background: {{c.bg}}; color: {{c.fg}}; font-size: 15px; cursor: pointer;">{{c.label}}</button>
-        </sc-for>
+  <main style="position: relative; z-index: 2; background: #F7F7F5; margin-bottom: 780px; border-radius: 0 0 48px 48px; overflow: clip;">
+
+    <!-- Hero -->
+    <section style="max-width: 1440px; margin: 0 auto; padding: 150px 64px 0; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end;">
+      <div style="grid-column: span 8;">
+        <p class="fade" style="--d: 100ms; margin: 0; font-size: 15px; color: #5A5F7A;">Writing</p>
+        <h1 style="margin: 18px 0 0; font-size: 250px; font-weight: 500; line-height: .88; letter-spacing: -0.07em;"><span class="mask"><span class="rise" style="--d: 150ms;">Writing</span></span></h1>
       </div>
+      <p class="fade" style="--d: 450ms; grid-column: 9 / span 4; margin: 0 0 20px; font-size: 26px; line-height: 1.3; letter-spacing: -0.02em;">Essays, notes, books and ideas. Where I think out loud about building, AI, software and business.</p>
     </section>
 
-    <section style="padding: 0 64px;">
-      <sc-if value="{{hasFeatured}}" hint-placeholder-val="{{ true }}">
-        <a class="feat" href="Note.dc.html" style="display: block; border-radius: 32px; background: #1F2AD6; color: #F7F7F5; padding: 56px; position: relative; overflow: hidden; min-height: 400px; box-sizing: border-box;">
-          <svg class="orb" aria-hidden="true" width="560" height="560" viewBox="0 0 520 520" fill="none" style="position: absolute; right: -120px; top: -120px; opacity: .45;"><circle cx="260" cy="260" r="259" stroke="#AEB5FF" stroke-dasharray="4 10"></circle><circle cx="260" cy="260" r="180" stroke="#AEB5FF"></circle><circle cx="260" cy="80" r="10" fill="#F7F7F5"></circle></svg>
-          <div style="position: relative; display: flex; align-items: center; gap: 12px; font-size: 15px; color: #D6DAFF;">
-            <span style="padding: 6px 12px; border-radius: 999px; background: rgba(247,247,245,.16); color: #F7F7F5;">Latest</span>
-            <span>{{featured.topic}}</span><span aria-hidden="true">·</span><span>{{featured.date}}</span><span aria-hidden="true">·</span><span>{{featured.read}}</span>
-          </div>
-          <h2 class="feat-title" style="position: relative; margin: 80px 0 0; max-width: 900px; font-size: 96px; font-weight: 500; line-height: .95; letter-spacing: -0.06em;">{{featured.title}}</h2>
-          <div style="position: relative; margin-top: 28px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
-            <p style="margin: 0; max-width: 560px; font-size: 22px; line-height: 1.45; color: #D6DAFF;">{{featured.summary}}</p>
-            <span style="flex-shrink: 0; width: 72px; height: 72px; border-radius: 50%; background: #F7F7F5; display: flex; align-items: center; justify-content: center;"><svg class="feat-ic" width="22" height="22" viewBox="0 0 14 14" fill="none" stroke="#1F2AD6" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg></span>
-          </div>
-        </a>
-      </sc-if>
-    </section>
-
-    <section aria-labelledby="list-title" style="padding: 110px 64px 160px;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid #0F1330; padding-bottom: 24px;">
-        <h2 id="list-title" style="margin: 0; font-size: 64px; font-weight: 500; letter-spacing: -0.05em;">{{listTitle}}</h2>
-        <p style="margin: 0; font-size: 15px; color: #5A5F7A;">{{countLabel}}</p>
+    <!-- Section tabs -->
+    <div style="position: sticky; top: 96px; z-index: 5; margin-top: 64px; padding: 12px 0; background: rgba(247,247,245,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
+      <div style="max-width: 1440px; margin: 0 auto; padding: 0 64px; box-sizing: border-box;">
+        <div role="tablist" aria-label="Writing sections" style="position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 6px; border-radius: 999px; background: #FFFFFF; border: 1px solid #DADCE8;">
+          <span class="tabs-pill" aria-hidden="true" style="position: absolute; top: 6px; bottom: 6px; left: 6px; width: calc((100% - 12px) / 5); border-radius: 999px; background: #0F1330; transform: translateX({{pillX}});"></span>
+          <sc-for list="{{tabs}}" as="t" hint-placeholder-count="5">
+            <button class="tab" role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="position: relative; z-index: 1; height: 60px; border: 0; border-radius: 999px; background: transparent; color: {{t.fg}}; display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 18px; font-weight: 500; cursor: pointer;">
+              <span class="tab-shape" aria-hidden="true" style="width: 14px; height: 14px; border-radius: {{t.r}}; background: {{t.shapeBg}}; border: {{t.shapeBd}}; box-sizing: border-box; display: block;"></span>
+              {{t.label}}
+              <span class="cnt" style="font-size: 12px; padding: 3px 9px; border-radius: 999px; background: {{t.cntBg}}; color: {{t.cntFg}};">{{t.count}}</span>
+            </button>
+          </sc-for>
+        </div>
       </div>
-      <sc-for list="{{rows}}" as="r" hint-placeholder-count="3">
-        <a class="row" href="Note.dc.html" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding: 36px 0; border-bottom: 1px solid #DADCE8; color: #5A5F7A; position: relative;">
-          <span style="grid-column: span 2; font-size: 15px;">{{r.date}}</span>
-          <span class="row-title" style="grid-column: span 6; font-size: 40px; font-weight: 500; letter-spacing: -0.04em; line-height: 1.05; color: #0F1330;">{{r.title}}</span>
-          <span style="grid-column: span 2;"><span style="font-size: 13px; padding: 6px 12px; border-radius: 999px; background: #ECEEF8; color: #1F2AD6;">{{r.topic}}</span></span>
-          <span style="grid-column: span 2; display: flex; justify-content: flex-end; align-items: center; gap: 16px; font-size: 15px;">{{r.read}}
-            <span class="row-go" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #DADCE8; display: flex; align-items: center; justify-content: center; color: #0F1330;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg></span>
-          </span>
-        </a>
-      </sc-for>
-      <sc-if value="{{isEmpty}}" hint-placeholder-val="{{ false }}">
-        <div style="padding: 60px 0; text-align: center;">
-          <p style="margin: 0; font-size: 32px; font-weight: 500; letter-spacing: -0.03em;">No notes on {{topic}} yet.</p>
-          <p style="margin: 10px 0 0; font-size: 18px; color: #5A5F7A;">They're coming. Meanwhile, browse all notes.</p>
+    </div>
+
+    <div style="max-width: 1440px; margin: 0 auto; padding: 48px 64px 160px; box-sizing: border-box;">
+
+      <!-- Section intro (not on All) -->
+      <sc-if value="{{notAll}}" hint-placeholder-val="{{ false }}">
+        <div class="swap" style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 36px;">
+          <div>
+            <h2 style="margin: 0; font-size: 96px; font-weight: 500; letter-spacing: -0.06em; line-height: .95;">{{secTitle}}</h2>
+            <p style="margin: 14px 0 0; max-width: 620px; font-size: 22px; line-height: 1.4; color: #5A5F7A;">{{secDesc}}</p>
+          </div>
+          <span style="font-size: 15px; color: #5A5F7A;">{{secCount}}</span>
         </div>
       </sc-if>
-    </section>
+
+      <!-- Topic chips -->
+      <sc-if value="{{showTopics}}" hint-placeholder-val="{{ true }}">
+        <div role="group" aria-label="Filter by topic" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px;">
+          <sc-for list="{{chips}}" as="c" hint-placeholder-count="6">
+            <button class="chip" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="height: 40px; padding: 0 18px; border-radius: 999px; border: 1px solid {{c.bd}}; background: {{c.bg}}; color: {{c.fg}}; font-size: 14px; cursor: pointer;">{{c.label}}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- ALL -->
+      <sc-if value="{{isAll}}" hint-placeholder-val="{{ true }}">
+        <div class="swap">
+          <a class="feat" href="Note.dc.html" style="display: block; border-radius: 32px; background: #1F2AD6; color: #F7F7F5; padding: 52px; position: relative; overflow: hidden; min-height: 400px; box-sizing: border-box;">
+            <svg class="orb" aria-hidden="true" width="560" height="560" viewBox="0 0 520 520" fill="none" style="position: absolute; right: -120px; top: -120px; opacity: .45;"><circle cx="260" cy="260" r="259" stroke="#AEB5FF" stroke-dasharray="4 10"></circle><circle cx="260" cy="260" r="180" stroke="#AEB5FF"></circle><circle cx="260" cy="80" r="10" fill="#F7F7F5"></circle></svg>
+            <div style="position: relative; display: flex; align-items: center; gap: 12px; font-size: 15px; color: #D6DAFF;">
+              <span style="padding: 6px 12px; border-radius: 999px; background: rgba(247,247,245,.16); color: #F7F7F5;">Latest essay</span>
+              <span>{{featured.topic}}</span><span aria-hidden="true">·</span><span>{{featured.date}}</span><span aria-hidden="true">·</span><span>{{featured.read}}</span>
+            </div>
+            <h3 class="feat-title" style="position: relative; margin: 76px 0 0; max-width: 900px; font-size: 96px; font-weight: 500; line-height: .95; letter-spacing: -0.06em;">{{featured.title}}</h3>
+            <div style="position: relative; margin-top: 26px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+              <p style="margin: 0; max-width: 560px; font-size: 22px; line-height: 1.45; color: #D6DAFF;">{{featured.summary}}</p>
+              <span style="flex-shrink: 0; width: 72px; height: 72px; border-radius: 50%; background: #F7F7F5; display: flex; align-items: center; justify-content: center;"><svg class="spin-ic" width="22" height="22" viewBox="0 0 14 14" fill="none" stroke="#1F2AD6" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg></span>
+            </div>
+          </a>
+
+          <h2 style="margin: 110px 0 0; padding-bottom: 22px; border-bottom: 1px solid #0F1330; font-size: 56px; font-weight: 500; letter-spacing: -0.05em;">Browse by section</h2>
+          <div style="margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+            <sc-for list="{{secCards}}" as="s" hint-placeholder-count="4">
+              <button class="sec" onClick="{{s.pick}}" style="text-align: left; border: 0; border-radius: 28px; background: #ECEEF8; color: #0F1330; padding: 28px; min-height: 320px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                  <span class="sshape" aria-hidden="true" style="width: 52px; height: 52px; border-radius: {{s.r}}; background: {{s.shapeBg}}; border: {{s.shapeBd}}; box-sizing: border-box; display: block;"></span>
+                  <span class="badge" style="font-size: 13px; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; color: {{s.badgeFg}};">{{s.badge}}</span>
+                </div>
+                <div>
+                  <h3 style="margin: 0; font-size: 40px; font-weight: 500; letter-spacing: -0.045em;">{{s.label}}</h3>
+                  <p class="soft" style="margin: 10px 0 0; font-size: 17px; line-height: 1.4; color: #5A5F7A;">{{s.desc}}</p>
+                  <span style="margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600;">Open {{s.label}}
+                    <svg class="spin-ic" width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
+                  </span>
+                </div>
+              </button>
+            </sc-for>
+          </div>
+
+          <h2 style="margin: 110px 0 0; padding-bottom: 22px; border-bottom: 1px solid #0F1330; font-size: 56px; font-weight: 500; letter-spacing: -0.05em; display: flex; justify-content: space-between; align-items: flex-end;">Latest<span style="font-size: 15px; font-weight: 400; letter-spacing: 0; color: #5A5F7A;">{{latestCount}}</span></h2>
+          <sc-for list="{{latest}}" as="r" hint-placeholder-count="3">
+            <a class="row" href="Note.dc.html" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding: 32px 0; border-bottom: 1px solid #DADCE8; color: #5A5F7A;">
+              <span style="grid-column: span 2; font-size: 15px;">{{r.date}}</span>
+              <span class="row-title" style="grid-column: span 6; font-size: 38px; font-weight: 500; letter-spacing: -0.04em; line-height: 1.05; color: #0F1330;">{{r.title}}</span>
+              <span style="grid-column: span 2; display: flex; gap: 6px; flex-wrap: wrap;"><span style="font-size: 13px; padding: 5px 11px; border-radius: 999px; background: #0F1330; color: #F7F7F5;">{{r.type}}</span><span style="font-size: 13px; padding: 5px 11px; border-radius: 999px; background: #ECEEF8; color: #1F2AD6;">{{r.topic}}</span></span>
+              <span style="grid-column: span 2; display: flex; justify-content: flex-end; align-items: center; gap: 16px; font-size: 15px;">{{r.read}}
+                <span class="row-go" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #DADCE8; display: flex; align-items: center; justify-content: center; color: #0F1330;"><svg class="spin-ic" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg></span>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- ESSAYS -->
+      <sc-if value="{{isEssays}}" hint-placeholder-val="{{ false }}">
+        <div class="swap" style="border-top: 1px solid #0F1330;">
+          <sc-for list="{{essays}}" as="r" hint-placeholder-count="3">
+            <a class="row" href="Note.dc.html" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding: 40px 0; border-bottom: 1px solid #DADCE8; color: #5A5F7A;">
+              <span style="grid-column: span 2; font-size: 15px;">{{r.date}}</span>
+              <span style="grid-column: span 6;">
+                <span class="row-title" style="display: block; font-size: 44px; font-weight: 500; letter-spacing: -0.045em; line-height: 1.02; color: #0F1330;">{{r.title}}</span>
+                <span style="display: block; margin-top: 10px; font-size: 17px; line-height: 1.45; max-width: 560px;">{{r.summary}}</span>
+              </span>
+              <span style="grid-column: span 2;"><span style="font-size: 13px; padding: 5px 11px; border-radius: 999px; background: #ECEEF8; color: #1F2AD6;">{{r.topic}}</span></span>
+              <span style="grid-column: span 2; display: flex; justify-content: flex-end; align-items: center; gap: 16px; font-size: 15px;">{{r.read}}
+                <span class="row-go" style="width: 44px; height: 44px; border-radius: 50%; border: 1px solid #DADCE8; display: flex; align-items: center; justify-content: center; color: #0F1330;"><svg class="spin-ic" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg></span>
+              </span>
+            </a>
+          </sc-for>
+          <sc-if value="{{essaysEmpty}}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; padding: 60px 0; text-align: center; font-size: 22px; color: #5A5F7A;">No essays on {{topic}} yet.</p>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- NOTES -->
+      <sc-if value="{{notesExamples}}" hint-placeholder-val="{{ false }}">
+        <div class="swap" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start;">
+          <sc-for list="{{noteCards}}" as="n" hint-placeholder-count="6">
+            <article class="ncard" style="border-radius: 24px; background: {{n.bg}}; color: {{n.fg}}; border: 1px solid {{n.line}}; padding: 28px; box-sizing: border-box; min-height: {{n.h}}; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+              <p style="margin: 0; font-size: 22px; line-height: 1.4; letter-spacing: -0.015em;">[Short note. One idea, a few sentences, readable right here without opening a page.]</p>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                <span style="padding: 5px 11px; border-radius: 999px; background: {{n.chipBg}}; color: {{n.chipFg}};">[Topic]</span>
+                <span style="opacity: .75;">[Date]</span>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- BOOKS -->
+      <sc-if value="{{booksExamples}}" hint-placeholder-val="{{ false }}">
+        <div class="swap" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+          <sc-for list="{{bookCards}}" as="b" hint-placeholder-count="2">
+            <a class="book" href="#" style="border-radius: 32px; background: #ECEEF8; padding: 40px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 36px; align-items: center; color: #0F1330;">
+              <div class="cover" style="aspect-ratio: 2 / 3; border-radius: 6px 14px 14px 6px; background: {{b.cover}}; color: #F7F7F5; padding: 22px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; box-shadow: 18px 24px 40px -24px rgba(15,19,48,.6);">
+                <span aria-hidden="true" style="position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: rgba(247,247,245,.25);"></span>
+                <span style="font-size: 12px; opacity: .8; padding-left: 8px;">Ajaypal Singh</span>
+                <span style="font-size: 30px; font-weight: 500; letter-spacing: -0.04em; line-height: 1; padding-left: 8px;">[Book title]</span>
+              </div>
+              <div>
+                <span style="font-size: 13px; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; color: #1F2AD6;">{{b.status}}</span>
+                <h3 style="margin: 18px 0 0; font-size: 44px; font-weight: 500; letter-spacing: -0.045em; line-height: 1;">[Book title]</h3>
+                <p style="margin: 12px 0 0; font-size: 18px; line-height: 1.45; color: #5A5F7A;">[Subtitle or one-line description of the book.]</p>
+                <dl style="margin: 22px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-size: 14px;">
+                  <div><dt style="color: #5A5F7A;">Year</dt><dd style="margin: 2px 0 0; font-size: 16px;">[Year]</dd></div>
+                  <div><dt style="color: #5A5F7A;">Chapters</dt><dd style="margin: 2px 0 0; font-size: 16px;">[Number]</dd></div>
+                </dl>
+                <span style="margin-top: 22px; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600;">View book
+                  <svg class="spin-ic" width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
+                </span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- IDEAS -->
+      <sc-if value="{{ideasExamples}}" hint-placeholder-val="{{ false }}">
+        <div class="swap">
+          <div style="display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 24px; font-size: 14px; color: #5A5F7A;">
+            <sc-for list="{{statuses}}" as="st" hint-placeholder-count="4">
+              <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{st.dot}}; border: {{st.bd}}; box-sizing: border-box;"></span>{{st.label}}: {{st.desc}}</span>
+            </sc-for>
+          </div>
+          <div style="border-top: 1px solid #0F1330;">
+            <sc-for list="{{ideaRows}}" as="i" hint-placeholder-count="4">
+              <article class="idea" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding: 30px 0; border-bottom: 1px solid #DADCE8;">
+                <span style="grid-column: span 2; display: flex; align-items: center; gap: 10px; font-size: 15px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: {{i.dot}}; border: {{i.bd}}; box-sizing: border-box;"></span>{{i.status}}</span>
+                <h3 class="idea-title" style="grid-column: span 4; margin: 0; font-size: 32px; font-weight: 500; letter-spacing: -0.035em;">[Idea name]</h3>
+                <p style="grid-column: span 4; margin: 0; font-size: 17px; line-height: 1.45; color: #5A5F7A;">[One line: the problem it solves or what you're curious about.]</p>
+                <span style="grid-column: span 2; text-align: right; font-size: 14px; color: #5A5F7A;">Added [Month Year]</span>
+              </article>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- COMING SOON -->
+      <sc-if value="{{showSoon}}" hint-placeholder-val="{{ false }}">
+        <div class="swap" style="position: relative; overflow: hidden; border-radius: 36px; border: 1.5px dashed #B8BCD6; padding: 64px; min-height: 480px; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center;">
+          <div style="grid-column: span 6;">
+            <span style="display: inline-flex; align-items: center; gap: 10px; font-size: 14px; padding: 8px 14px; border-radius: 999px; background: #ECEEF8; color: #1F2AD6;"><span class="live" style="width: 8px; height: 8px; border-radius: 50%; background: #1F2AD6;"></span>Coming soon</span>
+            <h3 style="margin: 24px 0 0; font-size: 72px; font-weight: 500; line-height: .98; letter-spacing: -0.055em;">{{soon.title}}</h3>
+            <p style="margin: 18px 0 0; max-width: 480px; font-size: 21px; line-height: 1.45; color: #5A5F7A;">{{soon.text}}</p>
+            <div style="margin-top: 32px; display: flex; gap: 10px;">
+              <button class="rl" onClick="{{goEssays}}" style="height: 52px; padding: 0 24px; border: 0; border-radius: 999px; background: #1F2AD6; color: #F7F7F5; font-size: 15px; font-weight: 600; cursor: pointer;"><span class="roll"><span>Read the essays</span><span>Read the essays</span></span></button>
+              <a class="rl" href="Contact.dc.html" style="height: 52px; padding: 0 24px; border-radius: 999px; border: 1px solid #DADCE8; display: flex; align-items: center; font-size: 15px; font-weight: 600;"><span class="roll"><span>Say hello</span><span>Say hello</span></span></a>
+            </div>
+          </div>
+          <div aria-hidden="true" style="grid-column: 8 / span 5; height: 340px; position: relative;">
+            <sc-if value="{{soonNotes}}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0;">
+                <div class="ncard" style="position: absolute; left: 20px; top: 40px; width: 250px; height: 170px; border-radius: 20px; background: #FFFFFF; border: 1px solid #DADCE8; transform: rotate(-6deg); padding: 20px; box-sizing: border-box;"><div style="height: 10px; width: 80%; border-radius: 5px; background: #DADCE8;"></div><div style="margin-top: 10px; height: 10px; width: 60%; border-radius: 5px; background: #DADCE8;"></div><div style="margin-top: 10px; height: 10px; width: 70%; border-radius: 5px; background: #DADCE8;"></div></div>
+                <div class="ncard" style="position: absolute; left: 150px; top: 110px; width: 250px; height: 170px; border-radius: 20px; background: #0F1330; transform: rotate(4deg); padding: 20px; box-sizing: border-box;"><div style="height: 10px; width: 70%; border-radius: 5px; background: #2A3060;"></div><div style="margin-top: 10px; height: 10px; width: 85%; border-radius: 5px; background: #2A3060;"></div><div style="margin-top: 10px; height: 10px; width: 50%; border-radius: 5px; background: #AEB5FF;"></div></div>
+                <div class="ncard" style="position: absolute; left: 60px; top: 190px; width: 230px; height: 130px; border-radius: 20px; background: #1F2AD6; transform: rotate(-2deg);"></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{soonBooks}}" hint-placeholder-val="{{ false }}">
+              <div class="shelf" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: flex-end; justify-content: center; gap: 18px; padding-bottom: 30px; border-bottom: 3px solid #0F1330;">
+                <div class="b b1" style="width: 130px; height: 200px; border-radius: 4px 10px 10px 4px; background: #AEB5FF; transform-origin: bottom center;"></div>
+                <div class="b b2" style="width: 150px; height: 260px; border-radius: 4px 10px 10px 4px; background: #1F2AD6; transform-origin: bottom center; display: flex; align-items: flex-end; padding: 16px; box-sizing: border-box;"><span style="font-size: 16px; color: #F7F7F5; line-height: 1.1;">Ajaypal Singh</span></div>
+                <div class="b b3" style="width: 120px; height: 180px; border-radius: 4px 10px 10px 4px; background: #0F1330; transform-origin: bottom center;"></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{soonIdeas}}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; justify-content: center;">
+                <svg class="orb" width="320" height="320" viewBox="0 0 320 320" fill="none" style="position: absolute;"><circle cx="160" cy="160" r="158" stroke="#DADCE8" stroke-dasharray="3 9"></circle><circle cx="160" cy="2" r="8" fill="#AEB5FF"></circle></svg>
+                <svg width="220" height="220" viewBox="0 0 220 220" fill="none" style="position: absolute;"><circle cx="110" cy="110" r="108" stroke="#DADCE8"></circle></svg>
+                <div class="spark" style="width: 120px; height: 120px; border-radius: 50%; background: #1F2AD6; display: flex; align-items: center; justify-content: center;">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F7F7F5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"></path></svg>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+    </div>
   </main>
 
   <dc-import name="Footer" hint-size="100%,780px"></dc-import>
 </div>
 </x-dc>
-<script data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+<script data-dc-script data-props='{"section":{"editor":"enum","options":["all","essays","notes","books","ideas"],"default":"all"},"showExamples":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":900}}'>
 class Component extends DCLogic {
-  state = { topic: 'All' };
+  state = { section: null, topic: 'All' };
+
   renderVals() {
-    const topics = ['All', 'Building Ojaven', 'AI', 'SaaS', 'Product', 'Entrepreneurship', 'Lessons'];
-    const notes = [
+    const s = this.state;
+    const section = s.section || this.props.section || 'all';
+    const examples = !!this.props.showExamples;
+    const t = s.topic;
+
+    const essaysAll = [
       { title: 'Why I Am Building Ojaven', topic: 'Building Ojaven', date: '1 September 2026', read: '5 min read', summary: 'Every product starts with a friction point that refuses to go away. Here is the problem behind Ojaven, and why I chose to build it.' },
-      { title: 'What Building Software Actually Teaches You', topic: 'Lessons', date: '15 August 2026', read: '6 min read' },
-      { title: 'Thinking About SaaS in 2026', topic: 'SaaS', date: '20 July 2026', read: '7 min read' }
+      { title: 'What Building Software Actually Teaches You', topic: 'Lessons', date: '15 August 2026', read: '6 min read', summary: '[Summary of this essay]' },
+      { title: 'Thinking About SaaS in 2026', topic: 'SaaS', date: '20 July 2026', read: '7 min read', summary: '[Summary of this essay]' }
     ];
-    const t = this.state.topic;
-    const chips = topics.map((label) => ({
+    const counts = { essays: essaysAll.length, notes: 0, books: 0, ideas: 0 };
+
+    const meta = {
+      essays: { label: 'Essays', desc: 'Long, finished pieces on building, products and business.', r: '50%', shapeBg: '#1F2AD6', shapeBd: '0' },
+      notes: { label: 'Notes', desc: 'Short thoughts, one idea at a time. Quick enough to read right here.', r: '4px', shapeBg: '#0F1330', shapeBd: '0' },
+      books: { label: 'Books', desc: 'Books I write, from first draft to finished.', r: '2px 6px 6px 2px', shapeBg: '#AEB5FF', shapeBd: '0' },
+      ideas: { label: 'Ideas', desc: "Things I'm exploring but haven't built yet. Some may turn into products.", r: '50%', shapeBg: 'transparent', shapeBd: '3px solid #1F2AD6' }
+    };
+    const order = ['all', 'essays', 'notes', 'books', 'ideas'];
+    const idx = Math.max(0, order.indexOf(section));
+
+    const tabs = order.map((key, i) => {
+      const on = i === idx;
+      const m = key === 'all' ? { label: 'All', r: '3px', shapeBg: on ? '#F7F7F5' : '#0F1330', shapeBd: '0' } : meta[key];
+      const n = key === 'all' ? counts.essays + counts.notes + counts.books + counts.ideas : counts[key];
+      return {
+        label: m.label,
+        r: m.r,
+        shapeBg: key === 'all' ? m.shapeBg : m.shapeBg,
+        shapeBd: key === 'ideas' && on ? '3px solid #AEB5FF' : m.shapeBd,
+        fg: on ? '#F7F7F5' : '#0F1330',
+        count: n > 0 ? String(n) : 'Soon',
+        cntBg: on ? 'rgba(247,247,245,.16)' : '#ECEEF8',
+        cntFg: on ? '#F7F7F5' : (n > 0 ? '#1F2AD6' : '#5A5F7A'),
+        selected: on ? 'true' : 'false',
+        pick: () => this.setState({ section: key, topic: 'All' })
+      };
+    });
+
+    const topicList = ['All', 'Building Ojaven', 'AI', 'SaaS', 'Product', 'Entrepreneurship', 'Lessons'];
+    const chips = topicList.map((label) => ({
       label,
       pressed: label === t ? 'true' : 'false',
       bg: label === t ? '#0F1330' : 'transparent',
@@ -110,17 +365,84 @@ class Component extends DCLogic {
       bd: label === t ? '#0F1330' : '#DADCE8',
       pick: () => this.setState({ topic: label })
     }));
-    const filtered = t === 'All' ? notes : notes.filter((n) => n.topic === t);
-    const rows = t === 'All' ? notes.slice(1) : filtered;
+
+    const essays = t === 'All' ? essaysAll : essaysAll.filter((e) => e.topic === t);
+    const latest = essaysAll.slice(1).map((e) => Object.assign({ type: 'Essay' }, e));
+
+    const hasContent = section === 'essays' ? true : (counts[section] || 0) > 0;
+    const empty = section !== 'all' && section !== 'essays' && !hasContent;
+    const showSoon = empty && !examples;
+
+    const soonCopy = {
+      notes: { title: 'Short notes are on the way.', text: 'Quick thoughts and lessons, one idea at a time. The first ones will land here soon.' },
+      books: { title: 'Books will live here.', text: 'When I publish a book, you will find it here, with what it is about and where to read it.' },
+      ideas: { title: 'An open list of ideas.', text: "Ideas I'm exploring, with where each one stands. The list opens soon." }
+    };
+
+    const secCards = ['essays', 'notes', 'books', 'ideas'].map((key) => ({
+      label: meta[key].label,
+      desc: meta[key].desc,
+      r: meta[key].r,
+      shapeBg: meta[key].shapeBg,
+      shapeBd: meta[key].shapeBd,
+      badge: counts[key] > 0 ? counts[key] + (counts[key] === 1 ? ' piece' : ' pieces') : 'Coming soon',
+      badgeFg: counts[key] > 0 ? '#1F2AD6' : '#5A5F7A',
+      pick: () => this.setState({ section: key, topic: 'All' })
+    }));
+
+    const noteStyles = [
+      { bg: '#FFFFFF', fg: '#0F1330', line: '#DADCE8', chipBg: '#ECEEF8', chipFg: '#1F2AD6', h: '240px' },
+      { bg: '#0F1330', fg: '#F7F7F5', line: '#0F1330', chipBg: 'rgba(247,247,245,.14)', chipFg: '#F7F7F5', h: '300px' },
+      { bg: '#ECEEF8', fg: '#0F1330', line: '#ECEEF8', chipBg: '#FFFFFF', chipFg: '#1F2AD6', h: '220px' },
+      { bg: '#1F2AD6', fg: '#F7F7F5', line: '#1F2AD6', chipBg: 'rgba(247,247,245,.16)', chipFg: '#F7F7F5', h: '260px' },
+      { bg: '#FFFFFF', fg: '#0F1330', line: '#DADCE8', chipBg: '#ECEEF8', chipFg: '#1F2AD6', h: '280px' },
+      { bg: '#ECEEF8', fg: '#0F1330', line: '#ECEEF8', chipBg: '#FFFFFF', chipFg: '#1F2AD6', h: '230px' }
+    ];
+
+    const statusDefs = [
+      { label: 'Thinking', desc: 'just an idea', dot: 'transparent', bd: '2px solid #1F2AD6' },
+      { label: 'Exploring', desc: 'researching it', dot: '#AEB5FF', bd: '0' },
+      { label: 'Testing', desc: 'trying it out', dot: '#1F2AD6', bd: '0' },
+      { label: 'Parked', desc: 'on hold for now', dot: '#B8BCD6', bd: '0' }
+    ];
+
+    const secTitles = { essays: 'Essays', notes: 'Notes', books: 'Books', ideas: 'Ideas' };
+    const secCountText = section === 'all' ? '' : (counts[section] > 0 ? (section === 'essays' ? essays.length : counts[section]) + ' ' + (section === 'essays' ? (essays.length === 1 ? 'essay' : 'essays') : 'entries') : 'Coming soon');
+
     return {
+      tabs,
+      pillX: 'calc(' + idx + ' * 100%)',
+      isAll: section === 'all',
+      notAll: section !== 'all',
+      isEssays: section === 'essays',
+      secTitle: secTitles[section] || '',
+      secDesc: section === 'all' ? '' : meta[section].desc,
+      secCount: secCountText,
+      showTopics: section === 'all' ? false : (section === 'essays' || (section === 'notes' && !showSoon)),
       chips,
       topic: t,
-      hasFeatured: t === 'All',
-      featured: notes[0],
-      rows,
-      isEmpty: filtered.length === 0,
-      listTitle: t === 'All' ? 'All notes' : t,
-      countLabel: filtered.length + (filtered.length === 1 ? ' note' : ' notes')
+      featured: essaysAll[0],
+      secCards,
+      latest,
+      latestCount: (latest.length + 1) + ' published',
+      essays,
+      essaysEmpty: essays.length === 0,
+      notesExamples: section === 'notes' && examples,
+      noteCards: noteStyles,
+      booksExamples: section === 'books' && examples,
+      bookCards: [
+        { cover: '#1F2AD6', status: '[Writing / Published]' },
+        { cover: '#0F1330', status: '[Writing / Published]' }
+      ],
+      ideasExamples: section === 'ideas' && examples,
+      statuses: statusDefs,
+      ideaRows: statusDefs.map((d) => ({ status: d.label, dot: d.dot, bd: d.bd })),
+      showSoon,
+      soon: soonCopy[section] || { title: '', text: '' },
+      soonNotes: section === 'notes',
+      soonBooks: section === 'books',
+      soonIdeas: section === 'ideas',
+      goEssays: () => this.setState({ section: 'essays', topic: 'All' })
     };
   }
 }

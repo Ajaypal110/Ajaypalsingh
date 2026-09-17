@@ -124,7 +124,7 @@ export function Hero() {
                     <div className="p-6 w-full h-full flex flex-col justify-between text-left relative">
                       <div className="flex items-center justify-between text-[11px] font-mono text-[#54586d]">
                         <span>ID // APS-01</span>
-                        <span>SOLANKI</span>
+                        <span>SINGH</span>
                       </div>
                       
                       <div className="my-auto space-y-2">

@@ -30,33 +30,40 @@ export function OjavenView() {
   const questions: Question[] = [
     {
       t: "Why I'm building it",
-      a: '[The moment or reason Ojaven started for you, in two or three sentences]',
+      a: "I co-run Vertexa Digitals, a marketing agency where we've used GoHighLevel for years. Running an agency on legacy tools meant hitting documented pain points daily: steep 4-week learning curves, brittle automations that misfire, compounding costs that easily balloon to $1,500+/mo, and keyword-based bots that fail real conversations. Vertexa is Ojaven's first customer — we are dogfooding every single feature we build.",
     },
     {
       t: 'The problem I see',
-      a: '[What modern agencies struggle with today, as you have seen it]',
+      a: "Most agency platforms today predate the modern AI era and are drowning under bloated, pre-2018 architecture. Agencies get trapped paying 6.75x markups on basic infrastructure, dealing with fragile third-party integrations, and managing disconnected tools. The market doesn't need another shallow AI demo wrapper; it needs a rock-solid operational system built with deep, hands-on agency expertise.",
     },
     {
       t: 'What I want it to become',
-      a: '[Where you want Ojaven to be a few years after launch]',
+      a: "Full GoHighLevel feature parity across all major modules — CRM, pipelines, proposals, invoicing, omnichannel inbox, funnels, calendars, marketing campaigns, and white-label sub-accounts — rebuilt cleaner and faster. On top of that foundation sits our native three-pillar AI suite: AI Builder (plain-language asset creation), AI Capture (intelligent lead qualification), and AI Migration (automated switching from GHL).",
     },
     {
       t: "What I'm learning",
-      a: '[One or two real lessons from building it so far]',
+      a: "Breadth first, then targeted depth. Having 23 modular areas work cohesively in an idempotent, clean architecture matters more than adding surface-level bloat. And automated tests only prove logic, not delivery — real click-testing and runtime validation against actual databases and providers is what catches critical flaws before they ever touch a user.",
     },
   ]
 
   const roadSteps: RoadStep[] = [
     {
-      when: '[Date]',
-      what: 'Started building',
+      when: '10 July 2026',
+      what: 'Started Building',
       bg: '#1F2AD6',
       align: 'text-left',
       justify: 'justify-start',
     },
     {
-      when: 'Now',
-      what: 'In development',
+      when: 'August 2026',
+      what: 'Core Architecture & Automations',
+      bg: '#1F2AD6',
+      align: 'text-left lg:text-center',
+      justify: 'justify-start lg:justify-center',
+    },
+    {
+      when: 'Now (Sep 2026)',
+      what: 'Client Portal & Parity Build',
       bg: '#F7F7F5',
       border: '9px solid #1F2AD6',
       align: 'text-left lg:text-center',
@@ -64,16 +71,8 @@ export function OjavenView() {
       isCurrent: true,
     },
     {
-      when: '[Date]',
-      what: '[Milestone]',
-      bg: '#F7F7F5',
-      border: '1.5px dashed #8A8FB0',
-      align: 'text-left lg:text-center',
-      justify: 'justify-start lg:justify-center',
-    },
-    {
-      when: '[Date]',
-      what: '[Milestone]',
+      when: 'Late 2026',
+      what: 'Unified Inbox & AI Suite',
       bg: '#F7F7F5',
       border: '1.5px dashed #8A8FB0',
       align: 'text-left lg:text-center',
@@ -81,7 +80,7 @@ export function OjavenView() {
     },
     {
       when: '10 July 2027',
-      what: 'Launch',
+      what: 'Public Launch',
       bg: '#0F1330',
       align: 'text-left lg:text-right',
       justify: 'justify-start lg:justify-end',
@@ -132,6 +131,10 @@ export function OjavenView() {
                   <span className="w-2 h-2 rounded-full bg-[#1F2AD6] live shadow-[0_0_0_0_rgba(31,42,214,0.5)]" />
                   In development
                 </dd>
+              </div>
+              <div className="flex justify-between items-center py-4">
+                <dt className="text-[#5A5F7A] text-[15px]">Started building</dt>
+                <dd className="font-medium text-[17px] text-[#0F1330]">10 July 2026</dd>
               </div>
               <div className="flex justify-between items-center py-4">
                 <dt className="text-[#5A5F7A] text-[15px]">Planned launch</dt>
@@ -368,7 +371,7 @@ export function OjavenView() {
           />
           <div
             aria-hidden="true"
-            className="hidden lg:block absolute top-[17px] left-[18px] w-[25%] h-[2px] bg-[#1F2AD6]"
+            className="hidden lg:block absolute top-[17px] left-[18px] w-[50%] h-[2px] bg-[#1F2AD6]"
           />
 
           <ol className="list-none m-0 p-0 relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-5">
@@ -396,7 +399,7 @@ export function OjavenView() {
       {/* SECTION 5: BUILD LOG */}
       <section
         aria-labelledby="log-title"
-        className="px-6 md:px-12 lg:px-16 pt-24 lg:pt-36 pb-24 lg:pb-36 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6"
+        className="px-6 md:px-12 lg:px-16 pt-24 lg:pt-36 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6"
       >
         <div className="lg:col-span-4">
           <h2
@@ -411,16 +414,49 @@ export function OjavenView() {
         </div>
 
         <div className="lg:col-start-6 lg:col-span-7 flex flex-col gap-3 sm:gap-4">
-          <div className="bg-[#0F1330] text-[#F7F7F5] rounded-[22px] p-6 sm:p-8 text-xl sm:text-2xl lg:text-[26px] tracking-[-0.02em] font-medium">
-            The build log starts here. First entry coming soon.
+          <Link
+            href="/writing/why-i-am-building-ojaven"
+            className="group block bg-[#0F1330] text-[#F7F7F5] rounded-[22px] p-6 sm:p-8 hover:bg-[#1F2AD6] transition-all duration-300 shadow-sm"
+          >
+            <div className="flex justify-between items-center text-xs sm:text-sm text-[#AEB5FF] mb-2 font-mono">
+              <span>1 September 2026</span>
+              <span>10 min read</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl lg:text-[26px] tracking-[-0.02em] font-medium text-[#F7F7F5] group-hover:translate-x-1 transition-transform">
+              Why I Am Building Ojaven →
+            </h3>
+            <p className="mt-2 text-sm sm:text-base text-[#D6DAFF] line-clamp-2">
+              Every product starts with a friction point that refuses to go away. Here is the problem behind Ojaven, and why I chose to build it.
+            </p>
+          </Link>
+        </div>
+      </section>
+
+      {/* SECTION 6: CLOSING LINKS */}
+      <section className="px-6 md:px-12 lg:px-16 pt-24 lg:pt-32 pb-24 lg:pb-36">
+        <div className="border-t border-[#DADCE8] pt-12 sm:pt-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+          <div>
+            <p className="text-2xl sm:text-3xl lg:text-[36px] font-medium tracking-[-0.03em] text-[#0F1330]">
+              Want to follow along?
+            </p>
+            <p className="mt-2 text-base sm:text-lg text-[#5A5F7A]">
+              I write about building Ojaven, the architecture, and the lessons as they happen.
+            </p>
           </div>
-          <div className="border border-dashed border-[#B8BCD6] rounded-[22px] p-5 sm:p-6 sm:px-8 flex gap-6 sm:gap-10 text-base sm:text-[18px] text-[#5A5F7A]">
-            <span className="w-24 sm:w-28 shrink-0">[Date]</span>
-            <span>[Entry title]</span>
-          </div>
-          <div className="border border-dashed border-[#B8BCD6] rounded-[22px] p-5 sm:p-6 sm:px-8 flex gap-6 sm:gap-10 text-base sm:text-[18px] text-[#5A5F7A]">
-            <span className="w-24 sm:w-28 shrink-0">[Date]</span>
-            <span>[Entry title]</span>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              href="/writing/articles"
+              className="inline-flex items-center justify-center h-12 px-6 rounded-full bg-[#0F1330] !text-[#F7F7F5] hover:bg-[#1F2AD6] text-[15px] font-medium transition-all"
+              style={{ color: '#F7F7F5' }}
+            >
+              Open my articles
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center h-12 px-6 rounded-full border border-[#DADCE8] text-[#0F1330] hover:border-[#0F1330] text-[15px] font-medium transition-all"
+            >
+              Get in touch
+            </Link>
           </div>
         </div>
       </section>

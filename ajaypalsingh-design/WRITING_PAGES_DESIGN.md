@@ -1,4 +1,4 @@
-# Writing pages: Design Spec (Notes index and Single note)
+# Writing pages: Design Spec (Writing hub, sections and single pages)
 
 This spec covers the notes list and the individual note page. It follows `DESIGN_HANDOFF.md` (tokens, header, footer, motion rules) and `SITE_CONTENT_AND_SEO.md` (titles, schema, internal links).
 
@@ -6,48 +6,173 @@ This spec covers the notes list and the individual note page. It follows `DESIGN
 
 ---
 
-## 1. Notes index (`/writing`)
+## 1. Writing hub (`/writing`) and its sections
 
-### 1.1 Hero
+Writing has **four sections**. Build logs are **not** part of Writing. They stay on the Ojaven page.
+
+| Section | What it is | Section page | Item URL | Item layout |
+|---|---|---|---|---|
+| **Essays** | Long, finished pieces (1,000+ words) | `/writing/essays` | `/writing/[slug]` (keep the existing URLs) | Full article page (section 2) |
+| **Notes** | Short thoughts, one idea each (100–400 words) | `/writing/notes` | `/writing/[slug]` | Readable in full on the card. The item page uses the same article layout, but shorter and without a cover. |
+| **Books** | Books Ajaypal writes | `/writing/books` | `/writing/books/[slug]` | Book page (section 1.8) |
+| **Ideas** | Ideas being explored but not built yet | `/writing/ideas` | none; each idea is an anchor, `/writing/ideas#[slug]` | A row in the list |
+
+**Reserved slugs:** `essays`, `notes`, `books` and `ideas` can't be used as post slugs.
+
+**Every section is always visible**, even with no content, and shows a designed "Coming soon" state until the first entry is published.
+
+**Content model**
+- Keep everything in `/content/writing/*.mdx`, with a `type` field in the frontmatter: `essay | note | book | idea`.
+- Posts that already exist get `type: essay`.
+
+### 1.1 Hero (all section pages)
 - Label: "Writing"
-- H1: "Notes" (260px, weight 500, letter-spacing -0.07em)
-- Intro on the right (28px): "My notebook on the internet. Thinking out loud about building, AI, software and business."
+- H1: "Writing" (250px, weight 500, letter-spacing -0.07em), rising from a mask on load
+- Intro on the right (26px): "Essays, notes, books and ideas. Where I think out loud about building, AI, software and business."
 
-**Topic filter buttons**
-- Topics: All · Building Ojaven · AI · SaaS · Product · Entrepreneurship · Lessons
-- Buttons are 44px tall pills.
-- The active one is solid navy `#0F1330` with white text. The others have a `#DADCE8` border.
-- Use `aria-pressed`.
-- Filtering happens on the page, and the selection is also kept in the URL as `?topic=ai`, so a filtered link can be shared.
+### 1.2 Section tabs (sticky)
+- **Position:** sticks just under the header (top 96px), on a blurred paper-coloured bar.
+- **Shape:** one white pill container with five equal tabs, 60px tall: **All · Essays · Notes · Books · Ideas**.
+- **Each tab shows:**
+  - a small shape icon:
+    - All: rounded square
+    - Essays: cobalt circle
+    - Notes: navy square
+    - Books: lavender book shape
+    - Ideas: cobalt ring
+  - the label
+  - a count pill, or "Soon" when the section is empty
+- **Active tab:** a navy pill slides under it (0.6s) and its text turns white. The icon rotates on hover.
+- **Tabs are real links** to `/writing`, `/writing/essays` and so on, styled as tabs, so every section has its own URL for SEO. Use `aria-current="page"` on the active one.
+- **Page change:** a short fade-and-rise transition (0.7s).
 
-### 1.2 Latest note (shown only when the filter is "All")
-- A cobalt card, 32px radius, at least 400px tall, with the rotating dashed orbit graphic.
-- **Top row:** a "Latest" pill, then topic · date · read time.
-- **Title:** 96px, max-width 900px.
-- **Bottom row:** summary (22px, lavender-white) on the left, and a round 72px white button with an arrow on the right.
-- **On hover:** the card scales to 0.99, the title slides 16px right and the arrow rotates 45°.
-- The whole card is one link to the note.
+### 1.3 "All" view (`/writing`)
+1. **Latest essay:** a large cobalt card with the "Latest essay" pill, the title at 96px, the summary and a round arrow button. It uses the same hover effects as before.
+2. **"Browse by section":** four cards (28px radius, `#ECEEF8`, at least 320px tall).
+   - **Top:** the section shape and a badge ("3 pieces" or "Coming soon").
+   - **Bottom:** the section name at 40px, a short description and "Open [Section]" with an arrow.
+   - **On hover:** the card turns cobalt, lifts 8px and the shape rotates.
+   - Each card links to its section page.
+3. **"Latest":** the newest items from every section except the featured one.
+   - Each row: date | title (38px) | a **type** chip (navy) plus a topic chip | read time | a round arrow button.
+   - The count on the right reads "[n] published".
 
-### 1.3 Notes list
-- **Heading:** "All notes", or the topic name when filtered. A note count sits on the right ("3 notes").
-- **Each row** is one `<a>` spanning 12 columns:
+No topic filter appears on "All".
 
-| Columns | Content |
+### 1.4 Section page header (Essays, Notes, Books, Ideas)
+- **Left:** the section name as an H2 (96px) and its description (22px, slate).
+- **Right:** the count ("3 essays", "[n] entries" or "Coming soon").
+
+**Descriptions**
+
+| Section | Description |
 |---|---|
-| 2 | Date |
-| 6 | Title, 40px |
-| 2 | Topic chip |
-| 2 | Read time and a 44px round arrow button |
+| Essays | Long, finished pieces on building, products and business. |
+| Notes | Short thoughts, one idea at a time. Quick enough to read right here. |
+| Books | Books I write, from first draft to finished. |
+| Ideas | Things I'm exploring but haven't built yet. Some may turn into products. |
 
-- **On hover:**
-  - the title turns cobalt
-  - the round button fills cobalt and the arrow rotates 45°
-- **Which rows show:**
-  - When "All" is selected, list every note except the latest (it's already in the card).
-  - When a topic is selected, list every note in that topic.
-- **Empty topic:** "No notes on [topic] yet." and "They're coming. Meanwhile, browse all notes."
+### 1.5 Essays (`/writing/essays`)
+- **Topic filters:** All · Building Ojaven · AI · SaaS · Product · Entrepreneurship · Lessons.
+  - These keep `?topic=` in the URL.
+- **List:** a line on top, then rows:
+  - date | title (44px) plus a summary under it (17px) | topic chip | read time | a round arrow button
+  - On hover, the title turns cobalt and slides 12px, and the button fills.
+- **Nothing matches a topic:** "No essays on [topic] yet."
 
----
+### 1.6 Notes (`/writing/notes`)
+- **Layout:** a three-column staggered grid of note cards (24px radius), with the topic filters above it.
+- **Card colours rotate:** white with a border → navy → light lavender-grey → cobalt → white → light.
+- **Card contents:** the full short text (22px), then a topic chip and date at the bottom.
+- **On hover:** the card lifts 6px, tilts -0.5° and gains a soft shadow.
+- **Links:** if a note has more than about 60 words, the card shows a "Read" link to `/writing/[slug]`.
+
+### 1.7 Ideas (`/writing/ideas`)
+
+**Status legend** above the list, as coloured dots:
+
+| Status | Meaning | Dot |
+|---|---|---|
+| Thinking | just an idea | cobalt ring |
+| Exploring | researching it | lavender |
+| Testing | trying it out | cobalt |
+| Parked | on hold for now | grey |
+
+**List rows:** status (dot and label) | idea name (32px) | one-line description | "Added [Month Year]". On hover the name turns cobalt.
+
+**Idea frontmatter:** `type: idea`, `title`, `summary`, `status`, `added`.
+
+### 1.8 Books (`/writing/books`) and a single book (`/writing/books/[slug]`)
+**List:** two-column cards (32px radius, `#ECEEF8`).
+- **Left:** a 2:3 book cover (220px wide).
+  - Left edge rounded 6px, right edge 14px, with a thin spine line.
+  - Shows "Ajaypal Singh" and the title.
+  - Tilted in 3D (`rotateY(-14deg)`); it straightens and lifts on hover.
+- **Right:**
+  - status chip ("Writing" or "Published")
+  - title (44px) and subtitle
+  - year and number of chapters
+  - "View book" with an arrow
+
+**Single book page** (same page frame as a note):
+- a large cover
+- the title and subtitle
+- status and year
+- "What it's about"
+- chapter list
+- where to get it (buttons to real stores, only when they exist)
+- an author box
+- **Schema:** `Book` with `author` → `#person`. Add `isbn`, `datePublished` and `bookFormat` only when real.
+
+**Book frontmatter:** `type: book`, `title`, `subtitle`, `status`, `year`, `cover`, `chapters`, `links[]`.
+
+### 1.9 "Coming soon" state (Notes, Books and Ideas while empty)
+- **Container:** a large panel with a dashed border (36px radius, at least 480px tall), in two columns.
+- **Left:**
+  - a "Coming soon" pill with a live dot
+  - a title (72px) and text
+  - two buttons: **Read the essays** (cobalt, links to Essays) and **Say hello** (outlined, links to `/contact`)
+- **Right:** a graphic for each section.
+  - **Notes:** three stacked note cards.
+  - **Books:** three books on a shelf that fan out on hover.
+  - **Ideas:** a lightbulb in a cobalt circle that pulses gently, inside slowly rotating orbit rings.
+
+**Text for each section**
+
+| Section | Title | Text |
+|---|---|---|
+| Notes | Short notes are on the way. | Quick thoughts and lessons, one idea at a time. The first ones will land here soon. |
+| Books | Books will live here. | When I publish a book, you will find it here, with what it is about and where to read it. |
+| Ideas | An open list of ideas. | Ideas I'm exploring, with where each one stands. The list opens soon. |
+
+**Show it automatically:** when a section has zero published entries, show this state. When the first entry is published, it switches to the normal layout with no code change.
+
+### 1.10 SEO for the writing pages
+
+| Page | Title | Description |
+|---|---|---|
+| `/writing` | Writing \| Ajaypal Singh | Essays, notes, books and ideas by Ajaypal Singh on building Ojaven, AI, SaaS, products and entrepreneurship. |
+| `/writing/essays` | Essays \| Ajaypal Singh | Long-form essays by Ajaypal Singh on building products, SaaS, AI and growing a business. |
+| `/writing/notes` | Notes \| Ajaypal Singh | Short notes by Ajaypal Singh: quick thoughts and lessons on building, products and business. |
+| `/writing/books` | Books \| Ajaypal Singh | Books written by Ajaypal Singh. |
+| `/writing/ideas` | Ideas \| Ajaypal Singh | Ideas Ajaypal Singh is exploring, from early thinking to testing. |
+
+**Search engine rules for the section pages**
+- **While a section is empty** ("Coming soon"): show it, but add `<meta name="robots" content="noindex, follow">` and leave it out of the sitemap. Thin empty pages can hurt the site.
+- **Once it has entries:** switch it to `index` and add it to the sitemap automatically.
+
+**Schema**
+- `/writing`: `CollectionPage` + `BreadcrumbList`
+- Each section page: `CollectionPage`, with `ItemList` pointing to its items
+- Essays and notes: `BlogPosting`
+- Books: `Book`
+- Ideas: no item schema
+
+**Breadcrumbs:** Home / Writing / [Section] / [Item]
+
+**Internal links**
+- Each item links back to its section page.
+- The homepage "Writing" card lists the 3 latest items with their type and links to `/writing`.
 
 ## 2. Single note (`/writing/[slug]`)
 
@@ -59,7 +184,7 @@ This spec covers the notes list and the individual note page. It follows `DESIGN
 Layout: 12-column grid, 150px top padding.
 
 **Breadcrumb row**
-- Left: `Home / Notes / [Note title]`, using an `<ol>` and `aria-current="page"` on the last item.
+- Left: `Home / Writing / [Section] / [Title]`, using an `<ol>` and `aria-current="page"` on the last item.
 - Right: "All notes" with a back arrow. On hover the arrow moves 6px left.
 
 **Main row** (72px below)

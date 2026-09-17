@@ -4,7 +4,7 @@
 
 ## Identity
 
-- Full Name: Ajaypal Singh Solanki
+- Full Name: Ajaypal Singh
 - Known As: Ajaypal Singh, Ajaypalsingh, Ajaypal
 - Role: Founder, Builder, Entrepreneur
 - Location: India
@@ -12,7 +12,7 @@
 
 ## About
 
-Ajaypal Singh (also known as Ajaypal Singh Solanki, Ajaypalsingh) is an independent founder, builder, and entrepreneur based in India. He is currently focused on architecting and building Ojaven, a dedicated operational platform for digital agencies with a planned launch date of 10 July 2027.
+Ajaypal Singh (also known as Ajaypalsingh) is an independent founder, builder, and entrepreneur based in India. He is currently focused on architecting and building Ojaven, a dedicated operational platform for digital agencies with a planned launch date of 10 July 2027.
 
 His approach to building software centers on simplicity, durability, clean systems, and deliberate problem-solving.
 
@@ -48,4 +48,4 @@ Ajaypal Singh writes about:
 
 ## Keywords
 
-Ajaypal Singh, Ajaypal Singh Solanki, Ajaypalsingh, Ajaypal, Ojaven founder, Indian entrepreneur, SaaS founder India, software builder, founder personal website, ajaypalsingh.in
+Ajaypal Singh, Ajaypalsingh, Ajaypal, Ojaven founder, Indian entrepreneur, SaaS founder India, software builder, founder personal website, ajaypalsingh.in

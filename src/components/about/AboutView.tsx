@@ -58,7 +58,7 @@ export function AboutView() {
         <div className="mt-4 lg:mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-8">
             <h1 className="m-0 text-5xl sm:text-7xl md:text-8xl lg:text-[140px] xl:text-[180px] font-medium leading-[0.9] tracking-[-0.065em]">
-              Hi, I&apos;m Ajaypal.
+              Hi<span className="inline-block pl-[0.14em]">,</span> I&apos;m Ajaypal.
             </h1>
           </div>
 
@@ -275,10 +275,10 @@ export function AboutView() {
             <span>→</span>
           </Link>
           <Link
-            href="/writing"
+            href="/writing/articles"
             className="inline-flex items-center gap-2.5 text-base sm:text-lg font-semibold text-[#0F1330] hover:text-[#1F2AD6] transition-colors"
           >
-            <span>Read my notes</span>
+            <span>Read my articles</span>
             <span>→</span>
           </Link>
           <Link
