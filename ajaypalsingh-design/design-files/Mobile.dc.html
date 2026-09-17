@@ -47,7 +47,7 @@
 
       <p style="position: absolute; top: 330px; left: 20px; margin: 0; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #D6DAFF; z-index: 3;"><span class="live" style="width: 7px; height: 7px; border-radius: 50%; background: #AEB5FF;"></span>Founder • Builder • Entrepreneur</p>
       <h1 style="position: absolute; top: 360px; left: 14px; margin: 0; font-size: 102px; font-weight: 500; line-height: .88; letter-spacing: -0.065em; z-index: 3;">Ajaypal<br><span style="padding-left: 60px;">Singh</span></h1>
-      <p style="position: absolute; top: 590px; left: 20px; width: 230px; margin: 0; font-size: 18px; line-height: 1.3;">A CSE student who learns by building, and cares how ideas turn into real things.</p>
+      <p style="position: absolute; top: 590px; left: 20px; width: 230px; margin: 0; font-size: 18px; line-height: 1.3;">I build products and the companies behind them.</p>
 
       <div aria-hidden="true" style="position: absolute; top: 600px; right: 20px; width: 110px; height: 110px;">
         <svg class="seal" width="110" height="110" viewBox="0 0 170 170">
@@ -60,7 +60,7 @@
 
     <section style="padding: 72px 20px 60px;">
       <p style="margin: 0; font-size: 13px; color: #5A5F7A;">Hello</p>
-      <h2 style="margin: 12px 0 0; font-size: 40px; font-weight: 500; line-height: 1.02; letter-spacing: -0.05em;">I learn by building. I care about how products work, how businesses work, and how an idea becomes something that actually exists.</h2>
+      <h2 style="margin: 12px 0 0; font-size: 40px; font-weight: 500; line-height: 1.02; letter-spacing: -0.05em;">I build things. Products, companies, and the ideas behind them. I care about how an idea becomes something real.</h2>
       <a href="About.dc.html" style="margin-top: 24px; display: inline-flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600;">Read my story
         <span style="width: 36px; height: 36px; border-radius: 50%; background: #1F2AD6; display: flex; align-items: center; justify-content: center;"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="#F7F7F5" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg></span>
       </a>
@@ -129,7 +129,7 @@
 
   <footer style="color: #F7F7F5; padding: 56px 20px 24px;">
     <h2 style="margin: 0; font-size: 50px; font-weight: 500; line-height: .96; letter-spacing: -0.055em;">Got an idea worth building? Let's talk.</h2>
-    <a href="mailto:[your@email.com]" style="margin-top: 26px; height: 56px; border-radius: 999px; background: #1F2AD6; color: #F7F7F5; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 600;">Write to me
+    <a href="Contact.dc.html" style="margin-top: 26px; height: 56px; border-radius: 999px; background: #1F2AD6; color: #F7F7F5; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 600;">Write to me
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
     </a>
     <p style="margin: 16px 0 0; text-align: center; font-size: 14px; color: #B8BCD6;">[your@email.com]</p>
@@ -140,6 +140,7 @@
         <a href="About.dc.html" style="color: #D6DAFF;">About</a>
         <a href="Ojaven.dc.html" style="color: #D6DAFF;">Ojaven</a>
         <a href="Writing.dc.html" style="color: #D6DAFF;">Writing</a>
+        <a href="Contact.dc.html" style="color: #D6DAFF;">Contact</a>
       </nav>
       <nav aria-label="Elsewhere" style="display: flex; flex-direction: column; gap: 10px;">
         <span style="font-size: 12px; color: #8A8FB0;">Elsewhere</span>
@@ -164,11 +165,11 @@ class Component extends DCLogic {
   state = { open: 0 };
   renderVals() {
     const data = [
-      ['Building', "Taking an idea from a note to something that works. It's how I learn best."],
+      ['Building products', 'Taking an idea from a rough note to something that works.'],
       ['Experimenting', 'Trying ideas quickly to see which ones deserve more time.'],
-      ['Studying AI', 'My degree has an AI focus. I want to build real things with it.'],
+      ['Working with AI', 'Putting AI inside real products, not just demos.'],
       ['Thinking about products', 'How people actually use software, and what makes it feel right.'],
-      ['Exploring business', 'How a technical idea becomes a real business.']
+      ['Growing a business', 'How an idea turns into a real company.']
     ];
     const rows = data.map((d, i) => ({
       title: d[0], text: d[1],
@@ -177,19 +178,19 @@ class Component extends DCLogic {
       toggle: () => this.setState({ open: this.state.open === i ? -1 : i })
     }));
     const j = [
-      ['Learning', 'Learning technology by doing it.'],
+      ['Curiosity', 'Wanting to know how things work.'],
       ['Building', 'When something has to work, it sticks.'],
       ['Experimenting', 'Trying ideas to see what they become.'],
       ['Products', 'How products work and get used.'],
       ['Business', 'How an idea becomes a business.'],
       ['Founder', 'Starting my first venture.'],
-      ['Next', "Not written yet."]
+      ['Next', 'More products, more ventures.']
     ];
     return {
       rows,
       journey: j.map((x, i) => ({ n: String(i + 1).padStart(2, '0'), t: x[0], text: x[1] })),
       now: [
-        { k: 'Studying', v: 'B.Tech CSE, AI focus, second year' },
+        { k: 'Focus', v: 'Building a company from zero' },
         { k: 'Building', v: 'My first venture, Ojaven' },
         { k: 'Exploring', v: 'AI, SaaS and product building' },
         { k: 'Learning', v: "[What you're learning this month]" }

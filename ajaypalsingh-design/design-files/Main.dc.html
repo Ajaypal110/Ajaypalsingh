@@ -138,7 +138,7 @@
             </div>
           </div>
 
-          <p class="fade" style="--d: 1250ms; position: absolute; top: 650px; left: 64px; width: 470px; margin: 0; font-size: 26px; line-height: 1.3; letter-spacing: -0.015em;">I'm a CSE student who learns by building. I care about how products work, how businesses work, and how ideas turn into real things.</p>
+          <p class="fade" style="--d: 1250ms; position: absolute; top: 650px; left: 64px; width: 470px; margin: 0; font-size: 26px; line-height: 1.3; letter-spacing: -0.015em;">I build products and the companies behind them. I care about how products work, how businesses grow, and how ideas become something real.</p>
 
           <div class="fade" aria-hidden="true" style="--d: 1400ms; position: absolute; top: 600px; left: 690px; width: 170px; height: 170px; z-index: 4;">
             <div class="seal-scroll" style="width: 170px; height: 170px;">
@@ -152,9 +152,9 @@
           </div>
 
           <div class="fade" style="--d: 1500ms; position: absolute; left: 64px; right: 64px; bottom: 36px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; border-top: 1px solid rgba(214,218,255,.3); padding-top: 18px; font-size: 14px;">
-            <div><div style="color: #AEB5FF;">Studying</div><div style="margin-top: 4px; font-size: 17px;">B.Tech CSE, AI focus</div></div>
-            <div><div style="color: #AEB5FF;">Into</div><div style="margin-top: 4px; font-size: 17px;">Products, AI, SaaS, business</div></div>
-            <div><div style="color: #AEB5FF;">Doing</div><div style="margin-top: 4px; font-size: 17px;">Building, and learning from it</div></div>
+            <div><div style="color: #AEB5FF;">Role</div><div style="margin-top: 4px; font-size: 17px;">Founder and builder</div></div>
+            <div><div style="color: #AEB5FF;">Focus</div><div style="margin-top: 4px; font-size: 17px;">Products, AI, SaaS, business</div></div>
+            <div><div style="color: #AEB5FF;">Approach</div><div style="margin-top: 4px; font-size: 17px;">Build, test, learn, repeat</div></div>
             <div style="display: flex; justify-content: flex-end; align-items: center; gap: 12px;">
               <span>Scroll</span>
               <span style="position: relative; width: 1px; height: 40px; background: rgba(214,218,255,.3); overflow: hidden; display: block;"><span class="cue" style="position: absolute; top: 0; left: 0; width: 1px; height: 40px; background: #F7F7F5; display: block;"></span></span>
@@ -378,11 +378,11 @@ class Component extends DCLogic {
     const pad = (n) => String(n).padStart(2, '0');
 
     const rowData = [
-      { title: 'Building', text: "Taking an idea from a note to something that works. It's how I learn best.", tags: ['Products', 'Software'], shape: '50%', shapeBg: '#1F2AD6', shapeBd: '0' },
+      { title: 'Building products', text: 'Taking an idea from a rough note to something that works, then making it better.', tags: ['Products', 'Software'], shape: '50%', shapeBg: '#1F2AD6', shapeBd: '0' },
       { title: 'Experimenting', text: 'Trying ideas quickly to see which ones deserve more of my time.', tags: ['Ideas', 'Prototypes'], shape: '6px', shapeBg: '#0F1330', shapeBd: '0' },
-      { title: 'Studying AI', text: 'My degree has an AI focus. I want to understand it well enough to build real things with it.', tags: ['B.Tech CSE', 'AI'], shape: '50%', shapeBg: 'transparent', shapeBd: '7px solid #1F2AD6' },
+      { title: 'Working with AI', text: 'Understanding AI well enough to put it inside real products, not just demos.', tags: ['AI', 'Products'], shape: '50%', shapeBg: 'transparent', shapeBd: '7px solid #1F2AD6' },
       { title: 'Thinking about products', text: 'How people actually use software, and what makes some of it feel right.', tags: ['Product', 'SaaS'], shape: '17px 17px 0 0', shapeBg: '#AEB5FF', shapeBd: '0' },
-      { title: 'Exploring business', text: 'How a technical idea becomes a real business, and what it takes to run one.', tags: ['Entrepreneurship', 'Business'], shape: '0 17px', shapeBg: '#1F2AD6', shapeBd: '0' }
+      { title: 'Growing a business', text: 'How a technical idea turns into a real company, and what it takes to run and grow one.', tags: ['Entrepreneurship', 'Business'], shape: '0 17px', shapeBg: '#1F2AD6', shapeBd: '0' }
     ];
     const rows = rowData.map((r, i) => Object.assign({}, r, {
       cls: s.open === i ? 'acc open' : 'acc',
@@ -391,13 +391,13 @@ class Component extends DCLogic {
     }));
 
     const journey = [
-      { t: 'Learning', text: 'It started with learning technology by actually doing it, not just reading about it.' },
+      { t: 'Curiosity', text: 'It started with technology, and wanting to know how things actually work.' },
       { t: 'Building', text: 'I found out I enjoy learning by building. When something has to work, it sticks.' },
       { t: 'Experimenting', text: 'I started trying ideas just to see what they could turn into.' },
       { t: 'Products', text: 'Then I got curious about products themselves. How they work, and how people really use them.' },
-      { t: 'Business', text: 'That led to a bigger question. How does a technical idea become a real business?' },
-      { t: 'Founder', text: 'That question pulled me into entrepreneurship, and into starting my first venture.' },
-      { t: 'Next', text: "More to build and more to learn. This part isn't written yet." }
+      { t: 'Business', text: 'Then a bigger question. How does a technical idea become a real business?' },
+      { t: 'Founder', text: 'That question turned into entrepreneurship, and into building my first venture.' },
+      { t: 'Next', text: 'More products, more ventures. This part is still being written.' }
     ];
     const jsteps = journey.map((j, i) => ({
       n: pad(i + 1),
@@ -423,14 +423,14 @@ class Component extends DCLogic {
         this.tilt.style.transform = 'rotateY(' + (x * 10).toFixed(2) + 'deg) rotateX(' + (y * -8).toFixed(2) + 'deg)';
       },
       heroLeave: () => { if (this.tilt) this.tilt.style.transform = 'none'; },
-      lines: ['I learn by building.', 'I care about how products work,', 'how businesses work, and how', 'an idea becomes something', 'that actually exists.'],
+      lines: ['I build things.', 'Products, companies, and', 'the ideas behind them.', 'I care about how an idea', 'becomes something real.'],
       rows,
       jsteps,
       jwords,
       stepLabel: pad(s.step + 1) + ' / ' + pad(journey.length),
       stepFrac: ((s.step + 1) / journey.length).toFixed(3),
       now: [
-        { k: 'Studying', v: 'B.Tech CSE with an AI focus, second year' },
+        { k: 'Focus', v: 'Building a company from zero' },
         { k: 'Building', v: 'My first venture, Ojaven' },
         { k: 'Exploring', v: 'AI, SaaS and product building' },
         { k: 'Thinking about', v: 'Entrepreneurship and how businesses work' },

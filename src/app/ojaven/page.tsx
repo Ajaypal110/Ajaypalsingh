@@ -3,18 +3,11 @@ import { generatePageMetadata, generateOjavenPageJsonLd } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Ojaven — A Platform for Modern Agencies',
+  title: 'Ojaven | Founder Notes by Ajaypal Singh',
   description:
-    'Founded by Ajaypal Singh (Ajaypal Singh Solanki), Ojaven is a dedicated operational platform designed to simplify workflows, client collaboration, and project delivery for modern digital agencies. Planned launch: 10 July 2027.',
+    'Ajaypal Singh on building Ojaven, a platform for modern agencies: why it exists, where it is now and the road to its July 2027 launch.',
   path: '/ojaven',
-  keywords: [
-    'Ojaven platform',
-    'Ojaven SaaS',
-    'Ajaypal Singh Ojaven',
-    'digital agency platform',
-    'agency operations tool',
-    'Ojaven founder Ajaypal',
-  ],
+  image: '/og/ojaven.png',
 })
 
 export default function OjavenPage() {

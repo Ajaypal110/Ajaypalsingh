@@ -3,13 +3,13 @@ import Script from 'next/script'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { generateRootJsonLd, generatePageMetadata } from '@/lib/seo'
+import { generatePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = {
   ...generatePageMetadata({
-    title: 'Ajaypal Singh: Founder, Builder, Entrepreneur',
+    title: 'Ajaypal Singh | Founder and Builder',
     description:
-      'Personal digital home of Ajaypal Singh (Ajaypal Singh Solanki) — founder, builder, and entrepreneur based in India. Currently building Ojaven.',
+      'Ajaypal Singh is a founder and builder creating products and companies. Currently building Ojaven, a platform for modern agencies.',
   }),
   verification: {
     google: 'r7A5EdJr_F1NpBLQZ5Jsu0J8Vo7txV3Hokdu8FER8Yk',
@@ -21,7 +21,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const jsonLd = generateRootJsonLd()
 
   return (
     <html lang="en" className="scroll-smooth">
@@ -34,17 +33,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
-        {/* JSON-LD structured data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-
         {/* Theme & PWA */}
         <meta name="theme-color" content="#1F2AD6" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/site.webmanifest" />
         <link rel="author" href="/humans.txt" />
-        <link rel="canonical" href="https://ajaypalsingh.in" />
+        <link rel="canonical" href="https://ajaypalsingh.in/" />
 
         {/* Google Analytics 4 */}
         <Script
@@ -62,7 +55,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-[#0F1330] text-[#0F1330] font-['Bricolage_Grotesque',sans-serif] selection:bg-[#1F2AD6] selection:text-[#F7F7F5] overflow-x-hidden">
         <Header />
-        <main className="relative z-[2] bg-[#F7F7F5] mb-0 lg:mb-[840px] rounded-b-[32px] sm:rounded-b-[48px] overflow-clip shadow-[0_40px_100px_rgba(15,19,48,0.5)]">
+        <main className="relative z-[2] bg-[#F7F7F5] mb-0 lg:mb-[100vh] rounded-b-[32px] sm:rounded-b-[48px] overflow-clip shadow-[0_40px_100px_rgba(15,19,48,0.5)]">
           {children}
         </main>
         <Footer />

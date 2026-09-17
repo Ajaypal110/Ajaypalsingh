@@ -161,20 +161,20 @@ export function Header({ active, onDark = false }: HeaderProps) {
     <div className="hd fixed top-0 left-0 right-0 z-[80] pointer-events-none font-['Bricolage_Grotesque',sans-serif]">
       {/* Main Header Bar */}
       <div
-        className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] grid grid-cols-3 items-center box-border ${
+        className={`mx-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex justify-between items-center md:grid md:grid-cols-3 box-border ${
           scrolled
-            ? 'max-w-[1120px] mt-3 py-2 px-2 pl-4 rounded-full bg-[rgba(247,247,245,.82)] border border-[rgba(15,19,48,.08)] backdrop-blur-[18px] shadow-[0_10px_40px_-18px_rgba(15,19,48,.35)]'
-            : 'max-w-[1440px] mt-0 py-[22px] px-9 rounded-none bg-transparent border-transparent'
+            ? 'max-w-[1120px] mt-2.5 sm:mt-3 py-2 px-3 sm:px-2 sm:pl-4 rounded-full bg-[rgba(247,247,245,.82)] border border-[rgba(15,19,48,.08)] backdrop-blur-[18px] shadow-[0_10px_40px_-18px_rgba(15,19,48,.35)] w-[calc(100%-24px)] sm:w-auto'
+            : 'max-w-[1440px] mt-0 py-4 sm:py-[22px] px-4 sm:px-6 md:px-9 rounded-none bg-transparent border-transparent'
         }`}
       >
         {/* Left: Brand Monogram & Name */}
         <Link
           href="/"
           aria-label="Ajaypal Singh, home"
-          className="justify-self-start flex items-center gap-3 pointer-events-auto transition-colors duration-300 group"
+          className="justify-self-start flex items-center gap-2.5 sm:gap-3 pointer-events-auto transition-colors duration-300 group"
           style={{ color: fg }}
         >
-          <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true" className="shrink-0">
+          <svg width="36" height="36" viewBox="0 0 42 42" aria-hidden="true" className="shrink-0 sm:w-[42px] sm:h-[42px]">
             <circle cx="21" cy="21" r="21" fill={markBg} className="transition-colors duration-300" />
             <path
               d="M12 28 L19 13 L26 28"
@@ -196,7 +196,7 @@ export function Header({ active, onDark = false }: HeaderProps) {
             <circle cx="31" cy="26.5" r="2.4" fill="#AEB5FF" />
           </svg>
           <span className="flex flex-col leading-[1.15]">
-            <span className="text-base font-semibold tracking-[-0.02em]">Ajaypal Singh</span>
+            <span className="text-sm sm:text-base font-semibold tracking-[-0.02em]">Ajaypal Singh</span>
             <span
               className={`hd-sub text-[13px] transition-all duration-500 overflow-hidden ${
                 scrolled ? 'max-h-0 opacity-0' : 'max-h-[20px] opacity-100'
@@ -286,7 +286,7 @@ export function Header({ active, onDark = false }: HeaderProps) {
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
             aria-expanded={menuOpen}
-            className="w-12 h-12 rounded-full border border-[rgba(15,19,48,.08)] bg-[#0F1330] text-[#F7F7F5] flex items-center justify-center cursor-pointer hover:bg-[#1F2AD6] transition-colors duration-300 shadow-sm"
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-[rgba(15,19,48,.08)] bg-[#0F1330] text-[#F7F7F5] flex items-center justify-center cursor-pointer hover:bg-[#1F2AD6] transition-colors duration-300 shadow-sm"
           >
             <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
               <circle cx="5" cy="9" r="1.8" fill="currentColor" />

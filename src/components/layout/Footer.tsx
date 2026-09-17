@@ -39,7 +39,7 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="ft lg:fixed left-0 right-0 bottom-0 lg:h-[840px] z-[1] bg-[#0F1330] text-[#F7F7F5] overflow-hidden font-['Bricolage_Grotesque',sans-serif]"
+      className="ft lg:fixed left-0 right-0 bottom-0 lg:h-screen z-[1] bg-[#0F1330] text-[#F7F7F5] overflow-hidden font-['Bricolage_Grotesque',sans-serif]"
     >
       <div className="max-w-[1440px] h-full mx-auto pt-16 sm:pt-20 lg:pt-20 px-6 sm:px-12 lg:px-16 pb-8 sm:pb-10 lg:pb-12 flex flex-col justify-between box-border">
         {/* Top: Headline & Magnetic Round CTA */}
@@ -192,7 +192,7 @@ export function Footer() {
                 letterSpacing: '-4px',
               }}
             >
-              {'Ajaypal Singh'.split('').map((char, i) => (
+              {'AJAYPAL SINGH'.split('').map((char, i) => (
                 <tspan key={i} className="ft-letter cursor-default">
                   {char}
                 </tspan>

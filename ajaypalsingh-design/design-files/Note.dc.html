@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #0F1330; color: #0F1330; font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: #0F1330; text-decoration: none; }
+    button { font: inherit; }
+    :focus-visible { outline: 2px solid #1F2AD6; outline-offset: 3px; }
+
+    .mask { display: block; overflow: hidden; padding-bottom: .06em; }
+    .rise { display: block; animation: rise 1.2s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d); }
+    @keyframes rise { from { transform: translateY(105%); } to { transform: none; } }
+    .fade { animation: fade 1s cubic-bezier(.16,1,.3,1) both; animation-delay: var(--d); }
+    @keyframes fade { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .cover { animation: cover 1.4s cubic-bezier(.76,0,.24,1) .45s both; }
+    @keyframes cover { from { clip-path: inset(0 0 100% 0 round 32px); } to { clip-path: inset(0 0 0 0 round 32px); } }
+
+    .back { transition: color .3s; }
+    .back .ar { transition: transform .5s cubic-bezier(.16,1,.3,1); }
+    .back:hover { color: #1F2AD6; }
+    .back:hover .ar { transform: translateX(-6px); }
+
+    .prose p { margin: 0 0 28px; font-size: 21px; line-height: 1.72; color: #262B4A; }
+    .prose p.ph { color: #8A8FB0; }
+    .prose h2 { position: relative; margin: 76px 0 22px; font-size: 42px; font-weight: 500; line-height: 1.05; letter-spacing: -0.045em; scroll-margin-top: 120px; }
+    .prose h2 .hash { position: absolute; left: -44px; top: 4px; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1F2AD6; opacity: 0; transform: translateX(8px); transition: opacity .3s, transform .5s cubic-bezier(.16,1,.3,1); }
+    .prose h2:hover .hash, .prose h2 .hash:focus-visible { opacity: 1; transform: none; }
+    .prose p a, .inl { color: #1F2AD6; background-image: linear-gradient(#1F2AD6, #1F2AD6); background-size: 0 1.5px; background-position: 0 100%; background-repeat: no-repeat; border-bottom: 1.5px solid #C9CEF5; transition: background-size .5s cubic-bezier(.16,1,.3,1); }
+    .prose p a:hover, .inl:hover { background-size: 100% 1.5px; }
+
+    .toc-link { transition: color .3s, padding-left .5s cubic-bezier(.16,1,.3,1); }
+    .toc-link:hover { color: #0F1330; }
+    .toc-link.on { color: #0F1330; padding-left: 16px; }
+    .toc-dot { transition: transform .5s cubic-bezier(.16,1,.3,1), opacity .3s; transform: scale(0); opacity: 0; }
+    .toc-link.on .toc-dot { transform: scale(1); opacity: 1; }
+
+    .pile .card { transition: transform .9s cubic-bezier(.16,1,.3,1); }
+    .pile:hover .c1 { transform: translate(-150px, 24px) rotate(-10deg); }
+    .pile:hover .c2 { transform: translate(-50px, -10px) rotate(-3deg); }
+    .pile:hover .c3 { transform: translate(50px, 14px) rotate(4deg); }
+    .pile:hover .c4 { transform: translate(150px, -18px) rotate(10deg); }
+
+    .share { transition: background .3s, color .3s, border-color .3s, transform .5s cubic-bezier(.16,1,.3,1); }
+    .share:hover { background: #0F1330; color: #F7F7F5; border-color: #0F1330; transform: translateY(-2px); }
+    .toast { transition: opacity .3s, transform .5s cubic-bezier(.16,1,.3,1); }
+
+    .rel { transition: transform .7s cubic-bezier(.16,1,.3,1), background .4s, color .4s; }
+    .rel:hover { transform: translateY(-8px); background: #1F2AD6; color: #F7F7F5; }
+    .rel .meta { transition: color .4s; }
+    .rel:hover .meta { color: #D6DAFF; }
+    .rel .ic { transition: transform .6s cubic-bezier(.76,0,.24,1); }
+    .rel:hover .ic { transform: rotate(45deg); }
+    .rel .chip { transition: background .4s, color .4s; }
+    .rel:hover .chip { background: rgba(247,247,245,.16); color: #F7F7F5; }
+
+    .roll { display: inline-flex; flex-direction: column; overflow: hidden; height: 1.25em; line-height: 1.25em; }
+    .roll span { transition: transform .55s cubic-bezier(.76,0,.24,1); }
+    .rl:hover .roll span { transform: translateY(-100%); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</helmet>
+
+<div style="position: relative; width: 100%; min-width: 1280px;">
+  <div aria-hidden="true" style="position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 90; background: transparent;">
+    <div style="height: 3px; background: #1F2AD6; transform-origin: left; transform: scaleX({{progress}});"></div>
+  </div>
+
+  <dc-import name="Header" active="Writing" on-dark="{{ false }}" hint-size="100%,96px"></dc-import>
+
+  <main style="position: relative; z-index: 2; background: #F7F7F5; margin-bottom: 780px; border-radius: 0 0 48px 48px; overflow: clip;">
+    <article>
+      <!-- Hero -->
+      <header style="max-width: 1440px; margin: 0 auto; padding: 150px 64px 0; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;">
+        <nav aria-label="Breadcrumb" class="fade" style="--d: 100ms; grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; font-size: 15px; color: #5A5F7A;">
+          <ol style="list-style: none; margin: 0; padding: 0; display: flex; gap: 10px;">
+            <li><a href="Main.dc.html" style="color: #5A5F7A;">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="Writing.dc.html" style="color: #5A5F7A;">Notes</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" style="color: #0F1330;">Why I Am Building Ojaven</li>
+          </ol>
+          <a class="back" href="Writing.dc.html" style="display: flex; align-items: center; gap: 10px; color: #0F1330; font-weight: 500;">
+            <svg class="ar" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"></path></svg>
+            All notes
+          </a>
+        </nav>
+
+        <div style="grid-column: 1 / -1; margin-top: 72px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end;">
+          <div style="grid-column: 1 / span 8;">
+            <div class="fade" style="--d: 200ms; display: flex; align-items: center; gap: 14px; font-size: 15px; color: #5A5F7A;">
+              <a href="Writing.dc.html" style="padding: 7px 14px; border-radius: 999px; background: #ECEEF8; color: #1F2AD6; font-weight: 500;">Building Ojaven</a>
+              <time datetime="2026-09-01">1 September 2026</time>
+              <span aria-hidden="true" style="width: 4px; height: 4px; border-radius: 50%; background: #B8BCD6;"></span>
+              <span>5 min read</span>
+            </div>
+            <h1 style="margin: 28px 0 0; font-size: 124px; font-weight: 500; line-height: .92; letter-spacing: -0.065em;">
+              <span class="mask"><span class="rise" style="--d: 250ms;">Why I Am</span></span>
+              <span class="mask"><span class="rise" style="--d: 360ms;">Building Ojaven</span></span>
+            </h1>
+          </div>
+          <div class="fade" style="--d: 600ms; grid-column: 9 / span 4;">
+            <p style="margin: 0; font-size: 24px; line-height: 1.4; letter-spacing: -0.015em; color: #3A3F5C;">Every product starts with a friction point that refuses to go away. Here is the problem behind Ojaven, and why I chose to build it.</p>
+            <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #DADCE8; display: flex; align-items: center; gap: 14px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #3A45E6; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; flex-shrink: 0;">
+                <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="16" r="8" fill="#5560F0"></circle><path d="M4 40c0-9 7-15 16-15s16 6 16 15z" fill="#5560F0"></path></svg>
+              </div>
+              <div style="line-height: 1.3;">
+                <a href="About.dc.html" style="font-size: 17px; font-weight: 600; color: #0F1330;">Ajaypal Singh</a>
+                <div style="font-size: 14px; color: #5A5F7A;">Founder and builder</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Cover -->
+      <figure style="max-width: 1440px; margin: 64px auto 0; padding: 0 64px; box-sizing: border-box;">
+        <div class="cover" style="position: relative; height: 560px; border-radius: 32px; background: #1F2AD6; overflow: hidden; color: #F7F7F5;">
+          <svg aria-hidden="true" width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" style="position: absolute; right: -240px; top: -260px; opacity: .35;"><circle cx="500" cy="500" r="499" stroke="#AEB5FF"></circle><circle cx="500" cy="500" r="380" stroke="#AEB5FF"></circle><circle cx="500" cy="500" r="260" stroke="#AEB5FF"></circle><circle cx="500" cy="500" r="140" stroke="#AEB5FF"></circle></svg>
+          <svg aria-hidden="true" width="56" height="56" viewBox="0 0 42 42" style="position: absolute; top: 40px; left: 44px;"><circle cx="21" cy="21" r="21" fill="#F7F7F5"></circle><path d="M12 28 L19 13 L26 28" fill="none" stroke="#1F2AD6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M31 16.5c-1-1.6-2.6-2.3-4.3-2.3" fill="none" stroke="#1F2AD6" stroke-width="2.6" stroke-linecap="round"></path><circle cx="31" cy="26.5" r="2.4" fill="#AEB5FF"></circle></svg>
+          <p aria-hidden="true" style="position: absolute; left: 44px; bottom: 44px; margin: 0; max-width: 760px; font-size: 88px; font-weight: 500; line-height: .95; letter-spacing: -0.06em;">Why I Am Building Ojaven</p>
+          <p style="position: absolute; right: 44px; bottom: 48px; margin: 0; font-size: 15px; color: #D6DAFF;">ajaypalsingh.in / notes</p>
+        </div>
+        <figcaption style="margin-top: 12px; font-size: 13px; color: #5A5F7A;">Cover image. The same design is used for this note's share image.</figcaption>
+      </figure>
+
+      <!-- Body -->
+      <div style="max-width: 1440px; margin: 0 auto; padding: 100px 64px 0; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start;">
+
+        <aside aria-label="On this page" style="grid-column: 1 / span 3; position: sticky; top: 130px;">
+          <p style="margin: 0 0 16px; font-size: 14px; color: #5A5F7A;">On this page</p>
+          <ol style="list-style: none; margin: 0; padding: 0; border-left: 1px solid #DADCE8;">
+            <sc-for list="{{toc}}" as="t" hint-placeholder-count="4">
+              <li style="position: relative;">
+                <a class="{{t.cls}}" href="{{t.href}}" style="position: relative; display: block; padding: 9px 0 9px 20px; font-size: 16px; color: #8A8FB0;">
+                  <span class="toc-dot" aria-hidden="true" style="position: absolute; left: -4px; top: 50%; margin-top: -3.5px; width: 7px; height: 7px; border-radius: 50%; background: #1F2AD6; display: block;"></span>
+                  {{t.label}}
+                </a>
+              </li>
+            </sc-for>
+          </ol>
+          <div style="margin-top: 28px; display: flex; align-items: center; gap: 12px; font-size: 14px; color: #5A5F7A; font-variant-numeric: tabular-nums;">
+            <svg width="36" height="36" viewBox="0 0 40 40" aria-hidden="true" style="transform: rotate(-90deg);"><circle cx="20" cy="20" r="16" fill="none" stroke="#DADCE8" stroke-width="3"></circle><circle cx="20" cy="20" r="16" fill="none" stroke="#1F2AD6" stroke-width="3" stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="{{ringOffset}}"></circle></svg>
+            <span>{{readLeft}}</span>
+          </div>
+        </aside>
+
+        <div class="prose" style="grid-column: 4 / span 6; min-width: 0;">
+          <h2 id="start" ref="{{ref0}}">How agencies start<a class="hash" href="#start" aria-label="Link to this section"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-.8.8M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l.8-.8"></path></svg></a></h2>
+          <p style="font-size: 25px; line-height: 1.55; color: #0F1330;">Almost every digital agency follows a familiar pattern: they start small with two or three talented people delivering great client work. Early on, communication is effortless. A group chat and a couple of shared documents are enough.</p>
+
+          <h2 id="tools" ref="{{ref1}}">When the tools pile up<a class="hash" href="#tools" aria-label="Link to this section"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-.8.8M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l.8-.8"></path></svg></a></h2>
+          <p>As the agency takes on more clients and adds team members, the operational load explodes. Suddenly, you have one tool for client messaging, another for tasks, a third for file approvals, and another for invoicing.</p>
+
+          <figure class="pile" style="margin: 44px 0 48px;">
+            <div style="position: relative; height: 300px; border-radius: 28px; background: #ECEEF8; overflow: hidden;">
+              <div class="card c1" style="position: absolute; left: 50%; top: 70px; margin-left: -110px; width: 220px; height: 150px; border-radius: 18px; background: #FFFFFF; border: 1px solid #DADCE8; padding: 18px; box-sizing: border-box; transform: rotate(-6deg); box-shadow: 0 20px 40px -24px rgba(15,19,48,.35);"><div style="width: 28px; height: 28px; border-radius: 50%; background: #AEB5FF;"></div><p style="margin: 40px 0 0; font-size: 18px; font-weight: 500; color: #0F1330; line-height: 1.2;">Client messaging</p></div>
+              <div class="card c2" style="position: absolute; left: 50%; top: 60px; margin-left: -110px; width: 220px; height: 150px; border-radius: 18px; background: #FFFFFF; border: 1px solid #DADCE8; padding: 18px; box-sizing: border-box; transform: rotate(-2deg); box-shadow: 0 20px 40px -24px rgba(15,19,48,.35);"><div style="width: 28px; height: 28px; border-radius: 8px; background: #0F1330;"></div><p style="margin: 40px 0 0; font-size: 18px; font-weight: 500; color: #0F1330; line-height: 1.2;">Tasks</p></div>
+              <div class="card c3" style="position: absolute; left: 50%; top: 68px; margin-left: -110px; width: 220px; height: 150px; border-radius: 18px; background: #FFFFFF; border: 1px solid #DADCE8; padding: 18px; box-sizing: border-box; transform: rotate(3deg); box-shadow: 0 20px 40px -24px rgba(15,19,48,.35);"><div style="width: 28px; height: 28px; border-radius: 14px 14px 0 0; background: #5560F0;"></div><p style="margin: 40px 0 0; font-size: 18px; font-weight: 500; color: #0F1330; line-height: 1.2;">File approvals</p></div>
+              <div class="card c4" style="position: absolute; left: 50%; top: 76px; margin-left: -110px; width: 220px; height: 150px; border-radius: 18px; background: #1F2AD6; padding: 18px; box-sizing: border-box; transform: rotate(7deg); box-shadow: 0 20px 40px -24px rgba(15,19,48,.45);"><div style="width: 28px; height: 28px; border-radius: 0 14px; background: #F7F7F5;"></div><p style="margin: 40px 0 0; font-size: 18px; font-weight: 500; color: #F7F7F5; line-height: 1.2;">Invoicing</p></div>
+            </div>
+            <figcaption style="margin-top: 12px; display: flex; justify-content: space-between; font-size: 14px; color: #5A5F7A;"><span>One tool for every job adds up fast.</span><span>Hover to spread</span></figcaption>
+          </figure>
+
+          <p class="ph">[Continue the note here: what all these tools do to the team and to the client work.]</p>
+
+          <h2 id="why" ref="{{ref2}}">Why Ojaven<a class="hash" href="#why" aria-label="Link to this section"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-.8.8M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l.8-.8"></path></svg></a></h2>
+          <p class="ph">[Your paragraph on the problem Ojaven solves and why you chose to build it.] Link example: read more on the <a href="Ojaven.dc.html">Ojaven page</a>.</p>
+
+          <blockquote style="margin: 56px 0; padding: 0; position: relative;">
+            <svg aria-hidden="true" width="44" height="34" viewBox="0 0 44 34" fill="#1F2AD6"><path d="M0 34V20C0 8 6 1 18 0v7c-6 1-9 5-9 11h9v16zm26 0V20c0-12 6-19 18-20v7c-6 1-9 5-9 11h9v16z"></path></svg>
+            <p style="margin: 18px 0 0; font-size: 44px; line-height: 1.1; font-weight: 500; letter-spacing: -0.04em; color: #0F1330;">[A line from this note worth highlighting.]</p>
+          </blockquote>
+
+          <h2 id="next" ref="{{ref3}}">What comes next<a class="hash" href="#next" aria-label="Link to this section"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-.8.8M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l.8-.8"></path></svg></a></h2>
+          <p class="ph">[Your paragraph on where Ojaven is going and what launch looks like.]</p>
+
+          <figure style="margin: 44px 0 48px;">
+            <div style="height: 340px; border-radius: 24px; border: 1.5px dashed #B8BCD6; display: flex; align-items: center; justify-content: center; font-size: 15px; color: #5A5F7A;">[Optional image, 16:9]</div>
+            <figcaption style="margin-top: 12px; font-size: 14px; color: #5A5F7A;">[Caption]</figcaption>
+          </figure>
+
+          <aside style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 26px 28px; border-radius: 22px; background: #0F1330; color: #F7F7F5;">
+            <div>
+              <p style="margin: 0; font-size: 14px; color: #AEB5FF;">Where it stands</p>
+              <p style="margin: 6px 0 0; font-size: 22px; letter-spacing: -0.02em;">Ojaven is in development. Planned launch: 10 July 2027.</p>
+            </div>
+            <a class="rl" href="Ojaven.dc.html" style="flex-shrink: 0; display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 20px; border-radius: 999px; background: #F7F7F5; color: #0F1330; font-size: 15px; font-weight: 600;"><span class="roll"><span>Follow the build</span><span>Follow the build</span></span></a>
+          </aside>
+
+          <div style="margin-top: 64px; padding-top: 28px; border-top: 1px solid #DADCE8; display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <a href="Writing.dc.html" style="font-size: 14px; padding: 7px 14px; border-radius: 999px; background: #ECEEF8; color: #1F2AD6;">Building Ojaven</a>
+              <a href="Writing.dc.html" style="font-size: 14px; padding: 7px 14px; border-radius: 999px; background: #ECEEF8; color: #1F2AD6;">Entrepreneurship</a>
+            </div>
+            <span style="font-size: 14px; color: #5A5F7A;">Published 1 September 2026</span>
+          </div>
+        </div>
+
+        <aside aria-label="Share this note" style="grid-column: 11 / span 2; position: sticky; top: 130px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+          <p style="margin: 0 0 6px; font-size: 14px; color: #5A5F7A;">Share</p>
+          <button class="share" onClick="{{copy}}" aria-label="Copy link to this note" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid #DADCE8; background: #FFFFFF; color: #0F1330; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6.5 9.5a3 3 0 0 0 4.2 0l2-2a3 3 0 0 0-4.2-4.2l-.8.8M9.5 6.5a3 3 0 0 0-4.2 0l-2 2a3 3 0 0 0 4.2 4.2l.8-.8"></path></svg>
+          </button>
+          <a class="share" href="#" aria-label="Share on X" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid #DADCE8; background: #FFFFFF; color: #0F1330; display: flex; align-items: center; justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M12.2 1.5h2.2L9.6 7l5.6 7.5h-4.4L7.4 10l-3.9 4.5H1.3l5.1-5.9L1 1.5h4.5l3.1 4.1zm-.8 11.7h1.2L4.8 2.8H3.5z"></path></svg>
+          </a>
+          <a class="share" href="#" aria-label="Share on LinkedIn" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid #DADCE8; background: #FFFFFF; color: #0F1330; display: flex; align-items: center; justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 5.5H1V15h2.6zM2.3 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM15 9.6c0-2.6-1.4-4.3-3.6-4.3-1.3 0-2.1.7-2.5 1.3V5.5H6.4V15H9v-4.9c0-1.2.4-2.2 1.7-2.2 1.2 0 1.6 1 1.6 2.3V15H15z"></path></svg>
+          </a>
+          <span class="toast" role="status" style="margin-top: 6px; font-size: 13px; background: #0F1330; color: #F7F7F5; border-radius: 999px; padding: 6px 12px; opacity: {{toastO}}; transform: translateY({{toastY}});">{{toastText}}</span>
+        </aside>
+      </div>
+    </article>
+
+    <!-- Author -->
+    <section aria-label="About the author" style="max-width: 1440px; margin: 110px auto 0; padding: 0 64px; box-sizing: border-box;">
+      <div style="position: relative; overflow: hidden; border-radius: 32px; background: #1F2AD6; color: #F7F7F5; padding: 48px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center;">
+        <svg aria-hidden="true" width="520" height="520" viewBox="0 0 520 520" fill="none" style="position: absolute; right: -160px; top: -200px; opacity: .35;"><circle cx="260" cy="260" r="259" stroke="#AEB5FF"></circle><circle cx="260" cy="260" r="180" stroke="#AEB5FF"></circle><circle cx="260" cy="260" r="100" stroke="#AEB5FF"></circle></svg>
+        <div style="grid-column: span 2; width: 140px; height: 140px; border-radius: 50%; background: #3A45E6; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; position: relative;">
+          <svg width="120" height="120" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="16" r="8" fill="#5560F0"></circle><path d="M4 40c0-9 7-15 16-15s16 6 16 15z" fill="#5560F0"></path></svg>
+        </div>
+        <div style="grid-column: span 6; position: relative;">
+          <p style="margin: 0; font-size: 14px; color: #D6DAFF;">Written by</p>
+          <p style="margin: 6px 0 0; font-size: 48px; font-weight: 500; letter-spacing: -0.05em; line-height: 1;">Ajaypal Singh</p>
+          <p style="margin: 12px 0 0; font-size: 20px; line-height: 1.45; color: #D6DAFF;">Founder and builder. I build products and the companies behind them. Currently building Ojaven.</p>
+        </div>
+        <div style="grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 10px; position: relative;">
+          <a class="rl" href="About.dc.html" style="height: 52px; border-radius: 999px; background: #F7F7F5; color: #0F1330; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600;"><span class="roll"><span>About me</span><span>About me</span></span></a>
+          <a class="rl" href="Contact.dc.html" style="height: 52px; border-radius: 999px; border: 1px solid #AEB5FF; color: #F7F7F5; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600;"><span class="roll"><span>Say hello</span><span>Say hello</span></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- More notes -->
+    <section aria-labelledby="more-title" style="max-width: 1440px; margin: 0 auto; padding: 120px 64px 160px; box-sizing: border-box;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid #0F1330; padding-bottom: 24px;">
+        <h2 id="more-title" style="margin: 0; font-size: 64px; font-weight: 500; letter-spacing: -0.05em;">Keep reading</h2>
+        <a class="rl" href="Writing.dc.html" style="display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 600;"><span class="roll"><span>All notes</span><span>All notes</span></span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
+        </a>
+      </div>
+      <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+        <sc-for list="{{related}}" as="r" hint-placeholder-count="2">
+          <a class="rel" href="Writing.dc.html" style="min-height: 300px; border-radius: 28px; background: #ECEEF8; color: #0F1330; padding: 34px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="meta" style="font-size: 14px; color: #5A5F7A;">{{r.dir}}</span>
+              <svg class="ic" width="20" height="20" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"></path></svg>
+            </div>
+            <div>
+              <h3 style="margin: 0; font-size: 44px; font-weight: 500; line-height: 1.02; letter-spacing: -0.045em; max-width: 16ch;">{{r.title}}</h3>
+              <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px; font-size: 14px;">
+                <span class="chip" style="padding: 6px 12px; border-radius: 999px; background: #FFFFFF; color: #1F2AD6;">{{r.topic}}</span>
+                <span class="meta" style="color: #5A5F7A;">{{r.date}} · {{r.read}}</span>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+
+  <dc-import name="Footer" hint-size="100%,780px"></dc-import>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  state = { progress: 0, active: 0, copied: false };
+  heads = [];
+
+  componentDidMount() {
+    this.onScroll = () => {
+      cancelAnimationFrame(this.raf);
+      this.raf = requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+        let active = 0;
+        this.heads.forEach((el, i) => { if (el && el.getBoundingClientRect().top < window.innerHeight * 0.35) active = i; });
+        if (Math.abs(progress - this.state.progress) > 0.003 || active !== this.state.active) this.setState({ progress, active });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    cancelAnimationFrame(this.raf);
+    clearTimeout(this.ct);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const sections = [
+      { label: 'How agencies start', href: '#start' },
+      { label: 'When the tools pile up', href: '#tools' },
+      { label: 'Why Ojaven', href: '#why' },
+      { label: 'What comes next', href: '#next' }
+    ];
+    const minsLeft = Math.max(0, Math.ceil(5 * (1 - s.progress)));
+    return {
+      progress: s.progress.toFixed(3),
+      ringOffset: (100.5 * (1 - s.progress)).toFixed(1),
+      readLeft: minsLeft > 0 ? minsLeft + ' min left' : 'Finished',
+      toc: sections.map((t, i) => ({ label: t.label, href: t.href, cls: i === s.active ? 'toc-link on' : 'toc-link' })),
+      ref0: (el) => { this.heads[0] = el; },
+      ref1: (el) => { this.heads[1] = el; },
+      ref2: (el) => { this.heads[2] = el; },
+      ref3: (el) => { this.heads[3] = el; },
+      copy: () => {
+        try { navigator.clipboard && navigator.clipboard.writeText('https://ajaypalsingh.in/writing/why-i-am-building-ojaven'); } catch (e) {}
+        this.setState({ copied: true });
+        clearTimeout(this.ct);
+        this.ct = setTimeout(() => this.setState({ copied: false }), 1800);
+      },
+      toastO: s.copied ? '1' : '0',
+      toastY: s.copied ? '0' : '-6px',
+      toastText: s.copied ? 'Link copied' : '',
+      related: [
+        { dir: 'Previous note', title: 'What Building Software Actually Teaches You', topic: 'Lessons', date: '15 August 2026', read: '6 min read' },
+        { dir: 'More notes', title: 'Thinking About SaaS in 2026', topic: 'SaaS', date: '20 July 2026', read: '7 min read' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
