@@ -3,7 +3,6 @@ import Script from 'next/script'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-import { CustomCursor } from '@/components/ui/CustomCursor'
 import { generateRootJsonLd, generatePageMetadata } from '@/lib/seo'
 
 export const metadata: Metadata = {
@@ -63,7 +62,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-[#0F1330] text-[#0F1330] font-['Bricolage_Grotesque',sans-serif] selection:bg-[#1F2AD6] selection:text-[#F7F7F5] overflow-x-hidden">
         <Header />
-        <main className="relative z-[2] bg-[#F7F7F5] mb-0 lg:mb-[780px] rounded-b-[32px] sm:rounded-b-[48px] overflow-clip shadow-[0_40px_100px_rgba(15,19,48,0.5)]">
+        <main className="relative z-[2] bg-[#F7F7F5] mb-0 lg:mb-[840px] rounded-b-[32px] sm:rounded-b-[48px] overflow-clip shadow-[0_40px_100px_rgba(15,19,48,0.5)]">
           {children}
         </main>
         <Footer />

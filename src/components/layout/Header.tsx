@@ -119,7 +119,7 @@ export function Header({ active, onDark = false }: HeaderProps) {
     { label: 'About', href: '/about' },
     { label: 'Ojaven', href: '/ojaven' },
     { label: 'Writing', href: '/writing' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Contact', href: '/contact' },
   ]
 
   // Calculate nav pill position
@@ -155,17 +155,7 @@ export function Header({ active, onDark = false }: HeaderProps) {
     }
   }, [measurePill, scrolled])
 
-  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    if (pathname !== '/') {
-      window.location.href = '/#contact'
-      return
-    }
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    })
-  }
+  // no-op — kept for ref, Contact now goes to /contact page
 
   return (
     <div className="hd fixed top-0 left-0 right-0 z-[80] pointer-events-none font-['Bricolage_Grotesque',sans-serif]">
@@ -239,14 +229,12 @@ export function Header({ active, onDark = false }: HeaderProps) {
           {links.map((link) => {
             const isSelected = link.label === targetLabel
             const isPageActive = link.label === currentActive
-            const isContact = link.href === '#contact'
 
             return (
               <Link
                 key={link.label}
                 href={link.href}
                 data-nav={link.label}
-                onClick={isContact ? handleContactClick : undefined}
                 onMouseEnter={() => setHoveredNav(link.label)}
                 onFocus={() => setHoveredNav(link.label)}
                 aria-current={isPageActive ? 'page' : undefined}
@@ -264,8 +252,7 @@ export function Header({ active, onDark = false }: HeaderProps) {
         {/* Right: "Say hello" + 2-Dot Menu Button */}
         <div className="justify-self-end flex items-center gap-2 pointer-events-auto">
           <a
-            href="#contact"
-            onClick={handleContactClick}
+            href="/contact"
             className="group/btn hidden sm:flex items-center gap-2.5 h-12 py-0 pl-[22px] pr-2 rounded-full font-semibold text-sm transition-all duration-300 shadow-sm"
             style={{ background: btnBg, color: btnFg }}
           >

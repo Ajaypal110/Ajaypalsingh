@@ -597,15 +597,7 @@ export default function HomePage() {
             </span>
           </Link>
 
-          {/* Row 2: Next */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-center py-8 px-5 border-b border-dashed border-[#B8BCD6] text-[#8A8FB0]">
-            <span className="col-span-4 text-3xl sm:text-4xl lg:text-[48px] font-medium tracking-[-0.045em]">
-              Next
-            </span>
-            <span className="col-span-4 text-lg sm:text-xl">Not started yet</span>
-            <span className="col-span-2 text-base">Later</span>
-            <span className="col-span-2 text-base text-left md:text-right font-mono">[Year]</span>
-          </div>
+
         </div>
       </section>
 

@@ -4,13 +4,13 @@
   "description": "Personal website of Ajaypal Singh (Ajaypal Singh Solanki) — Founder, Builder & Entrepreneur. Currently building Ojaven.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#060606",
-  "theme_color": "#060606",
+  "background_color": "#F7F7F5",
+  "theme_color": "#1F2AD6",
   "icons": [
-    {
-      "src": "/favicon.ico",
-      "sizes": "any",
-      "type": "image/x-icon"
-    }
+    { "src": "/icon-48.png",  "sizes": "48x48",   "type": "image/png" },
+    { "src": "/icon-96.png",  "sizes": "96x96",   "type": "image/png" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/favicon.ico",  "sizes": "any",     "type": "image/x-icon" }
   ]
 }

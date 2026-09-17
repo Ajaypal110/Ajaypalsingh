@@ -6,7 +6,6 @@ import { siteConfig } from '@/lib/data/site'
 
 export function Footer() {
   const [copied, setCopied] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
   const magRef = useRef<HTMLAnchorElement>(null)
 
   const email = siteConfig.social.email
@@ -19,23 +18,6 @@ export function Footer() {
       setTimeout(() => setCopied(false), 1800)
     }
   }
-
-  // Scroll to top
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  // Calculate circular scroll progress (circumference = 2 * PI * 18 = 113.1)
-  useEffect(() => {
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight
-      const progress = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 1
-      setScrollProgress(progress)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   // Magnetic button cursor tracking (with reduced-motion guard)
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -54,14 +36,12 @@ export function Footer() {
     magRef.current.style.transform = 'translate(0, 0)'
   }
 
-  const ringOffset = (113.1 * (1 - scrollProgress)).toFixed(1)
-
   return (
     <footer
       id="contact"
-      className="ft lg:fixed left-0 right-0 bottom-0 lg:h-[780px] z-[1] bg-[#0F1330] text-[#F7F7F5] overflow-hidden font-['Bricolage_Grotesque',sans-serif]"
+      className="ft lg:fixed left-0 right-0 bottom-0 lg:h-[840px] z-[1] bg-[#0F1330] text-[#F7F7F5] overflow-hidden font-['Bricolage_Grotesque',sans-serif]"
     >
-      <div className="max-w-[1440px] h-full mx-auto pt-16 sm:pt-20 lg:pt-[84px] px-6 sm:px-12 lg:px-16 pb-6 lg:pb-0 flex flex-col justify-between box-border">
+      <div className="max-w-[1440px] h-full mx-auto pt-16 sm:pt-20 lg:pt-20 px-6 sm:px-12 lg:px-16 pb-8 sm:pb-10 lg:pb-12 flex flex-col justify-between box-border">
         {/* Top: Headline & Magnetic Round CTA */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 lg:gap-10">
           <h2 className="m-0 max-w-[900px] text-4xl sm:text-6xl lg:text-[92px] font-medium leading-[0.96] tracking-[-0.055em] text-[#F7F7F5]">
@@ -192,25 +172,24 @@ export function Footer() {
         {/* Stretched Interactive Wordmark SVG */}
         <div
           aria-hidden="true"
-          className="mt-auto h-36 sm:h-44 lg:h-[210px] overflow-hidden relative select-none"
+          className="my-auto py-2 overflow-visible relative select-none"
         >
           <svg
             width="100%"
-            height="260"
-            viewBox="0 0 1312 260"
-            preserveAspectRatio="xMidYMin meet"
+            height="auto"
+            viewBox="0 0 1312 230"
             className="block w-full"
           >
             <text
               x="0"
-              y="232"
+              y="175"
               textLength="1312"
               lengthAdjust="spacing"
               style={{
                 fontFamily: '"Bricolage Grotesque", sans-serif',
-                fontSize: '288px',
+                fontSize: '210px',
                 fontWeight: 600,
-                letterSpacing: '-6px',
+                letterSpacing: '-4px',
               }}
             >
               {'Ajaypal Singh'.split('').map((char, i) => (
@@ -222,52 +201,10 @@ export function Footer() {
           </svg>
         </div>
 
-        {/* Bottom Bar with Circular Back to Top */}
-        <div className="h-16 shrink-0 flex justify-between items-center border-t border-[#1F2550] text-[13px] text-[#8A8FB0]">
-          <span>© 2026 Ajaypal Singh</span>
-          <span className="hidden sm:inline">ajaypalsingh.in</span>
-          <button
-            onClick={scrollToTop}
-            className="ft-top flex items-center gap-2.5 bg-transparent border-0 text-[#F7F7F5] cursor-pointer py-1.5"
-          >
-            <span>Back to top</span>
-            <span className="relative w-10 h-10 flex items-center justify-center">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                aria-hidden="true"
-                className="absolute inset-0 -rotate-90"
-              >
-                <circle cx="20" cy="20" r="18" fill="none" stroke="#1F2550" strokeWidth="2" />
-                <circle
-                  cx="20"
-                  cy="20"
-                  r="18"
-                  fill="none"
-                  stroke="#AEB5FF"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeDasharray="113.1"
-                  strokeDashoffset={ringOffset}
-                  className="ft-ring"
-                />
-              </svg>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                aria-hidden="true"
-                className="ft-up"
-              >
-                <path d="M6 10V2M2.5 5.5L6 2l3.5 3.5" />
-              </svg>
-            </span>
-          </button>
+        {/* Bottom Bar */}
+        <div className="h-14 shrink-0 flex justify-between items-center border-t border-[#1F2550] text-[13px] sm:text-[14px] text-[#8A8FB0]">
+          <span>© {new Date().getFullYear()} Ajaypal Singh</span>
+          <span>All rights reserved</span>
         </div>
       </div>
     </footer>

@@ -1,6 +1,5 @@
-import Link from 'next/link'
 import { ContactForm } from '@/components/ui/ContactForm'
-import { siteConfig } from '@/lib/data/site'
+import { ContactAside } from '@/components/ui/ContactAside'
 import { generatePageMetadata, generateContactPageJsonLd } from '@/lib/seo'
 import type { Metadata } from 'next'
 
@@ -21,108 +20,78 @@ export default function ContactPage() {
   const jsonLd = generateContactPageJsonLd()
 
   return (
-    <div className="w-full text-[#0F1330] px-6 md:px-12 lg:px-16 pt-28 md:pt-36 pb-28 lg:pb-36">
+    <div className="w-full text-[#0F1330] font-['Bricolage_Grotesque',sans-serif]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="max-w-5xl mx-auto space-y-16">
-        {/* Header */}
-        <div className="space-y-4">
-          <p className="text-[15px] font-medium text-[#5A5F7A]">
-            <Link href="/" className="hover:text-[#1F2AD6] transition-colors">
-              Home
-            </Link>{' '}
-            / Contact
-          </p>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium tracking-[-0.05em] leading-[1.0] text-[#0F1330]">
-            Have an idea worth building?
-          </h1>
-          <p className="text-lg sm:text-xl lg:text-[22px] text-[#5A5F7A] font-normal max-w-2xl leading-relaxed">
-            I am always interested in thoughtful conversations with founders, engineers, and creators who care about building good software.
-          </p>
+      {/* ── Hero ────────────────────────────────────────────── */}
+      <section className="relative min-h-[560px] sm:min-h-[600px] px-6 sm:px-12 lg:px-16 pt-40 sm:pt-44 pb-12 overflow-hidden">
+        {/* Orbit decoration */}
+        <div
+          aria-hidden="true"
+          className="absolute top-32 right-6 sm:right-12 lg:right-16 w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] lg:w-[250px] lg:h-[250px]"
+        >
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 250 250"
+            fill="none"
+            style={{ animation: 'ct-spin 30s linear infinite' }}
+          >
+            <circle cx="125" cy="125" r="124" stroke="#DADCE8" strokeDasharray="3 8" />
+            <circle cx="125" cy="125" r="84" stroke="#DADCE8" />
+            <circle cx="125" cy="1" r="7" fill="#1F2AD6" />
+          </svg>
+          <div
+            className="absolute top-[27%] left-[27%] w-[46%] h-[46%] rounded-full flex items-center justify-center"
+            style={{ background: '#1F2AD6' }}
+          >
+            <svg
+              width="40%" height="40%"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#F7F7F5"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M4 6h16v12H4z" />
+              <path d="M4 7l8 6 8-6" />
+            </svg>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pt-4 items-start">
-          {/* Form Column */}
+        <p className="m-0 text-[15px]" style={{ color: '#5A5F7A' }}>Contact</p>
+        <h1
+          className="mt-2 mb-0 font-medium leading-[.88] tracking-[-0.07em]"
+          style={{ fontSize: 'clamp(72px, 14vw, 200px)' }}
+        >
+          Say hello.
+        </h1>
+        <p
+          className="mt-6 max-w-[560px] leading-[1.22] tracking-[-0.025em]"
+          style={{ fontSize: 'clamp(18px, 2.5vw, 28px)', color: '#0F1330' }}
+        >
+          Building something, stuck on an idea, or curious about Ojaven? Write to me. I&apos;d like to hear what you&apos;re working on.
+        </p>
+      </section>
+
+      {/* ── Form + Aside ─────────────────────────────────────── */}
+      <section className="px-6 sm:px-12 lg:px-16 pb-32 lg:pb-40">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           <div className="lg:col-span-7">
             <ContactForm />
           </div>
-
-          {/* Direct Connect Info Column */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-7 sm:p-8 rounded-[24px] border border-[#DADCE8] bg-white space-y-4 shadow-sm">
-              <h3 className="text-2xl font-medium text-[#0F1330] tracking-[-0.03em]">
-                Direct Inquiries
-              </h3>
-              <p className="text-[15px] text-[#5A5F7A] leading-relaxed">
-                Prefer direct email over forms? You can reach me directly anytime:
-              </p>
-              <div>
-                <a
-                  href={`mailto:${siteConfig.social.email}`}
-                  className="text-lg font-medium text-[#1F2AD6] hover:underline break-all"
-                >
-                  {siteConfig.social.email}
-                </a>
-              </div>
-            </div>
-
-            <div className="p-7 sm:p-8 rounded-[24px] border border-[#DADCE8] bg-white space-y-4 shadow-sm">
-              <h3 className="text-2xl font-medium text-[#0F1330] tracking-[-0.03em]">
-                Profiles & Presence
-              </h3>
-              <ul className="space-y-3.5 text-[15px] font-medium">
-                <li>
-                  <a
-                    href={siteConfig.social.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#5A5F7A] hover:text-[#1F2AD6] flex items-center justify-between group transition-colors"
-                  >
-                    <span>LinkedIn</span>
-                    <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={siteConfig.social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#5A5F7A] hover:text-[#1F2AD6] flex items-center justify-between group transition-colors"
-                  >
-                    <span>Twitter / X</span>
-                    <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={siteConfig.social.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#5A5F7A] hover:text-[#1F2AD6] flex items-center justify-between group transition-colors"
-                  >
-                    <span>Instagram</span>
-                    <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={siteConfig.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#5A5F7A] hover:text-[#1F2AD6] flex items-center justify-between group transition-colors"
-                  >
-                    <span>Facebook</span>
-                    <span className="text-xs transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div className="lg:col-start-9 lg:col-span-4">
+            <ContactAside />
           </div>
         </div>
-      </div>
+      </section>
+
+      <style>{`
+        @keyframes ct-spin { to { transform: rotate(360deg); } }
+      `}</style>
     </div>
   )
 }
