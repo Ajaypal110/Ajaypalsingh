@@ -177,9 +177,8 @@ export function Footer() {
         >
           <svg
             width="100%"
-            height="auto"
             viewBox="0 0 1312 230"
-            className="block w-full"
+            className="block w-full h-auto"
           >
             <text
               x="0"

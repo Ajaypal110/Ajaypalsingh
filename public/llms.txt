@@ -30,13 +30,13 @@ His approach to building software centers on simplicity, durability, clean syste
 2. Dignified Utility — Great software solves hard operational problems quietly without bloat or noise.
 3. Patience & Compounding — Significant ventures take years of focused, consistent execution.
 
-## Site Structure
+## Links
 
-- Homepage: https://ajaypalsingh.in/
-- About: https://ajaypalsingh.in/about
-- Ojaven: https://ajaypalsingh.in/ojaven
-- Writing: https://ajaypalsingh.in/writing
-- Contact: https://ajaypalsingh.in/contact
+- [Homepage](https://ajaypalsingh.in/): Official personal website of Ajaypal Singh
+- [About](https://ajaypalsingh.in/about): Biography, background, and core principles
+- [Ojaven](https://ajaypalsingh.in/ojaven): Platform for modern digital agencies
+- [Writing](https://ajaypalsingh.in/writing): Articles and essays on building software, SaaS, and AI
+- [Contact](https://ajaypalsingh.in/contact): Contact form and direct communication channels
 
 ## Content Topics
 

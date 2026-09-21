@@ -74,30 +74,45 @@ button {
    ANIMATION & EFFECTS UTILITIES
    ============================================================ */
 
-/* Live pulsing indicator */
+/* Live pulsing indicator — 100% GPU composited (no box-shadow repaints) */
 .live {
-  animation: live-pulse 2s ease-out infinite;
+  position: relative;
 }
-
-@keyframes live-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(174, 181, 255, 0.8);
-  }
-  100% {
-    box-shadow: 0 0 0 10px rgba(174, 181, 255, 0);
-  }
+.live::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  background-color: inherit;
+  animation: live-gpu-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform, opacity;
 }
 
 .live-cobalt {
-  animation: live-cobalt-pulse 2s ease-out infinite;
+  position: relative;
+}
+.live-cobalt::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  background-color: #1F2AD6;
+  animation: live-gpu-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform, opacity;
 }
 
-@keyframes live-cobalt-pulse {
+@keyframes live-gpu-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(31, 42, 214, 0.5);
+    transform: scale(1);
+    opacity: 0.85;
   }
   100% {
-    box-shadow: 0 0 0 10px rgba(31, 42, 214, 0);
+    transform: scale(2.8);
+    opacity: 0;
   }
 }
 
@@ -119,27 +134,29 @@ button {
   transform-origin: center center;
 }
 
-/* Scroll cue indicator line */
+/* Scroll cue indicator line — 100% GPU composited */
 .cue {
+  transform-origin: top center;
   animation: cue-anim 2.4s cubic-bezier(0.76, 0, 0.24, 1) infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes cue-anim {
   0% {
     transform: scaleY(0);
-    transform-origin: top;
+    opacity: 0.2;
   }
   45% {
     transform: scaleY(1);
-    transform-origin: top;
+    opacity: 1;
   }
   55% {
     transform: scaleY(1);
-    transform-origin: bottom;
+    opacity: 1;
   }
   100% {
     transform: scaleY(0);
-    transform-origin: bottom;
+    opacity: 0.2;
   }
 }
 

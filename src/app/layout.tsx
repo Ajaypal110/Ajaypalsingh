@@ -1,9 +1,16 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { generatePageMetadata } from '@/lib/seo'
+
+const bricolageGrotesque = Bricolage_Grotesque({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-bricolage',
+})
 
 export const metadata: Metadata = {
   ...generatePageMetadata({
@@ -27,16 +34,8 @@ export default function RootLayout({
 }) {
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${bricolageGrotesque.variable}`}>
       <head>
-        {/* Google Fonts: Bricolage Grotesque Variable */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap"
-          rel="stylesheet"
-        />
-
         {/* Favicon — explicit tags for Google Search indexing */}
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -48,12 +47,12 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="author" href="/humans.txt" />
 
-        {/* Google Analytics 4 */}
+        {/* Google Analytics 4 — lazy loaded to avoid blocking critical LCP/TBT */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-QMX4VHV52X"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -62,7 +61,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="min-h-screen bg-[#0F1330] text-[#0F1330] font-['Bricolage_Grotesque',sans-serif] selection:bg-[#1F2AD6] selection:text-[#F7F7F5] overflow-x-hidden">
+      <body className={`min-h-screen bg-[#0F1330] text-[#0F1330] ${bricolageGrotesque.className} selection:bg-[#1F2AD6] selection:text-[#F7F7F5] overflow-x-hidden`}>
         <Header />
         <main className="relative z-[2] bg-[#F7F7F5] mb-0 lg:mb-[100vh] rounded-b-[32px] sm:rounded-b-[48px] overflow-clip shadow-[0_40px_100px_rgba(15,19,48,0.5)]">
           {children}

@@ -7,19 +7,13 @@ import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 export function HomeView() {
   const prefersReduced = useReducedMotion()
-  const [ready, setReady] = useState(false)
+  const [ready, setReady] = useState(true)
   const [openAccordion, setOpenAccordion] = useState<number>(0)
   const [journeyStep, setJourneyStep] = useState<number>(0)
   const [tiltStyle, setTiltStyle] = useState<string>('none')
   const [imageError, setImageError] = useState(true)
 
   const stepRefs = useRef<(HTMLLIElement | null)[]>([])
-
-  // Intro curtain & readiness
-  useEffect(() => {
-    const timer = setTimeout(() => setReady(true), prefersReduced ? 0 : 250)
-    return () => clearTimeout(timer)
-  }, [prefersReduced])
 
   // Scroll measurement for sticky journey
   useEffect(() => {
@@ -238,12 +232,7 @@ export function HomeView() {
 
             {/* Intro paragraph — Section 3.2 */}
             <p
-              className="mt-8 sm:mt-12 lg:mt-24 max-w-[470px] text-lg sm:text-2xl lg:text-[26px] leading-[1.3] tracking-[-0.015em] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
-              style={{
-                opacity: ready ? 1 : 0,
-                transform: ready ? 'none' : 'translateY(20px)',
-                transitionDelay: '1250ms',
-              }}
+              className="mt-8 sm:mt-12 lg:mt-24 max-w-[470px] text-lg sm:text-2xl lg:text-[26px] leading-[1.3] tracking-[-0.015em]"
             >
               I build products and the companies behind them. I care about how products work, how businesses grow, and how ideas become something real.
             </p>
@@ -251,12 +240,7 @@ export function HomeView() {
             {/* Rotating Seal Badge */}
             <div
               aria-hidden="true"
-              className="mt-8 lg:mt-0 lg:absolute lg:top-[600px] lg:left-[690px] w-[130px] h-[130px] sm:w-[170px] sm:h-[170px] z-30 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
-              style={{
-                opacity: ready ? 1 : 0,
-                transform: ready ? 'none' : 'translateY(20px)',
-                transitionDelay: '1400ms',
-              }}
+              className="mt-8 lg:mt-0 lg:absolute lg:top-[600px] lg:left-[690px] w-[130px] h-[130px] sm:w-[170px] sm:h-[170px] z-30"
             >
               <div className="relative w-full h-full">
                 <svg className="seal w-full h-full" viewBox="0 0 170 170">
