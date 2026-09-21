@@ -26,6 +26,7 @@ export async function POST(req: Request) {
 
     // ─────────────────────────────────────────────────────────────────────────────
     // Template 1: Admin Notification (Delivered to Ajaypal at ajaypalsingh82775@gmail.com)
+    // Website Signature Cobalt Blue: #1F2AD6
     // ─────────────────────────────────────────────────────────────────────────────
     const adminSubject = `[Portfolio] ${cleanTopic} from ${cleanName}`
     const replyMailto = `mailto:${cleanEmail}?subject=Re: [ajaypalsingh.in] ${encodeURIComponent(cleanTopic)}`
@@ -45,26 +46,26 @@ export async function POST(req: Request) {
         <!-- Container -->
         <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:580px;background-color:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(15,23,42,0.06);border:1px solid #E2E8F0;">
           
-          <!-- Top Bar Header -->
+          <!-- Top Bar Header (Website Signature Cobalt Blue #1F2AD6) -->
           <tr>
-            <td style="background-color:#0F1330;padding:24px 32px;border-bottom:1px solid #1E234A;">
+            <td style="background-color:#1F2AD6;padding:26px 32px;">
               <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td style="vertical-align:middle;">
                     <table role="presentation" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td style="vertical-align:middle;padding-right:14px;">
-                          <img src="${logoUrl}" alt="APS Logo" width="38" height="38" style="display:block;border-radius:50%;border:2px solid #2B3377;">
+                          <img src="${logoUrl}" alt="APS Logo" width="40" height="40" style="display:block;border-radius:50%;background-color:#FFFFFF;border:2px solid rgba(255,255,255,0.4);">
                         </td>
                         <td style="vertical-align:middle;">
-                          <div style="font-size:15px;font-weight:700;color:#FFFFFF;letter-spacing:0.02em;">Ajaypal Singh</div>
-                          <div style="font-size:11px;color:#A5B4FC;letter-spacing:0.06em;text-transform:uppercase;margin-top:2px;">Portfolio Contact System</div>
+                          <div style="font-size:16px;font-weight:700;color:#FFFFFF;letter-spacing:0.01em;">Ajaypal Singh</div>
+                          <div style="font-size:11px;color:#D6DAFF;letter-spacing:0.06em;text-transform:uppercase;margin-top:2px;">Portfolio Contact System</div>
                         </td>
                       </tr>
                     </table>
                   </td>
                   <td align="right" style="vertical-align:middle;">
-                    <span style="display:inline-block;background-color:#1F2AD6;color:#FFFFFF;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.05em;">
+                    <span style="display:inline-block;background-color:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);color:#FFFFFF;font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;text-transform:uppercase;letter-spacing:0.05em;">
                       ${cleanTopic}
                     </span>
                   </td>
@@ -80,7 +81,7 @@ export async function POST(req: Request) {
                 New message from ${cleanName}
               </h2>
               <p style="margin:0 0 24px 0;font-size:14px;color:#64748B;line-height:1.5;">
-                Someone just filled out the contact form on <a href="https://ajaypalsingh.in" style="color:#1F2AD6;text-decoration:none;font-weight:500;">ajaypalsingh.in</a>.
+                Someone just filled out the contact form on <a href="https://ajaypalsingh.in" style="color:#1F2AD6;text-decoration:none;font-weight:600;">ajaypalsingh.in</a>.
               </p>
 
               <!-- Sender Info Card -->
@@ -95,7 +96,7 @@ export async function POST(req: Request) {
                       <tr>
                         <td style="padding-bottom:10px;width:110px;font-size:12px;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:0.05em;">Email</td>
                         <td style="padding-bottom:10px;font-size:14px;font-weight:500;">
-                          <a href="mailto:${cleanEmail}" style="color:#1F2AD6;text-decoration:none;">${cleanEmail}</a>
+                          <a href="mailto:${cleanEmail}" style="color:#1F2AD6;text-decoration:none;font-weight:600;">${cleanEmail}</a>
                         </td>
                       </tr>
                       <tr>
@@ -134,11 +135,30 @@ export async function POST(req: Request) {
             </td>
           </tr>
 
-          <!-- Footer -->
+          <!-- Footer with Social Links -->
           <tr>
-            <td style="background-color:#F8FAFC;padding:20px 32px;border-top:1px solid #E2E8F0;text-align:center;">
+            <td style="background-color:#F8FAFC;padding:22px 32px;border-top:1px solid #E2E8F0;text-align:center;">
+              <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-bottom:10px;">
+                <tr>
+                  <td style="padding:0 8px;">
+                    <a href="https://www.linkedin.com/in/ajaypalsingh110/" target="_blank" style="color:#1F2AD6;font-size:12px;text-decoration:none;font-weight:500;">LinkedIn</a>
+                  </td>
+                  <td style="color:#CBD5E1;font-size:12px;">&bull;</td>
+                  <td style="padding:0 8px;">
+                    <a href="https://x.com/ajaypal110125" target="_blank" style="color:#1F2AD6;font-size:12px;text-decoration:none;font-weight:500;">X (Twitter)</a>
+                  </td>
+                  <td style="color:#CBD5E1;font-size:12px;">&bull;</td>
+                  <td style="padding:0 8px;">
+                    <a href="https://www.instagram.com/_ajaypal_singh_/" target="_blank" style="color:#1F2AD6;font-size:12px;text-decoration:none;font-weight:500;">Instagram</a>
+                  </td>
+                  <td style="color:#CBD5E1;font-size:12px;">&bull;</td>
+                  <td style="padding:0 8px;">
+                    <a href="https://ajaypalsingh.in" target="_blank" style="color:#1F2AD6;font-size:12px;text-decoration:none;font-weight:500;">Website</a>
+                  </td>
+                </tr>
+              </table>
               <p style="margin:0;font-size:12px;color:#64748B;">
-                Sent from <a href="https://ajaypalsingh.in" style="color:#1F2AD6;text-decoration:none;font-weight:500;">ajaypalsingh.in</a> &bull; Portfolio Form
+                Sent from <a href="https://ajaypalsingh.in" style="color:#1F2AD6;text-decoration:none;font-weight:600;">ajaypalsingh.in</a> &bull; Portfolio Contact System
               </p>
             </td>
           </tr>
@@ -153,6 +173,7 @@ export async function POST(req: Request) {
 
     // ─────────────────────────────────────────────────────────────────────────────
     // Template 2: Auto-Reply to Visitor (Delivered to cleanEmail)
+    // Website Signature Cobalt Blue: #1F2AD6
     // ─────────────────────────────────────────────────────────────────────────────
     const autoReplySubject = `Thanks for reaching out, ${firstName}! 👋`
 
@@ -169,26 +190,26 @@ export async function POST(req: Request) {
     <tr>
       <td align="center">
         <!-- Container -->
-        <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:580px;background-color:#FFFFFF;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(15,23,42,0.06);border:1px solid #E2E8F0;">
+        <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width:580px;background-color:#FFFFFF;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(31,42,214,0.08);border:1px solid #E2E8F0;">
           
-          <!-- Hero Header with Brand Accent -->
+          <!-- Hero Header (Signature Website Cobalt Blue #1F2AD6) -->
           <tr>
-            <td style="background:linear-gradient(135deg, #0F1330 0%, #1A204C 100%);padding:44px 36px 36px 36px;text-align:center;">
+            <td style="background-color:#1F2AD6;padding:46px 36px 38px 36px;text-align:center;">
               
               <!-- Brand Logo -->
-              <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-bottom:20px;">
+              <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-bottom:18px;">
                 <tr>
-                  <td align="center" style="background-color:#FFFFFF;border-radius:50%;padding:4px;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+                  <td align="center" style="background-color:#FFFFFF;border-radius:50%;padding:4px;box-shadow:0 4px 16px rgba(0,0,0,0.18);">
                     <img src="${logoUrl}" alt="Ajaypal Singh" width="56" height="56" style="display:block;border-radius:50%;">
                   </td>
                 </tr>
               </table>
 
               <!-- Name & Title -->
-              <h1 style="margin:0 0 6px 0;font-size:26px;font-weight:700;color:#FFFFFF;letter-spacing:-0.02em;">
+              <h1 style="margin:0 0 6px 0;font-size:28px;font-weight:700;color:#FFFFFF;letter-spacing:-0.02em;">
                 Ajaypal Singh
               </h1>
-              <p style="margin:0;font-size:13px;color:#A5B4FC;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;">
+              <p style="margin:0;font-size:13px;color:#D6DAFF;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">
                 Founder &bull; Builder &bull; Entrepreneur
               </p>
             </td>
@@ -281,7 +302,7 @@ export async function POST(req: Request) {
                   <td>
                     <p style="margin:0 0 4px 0;font-size:14px;color:#64748B;">Warm regards,</p>
                     <p style="margin:0 0 2px 0;font-size:16px;font-weight:700;color:#0F172A;">Ajaypal Singh</p>
-                    <p style="margin:0;font-size:13px;color:#1F2AD6;font-weight:500;">
+                    <p style="margin:0;font-size:13px;color:#1F2AD6;font-weight:600;">
                       <a href="https://ajaypalsingh.in" style="color:#1F2AD6;text-decoration:none;">ajaypalsingh.in</a>
                     </p>
                   </td>
@@ -291,7 +312,7 @@ export async function POST(req: Request) {
             </td>
           </tr>
 
-          <!-- Social Links & Verification Footer -->
+          <!-- Social Links & Verification Footer with Instagram included -->
           <tr>
             <td style="background-color:#0F1330;padding:28px 36px;text-align:center;">
               <table role="presentation" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-bottom:16px;">
@@ -302,6 +323,10 @@ export async function POST(req: Request) {
                   <td style="color:#4B5563;font-size:12px;">&bull;</td>
                   <td style="padding:0 10px;">
                     <a href="https://x.com/ajaypal110125" target="_blank" style="color:#A5B4FC;font-size:12px;text-decoration:none;font-weight:500;">X (Twitter)</a>
+                  </td>
+                  <td style="color:#4B5563;font-size:12px;">&bull;</td>
+                  <td style="padding:0 10px;">
+                    <a href="https://www.instagram.com/_ajaypal_singh_/" target="_blank" style="color:#A5B4FC;font-size:12px;text-decoration:none;font-weight:500;">Instagram</a>
                   </td>
                   <td style="color:#4B5563;font-size:12px;">&bull;</td>
                   <td style="padding:0 10px;">
