@@ -254,14 +254,14 @@ export function HomeView() {
                   <text
                     style={{
                       fontFamily: '"Bricolage Grotesque", sans-serif',
-                      fontSize: '14.5px',
+                      fontSize: '13.5px',
                       fontWeight: 500,
-                      letterSpacing: '2.4px',
+                      letterSpacing: '2px',
                     }}
                     fill="#F7F7F5"
                   >
-                    <textPath href="#sealpath">
-                      Ajaypal Singh ✦ Founder ✦ Builder ✦ Entrepreneur ✦
+                    <textPath href="#sealpath" textLength="412" lengthAdjust="spacing">
+                      Ajaypal Singh ✦ Founder ✦ Entrepreneur ✦
                     </textPath>
                   </text>
                 </svg>
