@@ -11,6 +11,10 @@ export const metadata: Metadata = {
     description:
       'Ajaypal Singh is a founder and builder creating products and companies. Currently building Ojaven, a platform for modern agencies.',
   }),
+  title: {
+    default: 'Ajaypal Singh | Founder and Builder',
+    template: '%s | Ajaypal Singh',
+  },
   verification: {
     google: 'r7A5EdJr_F1NpBLQZ5Jsu0J8Vo7txV3Hokdu8FER8Yk',
   },
@@ -33,11 +37,16 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
+        {/* Favicon — explicit tags for Google Search indexing */}
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/icon-96.png" sizes="96x96" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
         {/* Theme & PWA */}
         <meta name="theme-color" content="#1F2AD6" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="author" href="/humans.txt" />
-        <link rel="canonical" href="https://ajaypalsingh.in/" />
 
         {/* Google Analytics 4 */}
         <Script
