@@ -50,8 +50,9 @@ export function ContactAside() {
         <p className="m-0 text-[14px]" style={{ color: '#8A8FB0' }}>Prefer email?</p>
         <a
           href={`mailto:${email}`}
-          className="block mt-2.5 text-[#F7F7F5] font-medium tracking-[-0.03em] break-all hover:opacity-80 transition-opacity"
-          style={{ fontSize: 'clamp(18px, 4vw, 26px)' }}
+          className="block mt-2.5 text-[#F7F7F5] font-medium tracking-[-0.03em] whitespace-nowrap overflow-hidden text-ellipsis hover:opacity-80 transition-opacity"
+          style={{ fontSize: 'clamp(14px, 1.7vw, 19.5px)' }}
+          title={email}
         >
           {email}
         </a>
