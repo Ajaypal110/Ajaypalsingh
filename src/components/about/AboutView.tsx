@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 export function AboutView() {
-  const [imageError, setImageError] = useState(false)
+  const [imageError, setImageError] = useState(true)
 
   // Chapters 1-3 from SITE_CONTENT_AND_SEO.md Section 3.3
   const chaptersA = [

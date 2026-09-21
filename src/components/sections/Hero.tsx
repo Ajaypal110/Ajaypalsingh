@@ -8,7 +8,7 @@ import { siteConfig } from '@/lib/data/site'
 import { Reveal } from '@/components/motion/Reveal'
 
 export function Hero() {
-  const [imageError, setImageError] = useState(false)
+  const [imageError, setImageError] = useState(true)
 
   return (
     <section className="relative min-h-[95vh] flex flex-col justify-between pt-28 md:pt-36 pb-12 overflow-hidden bg-grid-architectural">

@@ -11,7 +11,7 @@ export function HomeView() {
   const [openAccordion, setOpenAccordion] = useState<number>(0)
   const [journeyStep, setJourneyStep] = useState<number>(0)
   const [tiltStyle, setTiltStyle] = useState<string>('none')
-  const [imageError, setImageError] = useState(false)
+  const [imageError, setImageError] = useState(true)
 
   const stepRefs = useRef<(HTMLLIElement | null)[]>([])
 

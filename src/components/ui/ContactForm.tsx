@@ -12,6 +12,7 @@ interface FormState {
   errors: Record<string, string>
   sending: boolean
   sent: boolean
+  serverError: string
 }
 
 export function ContactForm() {
@@ -23,10 +24,11 @@ export function ContactForm() {
     errors: {},
     sending: false,
     sent: false,
+    serverError: '',
   })
 
   const setField = (field: string, value: string) =>
-    setState((s) => ({ ...s, [field]: value, errors: { ...s.errors, [field]: '' } }))
+    setState((s) => ({ ...s, [field]: value, errors: { ...s.errors, [field]: '' }, serverError: '' }))
 
   const validate = () => {
     const errs: Record<string, string> = {}
@@ -37,19 +39,38 @@ export function ContactForm() {
     return errs
   }
 
-  const submit = () => {
+  const submit = async () => {
     if (state.sending) return
     const errors = validate()
     if (Object.keys(errors).length) {
       setState((s) => ({ ...s, errors }))
       return
     }
-    setState((s) => ({ ...s, sending: true, errors: {} }))
-    setTimeout(() => setState((s) => ({ ...s, sending: false, sent: true })), 1100)
+    setState((s) => ({ ...s, sending: true, errors: {}, serverError: '' }))
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: state.name,
+          email: state.email,
+          message: state.message,
+          topic: state.topic,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setState((s) => ({ ...s, sending: false, serverError: data.error || 'Something went wrong. Please try again.' }))
+        return
+      }
+      setState((s) => ({ ...s, sending: false, sent: true }))
+    } catch {
+      setState((s) => ({ ...s, sending: false, serverError: 'Network error. Please check your connection and try again.' }))
+    }
   }
 
   const reset = () =>
-    setState({ topic: 'An idea', name: '', email: '', message: '', errors: {}, sending: false, sent: false })
+    setState({ topic: 'An idea', name: '', email: '', message: '', errors: {}, sending: false, sent: false, serverError: '' })
 
   const firstName = state.name.trim().split(' ')[0] || 'friend'
 
@@ -283,6 +304,13 @@ export function ContactForm() {
           </span>
         </button>
       </div>
+
+      {/* Server-side error */}
+      {state.serverError && (
+        <p role="alert" className="mt-4 text-[13px] text-center" style={{ color: '#C4314B' }}>
+          {state.serverError}
+        </p>
+      )}
 
       <style>{`
         .ct-field-input {
